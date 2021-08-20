@@ -13,7 +13,7 @@ public class BoostZoneClicker : IBoost
 
     public void Impulse(Rigidbody rigidbody, int velocity)
     {
-        rigidbody.AddForce(rigidbody.velocity.normalized * velocity);
+        rigidbody.AddForce(rigidbody.velocity.normalized * velocity, ForceMode.Impulse);
 
         _boostIncrease = rigidbody.velocity.magnitude;
 
