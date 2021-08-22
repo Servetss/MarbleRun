@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Barmetler.RoadSystem;
+using System;
 using UnityEngine;
 
 public class LevelPreparer : MonoBehaviour
@@ -13,8 +14,6 @@ public class LevelPreparer : MonoBehaviour
 
     private Transform _finishTransform;
 
-    private int _selectedLevelIndex;
-
     private int _previousLevelIndex;
 
     private void Awake()
@@ -22,6 +21,10 @@ public class LevelPreparer : MonoBehaviour
         if (_levelContainer == null)
             throw new ArgumentNullException();
     }
+
+    public int SelectedLevelIndex { get; private set; }
+
+    public Road SelecetedRoad { get => _levelContainer.GetLevelByIndex(SelectedLevelIndex).GetComponent<Road>(); }
 
     private void Start()
     {
@@ -39,23 +42,25 @@ public class LevelPreparer : MonoBehaviour
         SetPlayerAndFinishOnTheLevel();
 
         _player.GetComponent<Rigidbody>().isKinematic = true;
+
+        _player.NextLevel();
     }
 
     private void SelectLevelIndex()
     {
-        _previousLevelIndex = _selectedLevelIndex;
+        _previousLevelIndex = SelectedLevelIndex;
 
-        _selectedLevelIndex++;
+        SelectedLevelIndex++;
 
-        if (_selectedLevelIndex >= _levelContainer.LevelsCount)
+        if (SelectedLevelIndex >= _levelContainer.LevelsCount)
         {
-            _selectedLevelIndex = 0;
+            SelectedLevelIndex = 0;
         }
     }
 
     private void Replace()
     {
-        ShowLevel(_levelContainer.GetLevelByIndex(_selectedLevelIndex));
+        ShowLevel(_levelContainer.GetLevelByIndex(SelectedLevelIndex));
 
         HideLevel(_levelContainer.GetLevelByIndex(_previousLevelIndex));
     }
@@ -72,7 +77,7 @@ public class LevelPreparer : MonoBehaviour
 
     private void SetPlayerAndFinishOnTheLevel()
     {
-        Level level = _levelContainer.GetLevelByIndex(_selectedLevelIndex).GetComponent<Level>();
+        Level level = _levelContainer.GetLevelByIndex(SelectedLevelIndex).GetComponent<Level>();
 
         _playerTransform.position = level.StartPosition;
 

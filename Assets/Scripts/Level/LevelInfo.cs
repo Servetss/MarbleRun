@@ -16,4 +16,14 @@ public class LevelInfo
     {
         BoostClickCount++;
     }
+
+    public void AddCoin()
+    {
+        CoinsGetOnTheLevel++;
+    }
+
+    public void ResetCoins()
+    {
+        CoinsGetOnTheLevel = 0;
+    }
 }

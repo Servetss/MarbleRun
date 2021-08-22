@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8266060854595614081}
   - component: {fileID: 8266060854595614082}
   - component: {fileID: 8266060854595614083}
+  - component: {fileID: 6045403695114523976}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -51,6 +52,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -81,6 +83,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6045403695114523976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8266060854595614086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4c0669b31e51924d92d776910db7f25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 500
+  _dementionRotate: 0
 --- !u!1 &8266060854834415700
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,6 +140,9 @@ GameObject:
   - component: {fileID: 6086882135018383248}
   - component: {fileID: 8266060855210805554}
   - component: {fileID: 2848016445062157907}
+  - component: {fileID: 7231018519333470846}
+  - component: {fileID: 1525043416015686299}
+  - component: {fileID: 2708460541456084189}
   - component: {fileID: 5289490092610015739}
   m_Layer: 0
   m_Name: Marble
@@ -191,6 +210,45 @@ MonoBehaviour:
   "_boost\u0421haracteristic":
     _boostType: 0
     _impulse: 1
+--- !u!114 &7231018519333470846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8266060855210805552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5869dd38a4bf7e74ea56b46f5dfab6fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 2
+--- !u!114 &1525043416015686299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8266060855210805552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d64f407deaa0724a81fdbfe960a62fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _border: 2.5
+  _speed: 2
+--- !u!114 &2708460541456084189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8266060855210805552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b29ae6e9c67477c45b96da872acafa1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5289490092610015739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,3 +261,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4706e2a2ec7ee964890d6b546bab574d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _levelPreparer: {fileID: 0}

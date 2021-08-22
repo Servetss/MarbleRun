@@ -1,7 +1,12 @@
 ﻿using UnityEngine;
 
 public class TestBoost : IBoost
-{
+{ 
+    public void Init(MarbleImpulse marbleImpulse)
+    {
+
+    }
+
     public bool BoostCondition()
     {
         return Input.GetMouseButton(0);

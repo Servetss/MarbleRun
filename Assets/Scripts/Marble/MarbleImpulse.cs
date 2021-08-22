@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public enum BoostType { TestBoost, ZoneBoost}
+public enum BoostType { TestBoost, BoostZonePhysics, BoostZoneSpline}
 
 public class MarbleImpulse : MonoBehaviour
 {
@@ -13,6 +13,8 @@ public class MarbleImpulse : MonoBehaviour
         Rigidbody = GetComponent<Rigidbody>();
         
         _boost = _boostСharacteristic.GetSelectBoostType();
+
+        _boost.Init(this);
     }
 
     public Rigidbody Rigidbody { get; private set; }

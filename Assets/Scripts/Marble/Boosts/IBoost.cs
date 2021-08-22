@@ -2,6 +2,8 @@
 
 public interface IBoost
 {
+    void Init(MarbleImpulse marbleImpulse);
+
     bool BoostCondition();
 
     void Impulse(Rigidbody rigidbody, int velocity);
@@ -29,8 +31,10 @@ public struct BoostСharacteristic
         {
             case BoostType.TestBoost:
                 return new TestBoost();
-            case BoostType.ZoneBoost:
+            case BoostType.BoostZonePhysics:
                 return new BoostZoneClicker();
+            case BoostType.BoostZoneSpline:
+                return new SplineBoostZoneClicker();
         }
 
         return null;

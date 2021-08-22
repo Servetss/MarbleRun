@@ -6,6 +6,11 @@ public class BoostZoneClicker : IBoost
 
     private float _boostIncrease;
 
+    public void Init(MarbleImpulse marbleImpulse)
+    {
+        
+    }
+
     public bool BoostCondition()
     {
         return _isTriggerStay && Input.GetMouseButtonDown(0);
