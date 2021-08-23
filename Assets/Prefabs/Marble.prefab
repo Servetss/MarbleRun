@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c0669b31e51924d92d776910db7f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEventMachine: {fileID: 0}
   _speed: 500
   _dementionRotate: 0
 --- !u!1 &8266060854834415700
@@ -141,9 +142,12 @@ GameObject:
   - component: {fileID: 8266060855210805554}
   - component: {fileID: 2848016445062157907}
   - component: {fileID: 7231018519333470846}
+  - component: {fileID: 4444569228577613283}
   - component: {fileID: 1525043416015686299}
   - component: {fileID: 2708460541456084189}
+  - component: {fileID: 2909735743222707030}
   - component: {fileID: 5289490092610015739}
+  - component: {fileID: 1724946569707989369}
   m_Layer: 0
   m_Name: Marble
   m_TagString: Untagged
@@ -222,7 +226,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5869dd38a4bf7e74ea56b46f5dfab6fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _levelPreparer: {fileID: 0}
   _speed: 2
+--- !u!114 &4444569228577613283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8266060855210805552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 382094d21d7d9f3418dcfc9e8939e4ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1525043416015686299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +266,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29ae6e9c67477c45b96da872acafa1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _finish: {fileID: 0}
+--- !u!114 &2909735743222707030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8266060855210805552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed9b08e70f90f34ab659e99f4dd000c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5289490092610015739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,3 +292,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelPreparer: {fileID: 0}
+--- !u!95 &1724946569707989369
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8266060855210805552}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 113d0b195b5331e4fbf757b36f75e7c8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

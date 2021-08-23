@@ -6,9 +6,9 @@ public class Level : MonoBehaviour
 
     [SerializeField] private Transform _finishPosition;
 
-    public Vector3 StartPosition { get => _startPosition.position; }
+    public Transform StartTransform { get => _startPosition; }
 
-    public Vector3 FinishPosition { get => _finishPosition.position; }
+    public Transform FinishTransform { get => _finishPosition; }
 
     public void SetPlayerToStartPosition(Transform player)
     {

@@ -1,13 +1,19 @@
 using Barmetler;
+using Barmetler.RoadSystem;
 using System;
+using System.Linq;
 using UnityEngine;
 
 public class RoadMover : MonoBehaviour
 {
     private Bezier.OrientedPoint[] _roadOrientedPoint;
 
+    [SerializeField] private LevelPreparer _levelPreparer;
+
     [Range(0.1f, 150)]
     [SerializeField] private float _speed = 2;
+
+    private PlayerEventMachine _playerEventMachine;
 
     private int _pointIndex;
 
@@ -23,9 +29,26 @@ public class RoadMover : MonoBehaviour
 
     private Quaternion _directionRotation;
 
-    private Action Finish;
+    public float Speed { get => _speed; }
 
-    public void SetRoad(Bezier.OrientedPoint[] orientedPoints)
+    private void Awake()
+    {
+        _playerEventMachine = GetComponent<PlayerEventMachine>();
+    }
+
+    private void Start()
+    {
+        _playerEventMachine.SubscribeOnRoadStartStart(StartMoveBySpline);
+    }
+
+    private void StartMoveBySpline()
+    {
+        Road road = _levelPreparer.SelecetedRoad;
+
+        SetRoad(road.GetEvenlySpacedPoints(1, 1).Select(e => e.ToWorldSpace(road.transform)).ToArray());
+    }
+
+    private void SetRoad(Bezier.OrientedPoint[] orientedPoints)
     {
         _roadOrientedPoint = orientedPoints;
 
@@ -64,7 +87,7 @@ public class RoadMover : MonoBehaviour
         _speed += value;
     }
 
-    public void SetSpeed(int value)
+    public void SetSpeed(float value)
     {
         _speed = value;
     }
@@ -75,7 +98,7 @@ public class RoadMover : MonoBehaviour
 
         if (_pointIndex + 1 >= _roadOrientedPoint.Length)
         {
-            Finish();
+            LastSplineIndex();
 
             return;
         }
@@ -93,14 +116,6 @@ public class RoadMover : MonoBehaviour
     {
         _pointIndex = 0;
 
-        Finish?.Invoke();
+        _playerEventMachine.RoadEndMethod();
     }
-
-
-    #region Action
-    public void SubscribeOnFinish(Action method)
-    {
-        Finish += method;
-    }
-    #endregion
 }

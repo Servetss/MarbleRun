@@ -4,14 +4,13 @@ public class Finish : MonoBehaviour
 {
     [SerializeField] private GameOverPanel _gameOverPanel;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<Player>())
-        {
-            other.GetComponent<Player>().LevelFinish();
+    [SerializeField] private PlayerEventMachine _playerEventMachine;
 
-            LevelFinish(other.GetComponent<Player>().LevelInfo);
-        }
+    public void MarbleStop(Player player)
+    {
+        _playerEventMachine.FinishMethod();
+
+        LevelFinish(player.LevelInfo);
     }
 
     private void LevelFinish(LevelInfo levelInfo)

@@ -4,6 +4,8 @@ public class SplineBoostZoneClicker : IBoost
 {
     private RoadMover _roadMover;
 
+    private PlayerEventMachine _playerEventMachine;
+
     private Jump _jump;
 
     private bool _isTriggerStay;
@@ -14,9 +16,11 @@ public class SplineBoostZoneClicker : IBoost
     {
         _roadMover = marbleImpulse.GetComponent<RoadMover>();
 
+        _playerEventMachine = marbleImpulse.GetComponent<PlayerEventMachine>();
+
         _jump = marbleImpulse.GetComponent<Jump>();
 
-        _roadMover.SubscribeOnFinish(JumpInTheEnd);
+        _playerEventMachine.SubscribeOnRoadEnd(JumpInTheEnd);
     }
 
     public bool BoostCondition()
@@ -28,7 +32,7 @@ public class SplineBoostZoneClicker : IBoost
     {
         _clickCount++;
 
-        _roadMover.Accelerate(1);
+        _roadMover.Accelerate(3);
     }
 
     public void EnterTrigger()
@@ -43,6 +47,6 @@ public class SplineBoostZoneClicker : IBoost
 
     private void JumpInTheEnd()
     {
-        _jump.Impulse(_clickCount);
+        _jump.Impulse(_roadMover.Speed);
     }
 }

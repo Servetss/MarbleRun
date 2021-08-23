@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 
     private RoadMover _roadMover;
 
+    private PlayerEventMachine _playerEventMachine;
     public LevelInfo LevelInfo { get; private set; }
 
     private void Awake()
@@ -15,39 +16,34 @@ public class Player : MonoBehaviour
         LevelInfo = new LevelInfo();
 
         _roadMover = GetComponent<RoadMover>();
+
+        _playerEventMachine = GetComponent<PlayerEventMachine>();
     }
 
     private void Start()
     {
-        _roadMover.SubscribeOnFinish(TrackFinish);
+        _playerEventMachine.SubscribeOnFinish(TrackFinish);
     }
 
-    public void LevelStart()
+    private void LevelStart()
     {
-        Road road = _levelPreparer.SelecetedRoad;
-        
-        _roadMover.SetRoad(road.GetEvenlySpacedPoints(1, 1).Select(e => e.ToWorldSpace(road.transform)).ToArray());
+        _playerEventMachine.RoadStartMethod();
+
+        _playerEventMachine.SubscribeOnMoveToNextLevel(NextLevel);
     }
 
-    public void LevelFinish()
+    private void TrackFinish()
     {
         LevelInfo.AddLevel();
     }
 
-    public void AddClick()
-    {
-        LevelInfo.AddClick();
-    }
-
     public void NextLevel()
     {
+        GetComponent<Rigidbody>().isKinematic = true;
+
         LevelInfo.ResetCoins();
     }
 
-    public void TrackFinish()
-    {
-        
-    }
 
     public void OnTriggerEnter(Collider other)
     {

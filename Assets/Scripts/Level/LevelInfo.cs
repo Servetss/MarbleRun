@@ -7,6 +7,8 @@ public class LevelInfo
 
     public int BoostClickCount { get; private set; }
 
+    public int Speed { get; private set; }
+
     public void AddLevel()
     {
         PlayerLevel++;
@@ -25,5 +27,10 @@ public class LevelInfo
     public void ResetCoins()
     {
         CoinsGetOnTheLevel = 0;
+    }
+
+    public void SetSpeed(int speed)
+    {
+        Speed = speed;
     }
 }

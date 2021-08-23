@@ -8,10 +8,18 @@ public class MarbleImpulse : MonoBehaviour
 
     [SerializeField] private BoostСharacteristic _boostСharacteristic;
 
+    private PlayerEventMachine _playerEventMachine;
+
+    private Animator _animator;
+
     private void Awake()
     {
         Rigidbody = GetComponent<Rigidbody>();
-        
+
+        _playerEventMachine = GetComponent<PlayerEventMachine>();
+
+        _animator = GetComponent<Animator>();
+
         _boost = _boostСharacteristic.GetSelectBoostType();
 
         _boost.Init(this);
@@ -29,11 +37,25 @@ public class MarbleImpulse : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        _boost.EnterTrigger();
+        if (other.gameObject.name == "BoostZone")
+        {
+            _animator.SetBool("IsBoostZone", true);
+
+            _playerEventMachine.BoostZoneStartMethod();
+
+            _boost.EnterTrigger();
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        _boost.ExiteTrigger();
+        if (other.gameObject.name == "BoostZone")
+        {
+            _animator.SetBool("IsBoostZone", false);
+
+            _playerEventMachine.BoostZoneFinishMethod();
+
+            _boost.ExiteTrigger();
+        }
     }
 }

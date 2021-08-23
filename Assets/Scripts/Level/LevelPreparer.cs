@@ -10,6 +10,8 @@ public class LevelPreparer : MonoBehaviour
 
     [SerializeField] private Finish _finish;
 
+    [SerializeField] private PlayerEventMachine _playerEventMachine;
+
     private Transform _playerTransform;
 
     private Transform _finishTransform;
@@ -41,9 +43,7 @@ public class LevelPreparer : MonoBehaviour
 
         SetPlayerAndFinishOnTheLevel();
 
-        _player.GetComponent<Rigidbody>().isKinematic = true;
-
-        _player.NextLevel();
+        _playerEventMachine.NextLevelMethod();
     }
 
     private void SelectLevelIndex()
@@ -79,8 +79,10 @@ public class LevelPreparer : MonoBehaviour
     {
         Level level = _levelContainer.GetLevelByIndex(SelectedLevelIndex).GetComponent<Level>();
 
-        _playerTransform.position = level.StartPosition;
+        _playerTransform.position = level.StartTransform.position;
 
-        _finishTransform.position = level.FinishPosition;
+        _playerTransform.rotation = level.StartTransform.rotation;
+
+        _finishTransform.position = level.FinishTransform.position;
     }
 }
