@@ -6,9 +6,9 @@ public class Accelerator : MonoBehaviour
 
     private const int MaximalSpeed = 60;
 
-    private RoadMover _roadMover;
+    private EventMachine _playerEventMachine;
 
-    private PlayerEventMachine _playerEventMachine;
+    private RoadMover _roadMover;
 
     private float _acceleration = 8;
 
@@ -22,7 +22,7 @@ public class Accelerator : MonoBehaviour
     {
         _roadMover = GetComponent<RoadMover>();
 
-        _playerEventMachine = GetComponent<PlayerEventMachine>();
+        _playerEventMachine = GetComponent<Player>().PlayerEventMachine;
     }
 
     private void Start()

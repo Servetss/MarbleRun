@@ -6,9 +6,11 @@ public class MarbleImpulse : MonoBehaviour
 {
     private IBoost _boost;
 
+    [SerializeField] private GameObject _boostTextOnUI;
+
     [SerializeField] private BoostСharacteristic _boostСharacteristic;
 
-    private PlayerEventMachine _playerEventMachine;
+    private EventMachine _playerEventMachine;
 
     private Animator _animator;
 
@@ -16,11 +18,11 @@ public class MarbleImpulse : MonoBehaviour
     {
         Rigidbody = GetComponent<Rigidbody>();
 
-        _playerEventMachine = GetComponent<PlayerEventMachine>();
-
         _animator = GetComponent<Animator>();
 
         _boost = _boostСharacteristic.GetSelectBoostType();
+
+        _playerEventMachine = GetComponent<Player>().PlayerEventMachine;
 
         _boost.Init(this);
     }
@@ -41,6 +43,8 @@ public class MarbleImpulse : MonoBehaviour
         {
             _animator.SetBool("IsBoostZone", true);
 
+            _boostTextOnUI.SetActive(true);
+
             _playerEventMachine.BoostZoneStartMethod();
 
             _boost.EnterTrigger();
@@ -52,6 +56,8 @@ public class MarbleImpulse : MonoBehaviour
         if (other.gameObject.name == "BoostZone")
         {
             _animator.SetBool("IsBoostZone", false);
+
+            _boostTextOnUI.SetActive(false);
 
             _playerEventMachine.BoostZoneFinishMethod();
 

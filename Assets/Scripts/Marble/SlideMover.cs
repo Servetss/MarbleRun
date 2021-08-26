@@ -6,7 +6,7 @@ public class SlideMover : MonoBehaviour
 
     [SerializeField] private float _speed;
 
-    private PlayerEventMachine _playerEventMachine;
+    private EventMachine _playerEventMachine;
 
     private Transform _mesh;
 
@@ -40,7 +40,7 @@ public class SlideMover : MonoBehaviour
 
     private void Awake()
     {
-        _playerEventMachine = GetComponent<PlayerEventMachine>();
+        _playerEventMachine = GetComponent<Player>().PlayerEventMachine;
     }
 
     private void Start()
@@ -86,7 +86,7 @@ public class SlideMover : MonoBehaviour
 
                 _mesh.localEulerAngles = new Vector3(0, _moveRotationY, -_moveRotationX);
 
-                _camera.localEulerAngles = new Vector3(_camera.localEulerAngles.x, _camera.localEulerAngles.y, -_cameraRotateZ);
+              //  _camera.localEulerAngles = new Vector3(_camera.localEulerAngles.x, _camera.localEulerAngles.y, -_cameraRotateZ);
             }
 
             if (Input.GetMouseButtonUp(0))
@@ -113,7 +113,7 @@ public class SlideMover : MonoBehaviour
 
             _mesh.localEulerAngles = new Vector3(0, y, x);
 
-            _camera.localEulerAngles = new Vector3(_camera.localEulerAngles.x, _camera.localEulerAngles.y, z);
+           // _camera.localEulerAngles = new Vector3(_camera.localEulerAngles.x, _camera.localEulerAngles.y, z);
 
             if (_lerp >= 1)
             {
@@ -132,5 +132,17 @@ public class SlideMover : MonoBehaviour
     private void DisableMove()
     {
         _isCanMove = false;
+
+        _mouseDiff = 0;
+
+        _actualPosition = 0;
+
+        _moveRotationY = 0;
+
+        _moveRotationX = 0;
+
+        _cameraRotateZ = 0;
+
+        _isLerp = true;
     }
 }

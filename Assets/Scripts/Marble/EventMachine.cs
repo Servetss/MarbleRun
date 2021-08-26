@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PlayerEventMachine : MonoBehaviour
+public class EventMachine : MonoBehaviour
 {
     private Action RoadStart;
 

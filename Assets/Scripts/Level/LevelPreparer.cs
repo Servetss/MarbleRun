@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class LevelPreparer : MonoBehaviour
 {
+    private const string LevelSave = "LevelPreparer";
+    
+    private const string PreviousSave = "PreviousLevel";
+
+    private const string SelectedSave = "SelectedPreparer";
+
     [SerializeField] private LevelContainer _levelContainer;
 
     [SerializeField] private Player _player;
 
     [SerializeField] private Finish _finish;
 
-    [SerializeField] private PlayerEventMachine _playerEventMachine;
+    private EventMachine _playerEventMachine;
 
     private Transform _playerTransform;
 
@@ -22,6 +28,8 @@ public class LevelPreparer : MonoBehaviour
     {
         if (_levelContainer == null)
             throw new ArgumentNullException();
+
+        _playerEventMachine = _player.PlayerEventMachine;
     }
 
     public int SelectedLevelIndex { get; private set; }
@@ -33,12 +41,21 @@ public class LevelPreparer : MonoBehaviour
         _playerTransform = _player.transform;
 
         _finishTransform = _finish.transform;
+
+        Load();
+
+        PutOnTheLevel();
     }
 
     public void SelectNewLevel()
     {
         SelectLevelIndex();
 
+        PutOnTheLevel();
+    }
+
+    private void PutOnTheLevel()
+    {
         Replace();
 
         SetPlayerAndFinishOnTheLevel();
@@ -56,6 +73,8 @@ public class LevelPreparer : MonoBehaviour
         {
             SelectedLevelIndex = 0;
         }
+
+        Save();
     }
 
     private void Replace()
@@ -83,6 +102,26 @@ public class LevelPreparer : MonoBehaviour
 
         _playerTransform.rotation = level.StartTransform.rotation;
 
+        _playerTransform.GetChild(0).localPosition = Vector3.zero;
+
+        _playerTransform.GetChild(0).localEulerAngles = Vector3.zero;
+
         _finishTransform.position = level.FinishTransform.position;
     }
+
+    #region Save\load
+    private void Save()
+    {
+        PlayerPrefs.SetInt(LevelSave + PreviousSave, _previousLevelIndex);
+
+        PlayerPrefs.SetInt(LevelSave + SelectedSave, SelectedLevelIndex);
+    }
+
+    private void Load()
+    {
+        _previousLevelIndex = PlayerPrefs.GetInt(LevelSave + PreviousSave);
+
+        SelectedLevelIndex = PlayerPrefs.GetInt(LevelSave + SelectedSave);
+    }
+    #endregion
 }

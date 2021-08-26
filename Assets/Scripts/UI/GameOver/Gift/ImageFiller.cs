@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class ImageFiller : MonoBehaviour
 {
+    private const string FillerSave = "FillerSave";
+
     private const float LerpSpeed = 1;
 
     [SerializeField] private Image _giftImage;
@@ -39,7 +41,6 @@ public class ImageFiller : MonoBehaviour
         }
     }
 
-    
     public void StartFill(float fillRange)
     {
         _fillLevel = _giftImage.fillAmount;
@@ -62,5 +63,21 @@ public class ImageFiller : MonoBehaviour
 
             _nextFillLevel = 0;
         }
+
+        Save();
     }
+
+    #region Save\Load
+    private void Save()
+    {
+        PlayerPrefs.SetFloat(FillerSave, _nextFillLevel);
+    }
+
+    public void Load()
+    {
+        _nextFillLevel = PlayerPrefs.GetFloat(FillerSave);
+
+        _giftImage.fillAmount = _nextFillLevel;
+    }
+    #endregion
 }

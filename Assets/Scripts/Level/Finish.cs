@@ -4,11 +4,9 @@ public class Finish : MonoBehaviour
 {
     [SerializeField] private GameOverPanel _gameOverPanel;
 
-    [SerializeField] private PlayerEventMachine _playerEventMachine;
-
     public void MarbleStop(Player player)
     {
-        _playerEventMachine.FinishMethod();
+        player.PlayerEventMachine.FinishMethod();
 
         LevelFinish(player.LevelInfo);
     }

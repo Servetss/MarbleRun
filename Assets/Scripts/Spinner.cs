@@ -4,7 +4,7 @@ public enum Demention { X, Y, Z}
 
 public class Spinner : MonoBehaviour
 {
-    [SerializeField] private PlayerEventMachine _playerEventMachine;
+    [SerializeField] private EventMachine _playerEventMachine;
 
     [SerializeField] private float _speed;
 

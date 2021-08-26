@@ -1,6 +1,5 @@
 using Barmetler;
 using Barmetler.RoadSystem;
-using System;
 using System.Linq;
 using UnityEngine;
 
@@ -10,10 +9,12 @@ public class RoadMover : MonoBehaviour
 
     [SerializeField] private LevelPreparer _levelPreparer;
 
+    [SerializeField] private EventMachine _playerEventMachine;
+
     [Range(0.1f, 150)]
     [SerializeField] private float _speed = 2;
 
-    private PlayerEventMachine _playerEventMachine;
+    [SerializeField] private bool _isPlayer;
 
     private int _pointIndex;
 
@@ -31,14 +32,9 @@ public class RoadMover : MonoBehaviour
 
     public float Speed { get => _speed; }
 
-    private void Awake()
-    {
-        _playerEventMachine = GetComponent<PlayerEventMachine>();
-    }
-
     private void Start()
     {
-        _playerEventMachine.SubscribeOnRoadStartStart(StartMoveBySpline);
+        _playerEventMachine?.SubscribeOnRoadStartStart(StartMoveBySpline);
     }
 
     private void StartMoveBySpline()
@@ -59,7 +55,7 @@ public class RoadMover : MonoBehaviour
     {
         if (_isMove)
         {
-            _lerp += Time.deltaTime * _speed;
+            _lerp += Time.smoothDeltaTime * _speed;
 
             Vector3 position = Vector3.Lerp(_startPosition, _directiobPosition, _lerp) + _roadOrientedPoint[_pointIndex].normal / 2;
 
@@ -71,6 +67,11 @@ public class RoadMover : MonoBehaviour
 
             if (_lerp >= 1)
             {
+                if (_isPlayer == false)
+                {
+                    //Debug.Log(_startPosition + "  " + _directiobPosition + "  " + transform.position);
+                }
+
                 _isMove = false;
 
                 _lerp = 0;
@@ -78,6 +79,8 @@ public class RoadMover : MonoBehaviour
                 _pointIndex++;
 
                 StartPosition();
+
+                //Accelerate(0.05f);
             }
         }
     }
@@ -116,6 +119,7 @@ public class RoadMover : MonoBehaviour
     {
         _pointIndex = 0;
 
-        _playerEventMachine.RoadEndMethod();
+        if(_isPlayer)
+            _playerEventMachine?.RoadEndMethod();
     }
 }

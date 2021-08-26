@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class SplineBoostZoneClicker : IBoost
 {
-    private RoadMover _roadMover;
+    private EventMachine _playerEventMachine;
 
-    private PlayerEventMachine _playerEventMachine;
+    private RoadMover _roadMover;
 
     private Jump _jump;
 
@@ -16,9 +16,9 @@ public class SplineBoostZoneClicker : IBoost
     {
         _roadMover = marbleImpulse.GetComponent<RoadMover>();
 
-        _playerEventMachine = marbleImpulse.GetComponent<PlayerEventMachine>();
-
         _jump = marbleImpulse.GetComponent<Jump>();
+
+        _playerEventMachine = marbleImpulse.GetComponent<Player>().PlayerEventMachine;
 
         _playerEventMachine.SubscribeOnRoadEnd(JumpInTheEnd);
     }

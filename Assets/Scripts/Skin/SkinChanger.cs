@@ -2,6 +2,8 @@
 
 public class SkinChanger : MonoBehaviour
 {
+    private const string SaveSkin = "SkinChanger";
+
     [SerializeField] private MeshRenderer _playerSphere;
 
     private SkinContainer _skinContainer;
@@ -13,6 +15,11 @@ public class SkinChanger : MonoBehaviour
         _skinContainer = GetComponent<SkinContainer>();
     }
 
+    private void Start()
+    {
+        Load();
+    }
+
     public void OnButtonClick()
     {
         _skinNum++;
@@ -22,6 +29,8 @@ public class SkinChanger : MonoBehaviour
         SkinSO skin = _skinContainer.GetSkinByIndex(_skinNum);
 
         SetSkin(skin);
+
+        Save();
     }
 
     public void SetSkin(SkinSO skin)
@@ -30,4 +39,17 @@ public class SkinChanger : MonoBehaviour
 
         _playerSphere.material = skin.Material;
     }
+
+    #region Save\Load
+    public void Save()
+    {
+        PlayerPrefs.SetInt(SaveSkin, _skinNum);
+    }
+
+    public void Load()
+    {
+        _skinNum = PlayerPrefs.GetInt(SaveSkin);
+    }
+    #endregion
 }
+

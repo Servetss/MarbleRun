@@ -30,6 +30,8 @@ public class GiftUI : MonoBehaviour, IGameOverPanels
             throw new ArgumentNullException();
 
         _imageFiller.FillFinished += FinishFillGiftImage;
+
+        _imageFiller.Load();
     }
 
     private void ButtonsAddListeners()
@@ -70,6 +72,8 @@ public class GiftUI : MonoBehaviour, IGameOverPanels
     private void FinishFillGiftImage(bool isGiftReady)
     {
         _buttonActivness.WhenFinishGiftImageFilling(isGiftReady);
+
+
 
         if (_acceptButton.activeSelf == false)
             Invoke("ShowAcceptButton", 1);

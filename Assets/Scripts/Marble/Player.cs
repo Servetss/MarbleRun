@@ -1,35 +1,34 @@
-﻿using Barmetler.RoadSystem;
-using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private LevelPreparer _levelPreparer;
 
-    private RoadMover _roadMover;
+    [SerializeField] private EventMachine _eventMachine;
 
-    private PlayerEventMachine _playerEventMachine;
-    public LevelInfo LevelInfo { get; private set; }
+    private RoadMover _roadMover;
 
     private void Awake()
     {
         LevelInfo = new LevelInfo();
 
         _roadMover = GetComponent<RoadMover>();
-
-        _playerEventMachine = GetComponent<PlayerEventMachine>();
     }
+
+    public EventMachine PlayerEventMachine { get => _eventMachine; }
+
+    public LevelInfo LevelInfo { get; private set; }
 
     private void Start()
     {
-        _playerEventMachine.SubscribeOnFinish(TrackFinish);
+        PlayerEventMachine.SubscribeOnFinish(TrackFinish);
     }
 
     private void LevelStart()
     {
-        _playerEventMachine.RoadStartMethod();
+        PlayerEventMachine.RoadStartMethod();
 
-        _playerEventMachine.SubscribeOnMoveToNextLevel(NextLevel);
+        PlayerEventMachine.SubscribeOnMoveToNextLevel(NextLevel);
     }
 
     private void TrackFinish()
@@ -43,7 +42,6 @@ public class Player : MonoBehaviour
 
         LevelInfo.ResetCoins();
     }
-
 
     public void OnTriggerEnter(Collider other)
     {
