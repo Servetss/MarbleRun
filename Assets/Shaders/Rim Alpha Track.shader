@@ -6,7 +6,7 @@
 // http://www.jeanmoreno.com/toonycolorspro/
 
 
-Shader "Toony Colors Free/Rim Lighting"
+Shader "Toony Colors Free/Rim Alpha Track"
 {
 	Properties
 	{
@@ -14,10 +14,10 @@ Shader "Toony Colors Free/Rim Lighting"
 		_Color ("Color", Color) = (0.5,0.5,0.5,1.0)
 		_HColor ("Highlight Color", Color) = (0.6,0.6,0.6,1.0)
 		_SColor ("Shadow Color", Color) = (0.3,0.3,0.3,1.0)
-
+		
 		_ArrowColor ("Arrow color", Color) = (1,1,1,1)
 		_BorderColor ("Border color", Color) = (1,1,1,1)
-		
+
 		//DIFFUSE
 		_MainTex ("Main Texture (RGB)", 2D) = "white" {}
 		
@@ -25,16 +25,15 @@ Shader "Toony Colors Free/Rim Lighting"
 		_Ramp ("Toon Ramp (RGB)", 2D) = "gray" {}
 		
 		//RIM LIGHT
-		_RimColor ("Rim Color", Color) = (0.8,0.8,0.8,0.6)
 		_RimMin ("Rim Min", Range(0,1)) = 0.5
 		_RimMax ("Rim Max", Range(0,1)) = 1.0
-		
 		
 	}
 	
 	SubShader
 	{
-		Tags { "RenderType"="Opaque" }
+		Tags { "RenderType"="Transparent" "Queue"="Transparent" "IgnoreProjector"="True" }
+		Blend SrcAlpha OneMinusSrcAlpha
 		
 		CGPROGRAM
 		
@@ -50,8 +49,7 @@ Shader "Toony Colors Free/Rim Lighting"
 		sampler2D _MainTex;
 		fixed4 _ArrowColor;
         fixed4 _BorderColor;
-		
-		fixed4 _RimColor;
+
 		fixed _RimMin;
 		fixed _RimMax;
 		float4 _RimDir;
@@ -107,15 +105,26 @@ Shader "Toony Colors Free/Rim Lighting"
 		void surf (Input IN, inout SurfaceOutputCustom o)
 		{
 			fixed4 mainTex = tex2D(_MainTex, IN.uv_MainTex);
-			
 			o.Albedo = mainTex.rgb * _Color.rgb;
-			o.Alpha = mainTex.a * _Color.a;
 			
 			//Rim
 			float3 viewDir = normalize(IN.viewDir);
-			half rim = 1.0f - saturate( dot(viewDir, o.Normal) );
+			half rim = saturate( dot(viewDir, o.Normal) );
 			rim = smoothstep(_RimMin, _RimMax, rim);
-			o.Emission += (_RimColor.rgb * rim) * _RimColor.a;
+			o.Alpha = rim * _Color.a * mainTex.a;
+
+			if (mainTex.r < 0.5f && mainTex.g < 0.5 && mainTex.b < 0.5)
+			{
+				o.Albedo = _ArrowColor;
+			}
+			else if (mainTex.r > 0.6f && mainTex.g < 0.4f && mainTex.b > 0.6f)
+			{
+				o.Albedo = _BorderColor;
+			}
+			else
+			{
+				o.Albedo = tex2D(_MainTex, IN.uv_MainTex) * _Color;
+			}
 		}
 		
 		ENDCG

@@ -12,15 +12,24 @@ public class GiftUI : MonoBehaviour, IGameOverPanels
 
     [SerializeField] private GiftReciveUI _giftReciveUI;
 
+    [Header("Grift")]
+    [SerializeField] private GameObject _giftFilling;
+
+    [SerializeField] private GameObject _giftReady;
+
     private ImageFiller _imageFiller;
 
     private ButtonActivness _buttonActivness;
 
     private GameOverPanel _gameOverPanel;
 
+    private Animator _animator;
+
     public void Awake()
     {
         _imageFiller = GetComponent<ImageFiller>();
+
+        _animator = GetComponent<Animator>();
 
         _buttonActivness = new ButtonActivness(_giftButton.transform.GetChild(0).GetComponent<Text>(), this);
 
@@ -48,11 +57,17 @@ public class GiftUI : MonoBehaviour, IGameOverPanels
 
     public void OpenPanel(LevelInfo levelInfo)
     {
+        _giftFilling.SetActive(true);
+
+        _giftReady.SetActive(false);
+
         StartFillGiftImage();
     }
 
     public void ClosePanel()
     {
+        _animator.SetTrigger("Close");
+
         _imageFiller.ClearData();
 
         _acceptButton.SetActive(false);
@@ -73,7 +88,12 @@ public class GiftUI : MonoBehaviour, IGameOverPanels
     {
         _buttonActivness.WhenFinishGiftImageFilling(isGiftReady);
 
+        if (isGiftReady)
+        {
+            _giftFilling.SetActive(false);
 
+            _giftReady.SetActive(true);
+        }
 
         if (_acceptButton.activeSelf == false)
             Invoke("ShowAcceptButton", 1);
@@ -90,6 +110,8 @@ public class GiftUI : MonoBehaviour, IGameOverPanels
     public void UlockASkin()
     {
         CancelInvoke("ShowAcceptButton");
+
+        _animator.SetTrigger("Open");
 
         _giftButton.SetActive(false);
 

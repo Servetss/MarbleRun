@@ -6,7 +6,7 @@
 // http://www.jeanmoreno.com/toonycolorspro/
 
 
-Shader "Toony Colors Free/Rim Lighting"
+Shader "Toony Colors Free/Rim Lighting Track"
 {
 	Properties
 	{
@@ -116,6 +116,19 @@ Shader "Toony Colors Free/Rim Lighting"
 			half rim = 1.0f - saturate( dot(viewDir, o.Normal) );
 			rim = smoothstep(_RimMin, _RimMax, rim);
 			o.Emission += (_RimColor.rgb * rim) * _RimColor.a;
+
+			if (mainTex.r < 0.5f && mainTex.g < 0.5 && mainTex.b < 0.5)
+			{
+				o.Albedo = _ArrowColor;
+			}
+			else if (mainTex.r > 0.6f && mainTex.g < 0.4f && mainTex.b > 0.6f)
+			{
+				o.Albedo = _BorderColor;
+			}
+			else
+			{
+				o.Albedo = tex2D(_MainTex, IN.uv_MainTex) * _Color;
+			}
 		}
 		
 		ENDCG

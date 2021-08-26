@@ -15,4 +15,4 @@ MonoBehaviour:
   _skinName: Default
   _material: {fileID: 2100000, guid: 8a831544ff0f2c449a3adb9e6b2dbfbb, type: 2}
   _isUnlocked: 1
-  _isDefault: 0
+  _isDefault: 1
