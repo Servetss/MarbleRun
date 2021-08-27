@@ -2,15 +2,13 @@ using UnityEngine;
 
 public class Accelerator : MonoBehaviour
 {
-    private const int MinimalSpeed = 30;
+    [SerializeField] private float _speedBoost;
 
-    private const int MaximalSpeed = 60;
+    [SerializeField] private float _acceleration = 8;
 
     private EventMachine _playerEventMachine;
 
     private RoadMover _roadMover;
-
-    private float _acceleration = 8;
 
     private float _speed;
 
@@ -22,8 +20,12 @@ public class Accelerator : MonoBehaviour
     {
         _roadMover = GetComponent<RoadMover>();
 
-        _playerEventMachine = GetComponent<Player>().PlayerEventMachine;
+        _playerEventMachine = GetComponent<EventMachine>();
     }
+
+    private float MinimalSpeed {get => _speedBoost + 30;}
+
+    private float MaximalSpeed { get => _speedBoost + 60; }
 
     private void Start()
     {

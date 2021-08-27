@@ -18,7 +18,7 @@ public class SplineBoostZoneClicker : IBoost
 
         _jump = marbleImpulse.GetComponent<Jump>();
 
-        _playerEventMachine = marbleImpulse.GetComponent<Player>().PlayerEventMachine;
+        _playerEventMachine = marbleImpulse.GetComponent<EventMachine>();
 
         _playerEventMachine.SubscribeOnRoadEnd(JumpInTheEnd);
     }

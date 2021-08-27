@@ -10,7 +10,7 @@ public class SlideMover : MonoBehaviour
 
     private Transform _mesh;
 
-    private Transform _camera;
+    [SerializeField] private Camera _camera;
 
     private Vector3 _clickedPosition;
 
@@ -45,9 +45,11 @@ public class SlideMover : MonoBehaviour
 
     private void Start()
     {
-        _camera = Camera.main.transform;
+        //_camera = Camera.main;//.transform;
 
         _mesh = transform.GetChild(0);
+
+        _playerEventMachine = GetComponent<EventMachine>();
 
         _playerEventMachine.SubscribeOnRoadStartStart(EnableMove);
 
@@ -86,7 +88,9 @@ public class SlideMover : MonoBehaviour
 
                 _mesh.localEulerAngles = new Vector3(0, _moveRotationY, -_moveRotationX);
 
-              //  _camera.localEulerAngles = new Vector3(_camera.localEulerAngles.x, _camera.localEulerAngles.y, -_cameraRotateZ);
+                _camera.transform.localEulerAngles = new Vector3(_camera.transform.localEulerAngles.x, _camera.transform.transform.localEulerAngles.y, -_cameraRotateZ);
+
+                _camera.transform.localPosition = new Vector3(_actualPosition / 2, _camera.transform.localPosition.y, _camera.transform.transform.localPosition.z);
             }
 
             if (Input.GetMouseButtonUp(0))
@@ -95,7 +99,7 @@ public class SlideMover : MonoBehaviour
 
                 _Yposition = _mesh.localEulerAngles.y > 180 ? _mesh.localEulerAngles.y - 360 : _mesh.localEulerAngles.y;
 
-                _cameraZPostion = _camera.localEulerAngles.z > 180 ? _camera.localEulerAngles.z - 360 : _camera.localEulerAngles.z;
+                _cameraZPostion = _camera.transform.localEulerAngles.z > 180 ? _camera.transform.localEulerAngles.z - 360 : _camera.transform.localEulerAngles.z;
 
                 _isLerp = true;
             }
@@ -113,7 +117,7 @@ public class SlideMover : MonoBehaviour
 
             _mesh.localEulerAngles = new Vector3(0, y, x);
 
-           // _camera.localEulerAngles = new Vector3(_camera.localEulerAngles.x, _camera.localEulerAngles.y, z);
+            _camera.transform.localEulerAngles = new Vector3(_camera.transform.localEulerAngles.x, _camera.transform.localEulerAngles.y, z);
 
             if (_lerp >= 1)
             {

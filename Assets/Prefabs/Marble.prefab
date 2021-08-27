@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 1525043416015686299}
   - component: {fileID: 2708460541456084189}
   - component: {fileID: 5289490092610015739}
+  - component: {fileID: 2446420147508633833}
   - component: {fileID: 1724946569707989369}
   m_Layer: 0
   m_Name: Marble
@@ -227,7 +228,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelPreparer: {fileID: 0}
+  _playerEventMachine: {fileID: 0}
   _speed: 2
+  _isPlayer: 0
 --- !u!114 &4444569228577613283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +243,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 382094d21d7d9f3418dcfc9e8939e4ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speedBoost: 0
+  _acceleration: 8
 --- !u!114 &1525043416015686299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _border: 2.5
   _speed: 2
+  _camera: {fileID: 0}
 --- !u!114 &2708460541456084189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,6 +286,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelPreparer: {fileID: 0}
+  _eventMachine: {fileID: 0}
+--- !u!114 &2446420147508633833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8266060855210805552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed9b08e70f90f34ab659e99f4dd000c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &1724946569707989369
 Animator:
   serializedVersion: 3

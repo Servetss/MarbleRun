@@ -17,6 +17,9 @@ public class GiftUI : MonoBehaviour, IGameOverPanels
 
     [SerializeField] private GameObject _giftReady;
 
+    [Range(0, 1)]
+    [SerializeField] private float _fillLevel;
+
     private ImageFiller _imageFiller;
 
     private ButtonActivness _buttonActivness;
@@ -61,7 +64,7 @@ public class GiftUI : MonoBehaviour, IGameOverPanels
 
         _giftReady.SetActive(false);
 
-        StartFillGiftImage();
+        StartFillGiftImage(0.2f);
     }
 
     public void ClosePanel()
@@ -77,9 +80,9 @@ public class GiftUI : MonoBehaviour, IGameOverPanels
 
     #region Default Activness
     [ContextMenu("Start Fill Gift Image")]
-    public void StartFillGiftImage()
+    public void StartFillGiftImage(float fillRange)
     {
-        _imageFiller.StartFill(0.2f);
+        _imageFiller.StartFill(fillRange);
 
         _buttonActivness.WhenGiftImageFilling(_imageFiller.IsFill);
     }

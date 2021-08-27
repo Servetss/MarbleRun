@@ -16,6 +16,8 @@ public class LevelPreparer : MonoBehaviour
 
     [SerializeField] private Finish _finish;
 
+    [SerializeField] private Enemys _enemys;
+
     private EventMachine _playerEventMachine;
 
     private Transform _playerTransform;
@@ -61,6 +63,8 @@ public class LevelPreparer : MonoBehaviour
         SetPlayerAndFinishOnTheLevel();
 
         _playerEventMachine.NextLevelMethod();
+
+        _enemys.NextLevel();
     }
 
     private void SelectLevelIndex()

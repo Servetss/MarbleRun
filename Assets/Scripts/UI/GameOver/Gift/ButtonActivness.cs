@@ -38,7 +38,7 @@ public class ButtonActivness
         {
             _isBoostClicked = true;
 
-            _giftUI.StartFillGiftImage();
+            _giftUI.StartFillGiftImage(0.3f);
 
             HideButton();
         }

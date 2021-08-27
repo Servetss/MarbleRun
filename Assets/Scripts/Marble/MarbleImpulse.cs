@@ -22,7 +22,9 @@ public class MarbleImpulse : MonoBehaviour
 
         _boost = _boostСharacteristic.GetSelectBoostType();
 
-        _playerEventMachine = GetComponent<Player>().PlayerEventMachine;
+        _playerEventMachine = GetComponent<EventMachine>();
+
+        _playerEventMachine.SubscribeOnFinish(DisableJumpCamera);
 
         _boost.Init(this);
     }
@@ -57,11 +59,18 @@ public class MarbleImpulse : MonoBehaviour
         {
             _animator.SetBool("IsBoostZone", false);
 
+            _animator.SetBool("IsJump", true);
+
             _boostTextOnUI.SetActive(false);
 
             _playerEventMachine.BoostZoneFinishMethod();
 
             _boost.ExiteTrigger();
         }
+    }
+
+    private void DisableJumpCamera()
+    {
+        _animator.SetBool("IsJump", false);
     }
 }

@@ -4,15 +4,25 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private LevelPreparer _levelPreparer;
 
-    [SerializeField] private EventMachine _eventMachine;
+    private EventMachine _eventMachine;
 
     private RoadMover _roadMover;
+
+    private Animator _animator;
 
     private void Awake()
     {
         LevelInfo = new LevelInfo();
 
         _roadMover = GetComponent<RoadMover>();
+
+        _animator = GetComponent<Animator>();
+
+        _eventMachine = GetComponent<EventMachine>();
+
+        _eventMachine.SubscribeOnBoostZoneStart(EnableAnimator);
+
+        _eventMachine.SubscribeOnMoveToNextLevel(DisableAnimator);
     }
 
     public EventMachine PlayerEventMachine { get => _eventMachine; }
@@ -41,6 +51,16 @@ public class Player : MonoBehaviour
         GetComponent<Rigidbody>().isKinematic = true;
 
         LevelInfo.ResetCoins();
+    }
+
+    public void EnableAnimator()
+    {
+        _animator.enabled = true;
+    }
+
+    public void DisableAnimator()
+    {
+        _animator.enabled = false;
     }
 
     public void OnTriggerEnter(Collider other)

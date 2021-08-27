@@ -9,12 +9,12 @@ public class RoadMover : MonoBehaviour
 
     [SerializeField] private LevelPreparer _levelPreparer;
 
-    [SerializeField] private EventMachine _playerEventMachine;
-
     [Range(0.1f, 150)]
     [SerializeField] private float _speed = 2;
 
     [SerializeField] private bool _isPlayer;
+
+    private EventMachine _playerEventMachine;
 
     private int _pointIndex;
 
@@ -31,6 +31,11 @@ public class RoadMover : MonoBehaviour
     private Quaternion _directionRotation;
 
     public float Speed { get => _speed; }
+
+    private void Awake()
+    {
+        _playerEventMachine = GetComponent<EventMachine>();
+    }
 
     private void Start()
     {
@@ -67,11 +72,6 @@ public class RoadMover : MonoBehaviour
 
             if (_lerp >= 1)
             {
-                if (_isPlayer == false)
-                {
-                    //Debug.Log(_startPosition + "  " + _directiobPosition + "  " + transform.position);
-                }
-
                 _isMove = false;
 
                 _lerp = 0;
@@ -79,8 +79,6 @@ public class RoadMover : MonoBehaviour
                 _pointIndex++;
 
                 StartPosition();
-
-                //Accelerate(0.05f);
             }
         }
     }
