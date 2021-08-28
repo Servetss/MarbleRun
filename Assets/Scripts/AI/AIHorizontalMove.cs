@@ -35,6 +35,8 @@ public class AIHorizontalMove : MonoBehaviour
         _playerEventMachine?.SubscribeOnRoadStartStart(SetDefaultData);
 
         _playerEventMachine?.SubscribeOnRoadStartStart(DelayMove);
+
+        _playerEventMachine?.SubscribeOnBoostZoneStart(BoostZone);
     }
 
     private void FixedUpdate()
@@ -72,10 +74,19 @@ public class AIHorizontalMove : MonoBehaviour
         _isMove = true;
     }
 
+    private void BoostZone()
+    {
+        _isMove = false;
+
+        CancelInvoke("ChangeSpeed");
+    }
+
     private void SetDefaultData()
     {
         _position = _mesh.localPosition.x;
 
         _fromSide = _position;
+
+        _lerp = 0;
     }
 }

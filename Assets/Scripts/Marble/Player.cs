@@ -4,6 +4,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private LevelPreparer _levelPreparer;
 
+    [SerializeField] private MainMenuPanel _mainMenuPanel;
+
     private EventMachine _eventMachine;
 
     private RoadMover _roadMover;
@@ -22,7 +24,7 @@ public class Player : MonoBehaviour
 
         _eventMachine.SubscribeOnBoostZoneStart(EnableAnimator);
 
-        _eventMachine.SubscribeOnMoveToNextLevel(DisableAnimator);
+        _eventMachine.SubscribeOnRoadStartStart(DisableAnimator);
     }
 
     public EventMachine PlayerEventMachine { get => _eventMachine; }
@@ -62,6 +64,28 @@ public class Player : MonoBehaviour
     {
         _animator.enabled = false;
     }
+
+    #region Skin panel animation
+    public void SkinModeOn()
+    {
+        _animator.SetBool("ChangeSkin", true);
+    }
+
+    public void SkinModeOff()
+    {
+        _animator.SetBool("ChangeSkin", false);
+    }
+
+    public void SkinPanelActive()
+    {
+        _mainMenuPanel.OpenSkinPanel();
+    }
+
+    public void MainMenuActive()
+    {
+        _mainMenuPanel.OpenMainMenuPanel();
+    }
+    #endregion
 
     public void OnTriggerEnter(Collider other)
     {

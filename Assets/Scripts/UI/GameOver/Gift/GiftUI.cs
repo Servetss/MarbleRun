@@ -120,7 +120,7 @@ public class GiftUI : MonoBehaviour, IGameOverPanels
 
         _acceptButton.SetActive(false);
 
-        _giftReciveUI.FillGift(_skinContainer.GetRandomSkin());
+        // _giftReciveUI.FillGift();
     }
 
     #endregion

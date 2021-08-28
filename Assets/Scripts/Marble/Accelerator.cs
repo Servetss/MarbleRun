@@ -33,7 +33,7 @@ public class Accelerator : MonoBehaviour
 
         _playerEventMachine.SubscribeOnRoadStartStart(AccelerateModeEnable);
 
-        _playerEventMachine.SubscribeOnNormalLevelEnd(AccelerateModeDisable);
+        _playerEventMachine.SubscribeOnBoostZoneStart(AccelerateModeDisable);
 
         _playerEventMachine.SubscribeOnFinish(ResetData);
     }

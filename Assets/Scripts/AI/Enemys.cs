@@ -19,4 +19,28 @@ public class Enemys : MonoBehaviour
             _enemys[i].MoveToNextLevel();
         }
     }
+
+    public RoadMover[] GetEnemyRoadMover()
+    {
+        RoadMover[] roadMovers = new RoadMover[_enemys.Length];
+
+        for (int i = 0; i < _enemys.Length; i++)
+        {
+            roadMovers[i] = _enemys[i].GetComponent<RoadMover>();
+        }
+
+        return roadMovers;
+    }
+
+    public Transform[] GetEnemiesTransform()
+    {
+        Transform[] transforms = new Transform[_enemys.Length];
+
+        for (int i = 0; i < _enemys.Length; i++)
+        {
+            transforms[i] = _enemys[i].transform;
+        }
+
+        return transforms;
+    }
 }

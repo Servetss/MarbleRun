@@ -1,28 +1,29 @@
-﻿using Barmetler.RoadSystem;
+﻿using Barmetler;
+using Barmetler.RoadSystem;
 using System;
+using System.Linq;
 using UnityEngine;
 
 public class LevelPreparer : MonoBehaviour
 {
     private const string LevelSave = "LevelPreparer";
-    
+
     private const string PreviousSave = "PreviousLevel";
 
     private const string SelectedSave = "SelectedPreparer";
 
     [SerializeField] private LevelContainer _levelContainer;
 
-    [SerializeField] private Player _player;
+    [SerializeField] private LevelEventZone _levelEventZone;
 
-    [SerializeField] private Finish _finish;
+    [Header("Marbles")]
+    [SerializeField] private Player _player;
 
     [SerializeField] private Enemys _enemys;
 
     private EventMachine _playerEventMachine;
 
     private Transform _playerTransform;
-
-    private Transform _finishTransform;
 
     private int _previousLevelIndex;
 
@@ -34,15 +35,19 @@ public class LevelPreparer : MonoBehaviour
         _playerEventMachine = _player.PlayerEventMachine;
     }
 
+    public Player PlayerMarble { get => _player; }
+
+    public Enemys Enemys { get => _enemys; }
+
     public int SelectedLevelIndex { get; private set; }
 
-    public Road SelecetedRoad { get => _levelContainer.GetLevelByIndex(SelectedLevelIndex).GetComponent<Road>(); }
+    public Road SelecetedTrack { get => _levelContainer.GetLevelByIndex(SelectedLevelIndex).GetComponent<Road>(); }
+
+    public LevelEventZone LevelEventZone { get => _levelEventZone; }
 
     private void Start()
     {
         _playerTransform = _player.transform;
-
-        _finishTransform = _finish.transform;
 
         Load();
 
@@ -60,11 +65,13 @@ public class LevelPreparer : MonoBehaviour
     {
         Replace();
 
-        SetPlayerAndFinishOnTheLevel();
+        SetPlayerOnTheLevel();
 
         _playerEventMachine.NextLevelMethod();
 
         _enemys.NextLevel();
+
+        _levelEventZone.SetEventsToTrack(SelecetedTrack);
     }
 
     private void SelectLevelIndex()
@@ -98,19 +105,21 @@ public class LevelPreparer : MonoBehaviour
         level.SetActive(false);
     }
 
-    private void SetPlayerAndFinishOnTheLevel()
+    private void SetPlayerOnTheLevel()
     {
         Level level = _levelContainer.GetLevelByIndex(SelectedLevelIndex).GetComponent<Level>();
 
-        _playerTransform.position = level.StartTransform.position;
+        Bezier.OrientedPoint[] spline = SelecetedTrack.GetEvenlySpacedPoints(1, 1).Select(e => e.ToWorldSpace(SelecetedTrack.transform)).ToArray();
 
-        _playerTransform.rotation = level.StartTransform.rotation;
+        _playerTransform.position = spline[0].position;
+
+        _playerTransform.rotation = level.FinishTransform.rotation;
 
         _playerTransform.GetChild(0).localPosition = Vector3.zero;
 
         _playerTransform.GetChild(0).localEulerAngles = Vector3.zero;
 
-        _finishTransform.position = level.FinishTransform.position;
+        _levelEventZone.SetPlayersOnStartZone(_enemys.GetEnemiesTransform(), _playerTransform);
     }
 
     #region Save\load

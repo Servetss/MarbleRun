@@ -4,9 +4,25 @@ public class SkinContainer : MonoBehaviour
 {
     [SerializeField] private SkinSO[] _skins;
 
-    public SkinSO GetRandomSkin()
+    [SerializeField] private SkinChangerView _skinChangerView;
+
+    private SkinPresenter _skinPresenter;
+
+    private void Awake()
     {
-        return _skins[Random.RandomRange(0, _skins.Length)];
+        SkinModel skinModel = new SkinModel(this);
+
+        _skinPresenter = new SkinPresenter(_skinChangerView, skinModel);
+    }
+
+    private void OnEnable()
+    {
+        _skinPresenter.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _skinPresenter.Disable();
     }
 
     public SkinSO GetSkinByIndex(int index)
@@ -14,9 +30,19 @@ public class SkinContainer : MonoBehaviour
         return _skins[index];
     }
 
+    public int GetNextSkinIndex(int actualIndex)
+    {
+        return GetClosestIndex(_skins.Length, actualIndex, 1);
+    }
+
+    public int GetPreviousSkinIndex(int actualIndex)
+    {
+        return GetClosestIndex(_skins.Length, actualIndex, -1);
+    }
+
     public int GetNextUnLockedSkinIndex(int actualIndex)
     {
-        actualIndex = GetNextIndexInList(_skins.Length, actualIndex);
+        actualIndex = GetClosestIndex(_skins.Length, actualIndex, 1);
 
         for (int i = 0; i < _skins.Length; i++)
         {
@@ -25,17 +51,21 @@ public class SkinContainer : MonoBehaviour
                 return actualIndex;
             }
 
-            actualIndex = GetNextIndexInList(_skins.Length, actualIndex);
+            actualIndex = GetClosestIndex(_skins.Length, actualIndex, 1);
         }
         
         return actualIndex;
     }
 
-    private int GetNextIndexInList(int listLenght, int index)
+    private int GetClosestIndex(int listLenght, int index, int direction)
     {
-        index++;
+        index += direction;
 
-        if (index >= listLenght)
+        if (index < 0)
+        {
+            index = listLenght - 1;
+        }
+        else if (index >= listLenght)
         {
             index = 0;
         }

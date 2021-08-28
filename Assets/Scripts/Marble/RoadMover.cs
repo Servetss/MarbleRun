@@ -14,7 +14,11 @@ public class RoadMover : MonoBehaviour
 
     [SerializeField] private bool _isPlayer;
 
-    private EventMachine _playerEventMachine;
+    private bool _isCameraNeedBeRotated;
+
+    private int _splineIndex;
+
+    private int _maximumSplines = 3;
 
     private int _pointIndex;
 
@@ -30,21 +34,33 @@ public class RoadMover : MonoBehaviour
 
     private Quaternion _directionRotation;
 
-    public float Speed { get => _speed; }
-
     private void Awake()
     {
-        _playerEventMachine = GetComponent<EventMachine>();
+        PlayerEventMachine = GetComponent<EventMachine>();
+
+        PositionOnTheTrackView = GetComponent<PositionOnTheTrackView>();
     }
+
+    public float Speed { get => _speed; }
+
+    public float Distance { get; private set; }
+
+    public PositionOnTheTrackView PositionOnTheTrackView { get; private set; }
+
+    public EventMachine PlayerEventMachine { get; private set; }
 
     private void Start()
     {
-        _playerEventMachine?.SubscribeOnRoadStartStart(StartMoveBySpline);
+        PlayerEventMachine?.SubscribeOnRoadStartStart(StartMoveBySpline);
     }
 
     private void StartMoveBySpline()
     {
-        Road road = _levelPreparer.SelecetedRoad;
+        _isCameraNeedBeRotated = _splineIndex < 2;
+
+        Road road = _levelPreparer.LevelEventZone.MarbleRoad(_splineIndex);
+
+        Distance = 0;
 
         SetRoad(road.GetEvenlySpacedPoints(1, 1).Select(e => e.ToWorldSpace(road.transform)).ToArray());
     }
@@ -62,13 +78,16 @@ public class RoadMover : MonoBehaviour
         {
             _lerp += Time.smoothDeltaTime * _speed;
 
+            Distance += Time.smoothDeltaTime * _speed;
+
             Vector3 position = Vector3.Lerp(_startPosition, _directiobPosition, _lerp) + _roadOrientedPoint[_pointIndex].normal / 2;
 
             Quaternion rotation = Quaternion.LerpUnclamped(_startRotation, _directionRotation, _lerp);
 
             transform.position = position;
 
-            transform.rotation = rotation;
+            if(_isCameraNeedBeRotated)
+                transform.rotation = rotation;
 
             if (_lerp >= 1)
             {
@@ -115,9 +134,22 @@ public class RoadMover : MonoBehaviour
 
     private void LastSplineIndex()
     {
+        _splineIndex++;
+
         _pointIndex = 0;
 
-        if(_isPlayer)
-            _playerEventMachine?.RoadEndMethod();
+        _isMove = false;
+
+
+        if (_splineIndex >= _maximumSplines)
+        {
+            PlayerEventMachine?.RoadEndMethod();
+
+            _splineIndex = 0;
+        }
+        else
+        {
+            StartMoveBySpline();
+        }
     }
 }

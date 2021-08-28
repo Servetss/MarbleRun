@@ -5,13 +5,11 @@ public class EventMachine : MonoBehaviour
 {
     private Action RoadStart;
 
-    private Action NormalLevelFinish;
+    private Action RoadEnd;
 
     private Action BoostZoneStart;
 
     private Action BoostZoneFinish;
-
-    private Action RoadEnd;
 
     private Action Finish;
 
@@ -23,9 +21,9 @@ public class EventMachine : MonoBehaviour
         RoadStart += method;
     }
 
-    public void SubscribeOnNormalLevelEnd(Action method)
+    public void SubscribeOnRoadEnd(Action method)
     {
-        NormalLevelFinish += method;
+        RoadEnd += method;
     }
     #endregion
 
@@ -41,50 +39,36 @@ public class EventMachine : MonoBehaviour
     }
     #endregion
 
-    #region Jump
-    public void SubscribeOnRoadEnd(Action method)
-    {
-        RoadEnd += method;
-    }
-
+    #region Last stage
     public void SubscribeOnFinish(Action method)
     {
         Finish += method;
     }
-    #endregion
 
     public void SubscribeOnMoveToNextLevel(Action method)
     {
         MoveToNextLevel += method;
     }
+    #endregion
 
     public void RoadStartMethod()
     {
         RoadStart?.Invoke();
     }
 
-    public void NormalLevelFinishMethod()
+    public void RoadEndMethod()
     {
-        NormalLevelFinish?.Invoke();
+        RoadEnd?.Invoke();
     }
 
     public void BoostZoneStartMethod()
     {
-        NormalLevelFinishMethod();
-
         BoostZoneStart?.Invoke();
     }
 
     public void BoostZoneFinishMethod()
     {
         BoostZoneFinish?.Invoke();
-    }
-
-    public void RoadEndMethod()
-    {
-        BoostZoneFinishMethod();
-
-        RoadEnd?.Invoke();
     }
 
     public void FinishMethod()

@@ -4,9 +4,13 @@ public class AI : MonoBehaviour
 {
     private EventMachine _eventMachine;
 
+    private Rigidbody _rigidbody;
+
     private void Awake()
     {
         _eventMachine = GetComponent<EventMachine>();
+
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     public void StartRoad()
@@ -14,18 +18,12 @@ public class AI : MonoBehaviour
         _eventMachine?.RoadStartMethod();
     }
 
-    public void StartBoostZone()
-    {
-        _eventMachine?.BoostZoneStartMethod();
-    }
-
-    public void RoadEnd()
-    {
-        _eventMachine?.BoostZoneFinishMethod();
-    }
-
     public void MoveToNextLevel()
     {
+        _rigidbody.isKinematic = true;
+
+        _rigidbody.useGravity = false;
+
         _eventMachine?.NextLevelMethod();
     }
 
@@ -33,9 +31,15 @@ public class AI : MonoBehaviour
     {
         if (other.name == "BoostZone")
         {
-            Debug.Log("AI: " + gameObject.name);
+            _eventMachine?.BoostZoneStartMethod();
+        }
+    }
 
-            StartBoostZone();
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name == "BoostZone")
+        {
+            _eventMachine?.BoostZoneFinishMethod();
         }
     }
 }

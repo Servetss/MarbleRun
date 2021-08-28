@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roadSettings:
     drawBoundingBoxes: 0
-    useRayCast: 1
+    useRayCast: 0
     copyHitNormal: 0
     newRoadPrefab: {fileID: 0}
   drawNavigatorDebug: 0
