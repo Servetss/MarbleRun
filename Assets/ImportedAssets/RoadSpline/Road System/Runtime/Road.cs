@@ -21,6 +21,9 @@ namespace Barmetler.RoadSystem
 		[SerializeField, HideInInspector]
 		List<Bounds> boundingBoxes = new List<Bounds>();
 
+		[Space]
+		[SerializeField] private Transform _playerPosition;
+
 		public Bounds BoundingBox { get => bounds; }
 		public List<Bounds> BoundingBoxes { get => boundingBoxes; }
 
@@ -62,6 +65,8 @@ namespace Barmetler.RoadSystem
 			new ContextDataCache<Bezier.OrientedPoint[], EvenlySpacedPointsContext>();
 		private readonly ContextDataCache<float, EvenlySpacedPointsContext> lengthCache = new ContextDataCache<float, EvenlySpacedPointsContext>();
 
+		public Bezier.OrientedPoint[] OrientedPoints => GetEvenlySpacedPoints(1, 1).Select(e => e.ToWorldSpace(transform)).ToArray();
+
 		public Vector3 this[int i]
 		{
 			get => points[LoopIndex(i)];
@@ -77,15 +82,22 @@ namespace Barmetler.RoadSystem
 			evenlySpacedPointsCache.children.Add(lengthCache);
 		}
 
-		//public void Update()
-		//{
-		//	var points = GetEvenlySpacedPoints(1, 1).Select(e => e.ToWorldSpace(transform)).ToArray();
+        public int GetIndexOnPlineByTransform(Transform itemTransform)
+		{
+			Vector3 savePosition = itemTransform.position;
 
-		//	foreach (var p in points)
-		//	{
-		//		Debug.DrawLine(p.position, p.position + p.normal * 10, Color.red, 20);
-		//	}
-		//}
+			itemTransform.localPosition = new Vector3(0, itemTransform.localPosition.y, itemTransform.localPosition.z);
+
+			Bezier.OrientedPoint[] orientedPoints = GetEvenlySpacedPoints(1, 1).Select(e => e.ToWorldSpace(transform)).ToArray();
+
+			float distanceBetweenDots = Vector3.Distance(orientedPoints[1].position, orientedPoints[0].position);
+
+			int splineIndex = (int)(Vector3.Distance(itemTransform.position, orientedPoints[0].position) / distanceBetweenDots);
+
+			itemTransform.position = savePosition;
+
+			return splineIndex;
+		}
 
 		public void Clear()
 		{

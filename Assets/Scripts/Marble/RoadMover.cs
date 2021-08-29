@@ -14,6 +14,8 @@ public class RoadMover : MonoBehaviour
 
     [SerializeField] private bool _isPlayer;
 
+    [SerializeField] private float d;
+
     private bool _isCameraNeedBeRotated;
 
     private int _splineIndex;
@@ -52,6 +54,18 @@ public class RoadMover : MonoBehaviour
     private void Start()
     {
         PlayerEventMachine?.SubscribeOnRoadStartStart(StartMoveBySpline);
+
+        PlayerEventMachine?.SubscribeOnMoveToNextLevel(DisableMover);
+    }
+
+    public void SetSplineIndex(int index)
+    {
+        _pointIndex = index;
+    }
+
+    public void SetDistance(float distance)
+    {
+        Distance = distance;
     }
 
     private void StartMoveBySpline()
@@ -59,8 +73,6 @@ public class RoadMover : MonoBehaviour
         _isCameraNeedBeRotated = _splineIndex < 2;
 
         Road road = _levelPreparer.LevelEventZone.MarbleRoad(_splineIndex);
-
-        Distance = 0;
 
         SetRoad(road.GetEvenlySpacedPoints(1, 1).Select(e => e.ToWorldSpace(road.transform)).ToArray());
     }
@@ -74,6 +86,8 @@ public class RoadMover : MonoBehaviour
 
     private void Update()
     {
+        d = Distance;
+
         if (_isMove)
         {
             _lerp += Time.smoothDeltaTime * _speed;
@@ -145,11 +159,25 @@ public class RoadMover : MonoBehaviour
         {
             PlayerEventMachine?.RoadEndMethod();
 
+            Distance = 0;
+
             _splineIndex = 0;
         }
         else
         {
             StartMoveBySpline();
+        }
+    }
+
+    private void DisableMover()
+    {
+        if (_isMove)
+        {
+            _isMove = false;
+
+            Distance = 0;
+
+            _splineIndex = 0;
         }
     }
 }

@@ -65,13 +65,13 @@ public class LevelPreparer : MonoBehaviour
     {
         Replace();
 
-        SetPlayerOnTheLevel();
-
         _playerEventMachine.NextLevelMethod();
 
         _enemys.NextLevel();
 
         _levelEventZone.SetEventsToTrack(SelecetedTrack);
+
+        SetPlayerOnTheLevel();
     }
 
     private void SelectLevelIndex()
@@ -107,18 +107,6 @@ public class LevelPreparer : MonoBehaviour
 
     private void SetPlayerOnTheLevel()
     {
-        Level level = _levelContainer.GetLevelByIndex(SelectedLevelIndex).GetComponent<Level>();
-
-        Bezier.OrientedPoint[] spline = SelecetedTrack.GetEvenlySpacedPoints(1, 1).Select(e => e.ToWorldSpace(SelecetedTrack.transform)).ToArray();
-
-        _playerTransform.position = spline[0].position;
-
-        _playerTransform.rotation = level.FinishTransform.rotation;
-
-        _playerTransform.GetChild(0).localPosition = Vector3.zero;
-
-        _playerTransform.GetChild(0).localEulerAngles = Vector3.zero;
-
         _levelEventZone.SetPlayersOnStartZone(_enemys.GetEnemiesTransform(), _playerTransform);
     }
 

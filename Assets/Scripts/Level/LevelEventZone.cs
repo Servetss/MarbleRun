@@ -48,9 +48,9 @@ public class LevelEventZone : MonoBehaviour
 
     public void SetPlayersOnStartZone(Transform[] enemies, Transform player)
     {
-        _startZone.SetMarbelsToPosition(enemies);
+        _startZone.SetMarbelsToPosition(enemies, _startSpline);
 
-        _startZone.SetPlayerPosition(player);
+        _startZone.SetPlayerPosition(player, _startSpline);
     }
 
     public Road MarbleRoad(int index) // 0 - Start || 1 - Track || 2- BoostZone

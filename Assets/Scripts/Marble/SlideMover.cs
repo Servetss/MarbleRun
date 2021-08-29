@@ -90,7 +90,9 @@ public class SlideMover : MonoBehaviour
 
                 _mesh.localPosition = new Vector3(_actualPosition, _mesh.localPosition.y, _mesh.localPosition.z);
 
-                _sphereInMesh.localEulerAngles = new Vector3(0, _moveRotationY, -_moveRotationX);
+                //_sphereInMesh.localEulerAngles = new Vector3(0, _moveRotationY, -_moveRotationX);
+
+                _mesh.localEulerAngles = new Vector3(0, _moveRotationY, -_moveRotationX);
 
                 _camera.transform.localEulerAngles = new Vector3(_camera.transform.localEulerAngles.x, _camera.transform.transform.localEulerAngles.y, -_cameraRotateZ);
 
@@ -99,9 +101,9 @@ public class SlideMover : MonoBehaviour
 
             if (Input.GetMouseButtonUp(0))
             {
-                _Xposition = _sphereInMesh.localEulerAngles.x;
+                _Xposition = _mesh.localEulerAngles.x;
 
-                _Yposition = _sphereInMesh.localEulerAngles.y > 180 ? _sphereInMesh.localEulerAngles.y - 360 : _sphereInMesh.localEulerAngles.y;
+                _Yposition = _mesh.localEulerAngles.y > 180 ? _mesh.localEulerAngles.y - 360 : _mesh.localEulerAngles.y;
 
                 _cameraZPostion = _camera.transform.localEulerAngles.z > 180 ? _camera.transform.localEulerAngles.z - 360 : _camera.transform.localEulerAngles.z;
 
@@ -119,7 +121,7 @@ public class SlideMover : MonoBehaviour
 
             float z = Mathf.Lerp(_cameraZPostion, 0, _lerp);
 
-            _sphereInMesh.localEulerAngles = new Vector3(0, y, x);
+            _mesh.localEulerAngles = new Vector3(0, y, x);
 
             _camera.transform.localEulerAngles = new Vector3(_camera.transform.localEulerAngles.x, _camera.transform.localEulerAngles.y, z);
 
@@ -130,6 +132,15 @@ public class SlideMover : MonoBehaviour
                 _lerp = 0;
             }
         }
+    }
+
+    public void SetActualPosition(float position)
+    {
+        _actualPosition = position;
+
+        _mesh.localPosition = new Vector3(_actualPosition, _mesh.localPosition.y, _mesh.localPosition.z);
+
+        _camera.transform.localPosition = new Vector3(_actualPosition / 2, _camera.transform.localPosition.y, _camera.transform.transform.localPosition.z);
     }
 
     private void EnableMove()
