@@ -6,17 +6,15 @@ public class Player : MonoBehaviour
 
     [SerializeField] private MainMenuPanel _mainMenuPanel;
 
-    private EventMachine _eventMachine;
+    [SerializeField] private Animator _gameCanvasAnimator;
 
-    private RoadMover _roadMover;
+    private EventMachine _eventMachine;
 
     private Animator _animator;
 
     private void Awake()
     {
         LevelInfo = new LevelInfo();
-
-        _roadMover = GetComponent<RoadMover>();
 
         _animator = GetComponent<Animator>();
 
@@ -25,6 +23,12 @@ public class Player : MonoBehaviour
         _eventMachine.SubscribeOnBoostZoneStart(EnableAnimator);
 
         _eventMachine.SubscribeOnRoadStartStart(DisableAnimator);
+
+        _eventMachine.SubscribeOnRoadStartStart(SlideTutorial);
+
+        _eventMachine.SubscribeOnBoostZoneStart(ShowBoostZoneImage);
+
+        _eventMachine.SubscribeOnBoostZoneFinish(HideBoostZone);
     }
 
     public EventMachine PlayerEventMachine { get => _eventMachine; }
@@ -84,6 +88,23 @@ public class Player : MonoBehaviour
     public void MainMenuActive()
     {
         _mainMenuPanel.OpenMainMenuPanel();
+    }
+    #endregion
+
+    #region Game panel UI Canvas
+    public void SlideTutorial()
+    {
+        _gameCanvasAnimator.SetTrigger("SlideShow");
+    }
+
+    public void ShowBoostZoneImage()
+    {
+        _gameCanvasAnimator.SetBool("IsBoostZone", true);
+    }
+
+    public void HideBoostZone()
+    {
+        _gameCanvasAnimator.SetBool("IsBoostZone", false);
     }
     #endregion
 

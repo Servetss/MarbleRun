@@ -47,6 +47,6 @@ public class SplineBoostZoneClicker : IBoost
 
     private void JumpInTheEnd()
     {
-        _jump.Impulse(_roadMover.Speed);
+        _jump.Impulse(_roadMover.Speed / 4);
     }
 }

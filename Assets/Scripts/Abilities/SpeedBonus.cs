@@ -2,8 +2,12 @@ using UnityEngine;
 
 public class SpeedBonus : Ability
 {
-    protected override void OnClick()
+    private Accelerator _accelerator;
+
+    protected override void SetBoost()
     {
-        Buy();
+        _accelerator = Player.GetComponent<Accelerator>();
+
+        _accelerator.SetSpeedBoost(Boost);
     }
 }

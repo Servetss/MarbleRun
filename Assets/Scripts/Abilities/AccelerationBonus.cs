@@ -1,9 +1,13 @@
-using UnityEngine;
+ using UnityEngine;
 
 public class AccelerationBonus : Ability
 {
-    protected override void OnClick()
+    private Accelerator _accelerator;
+
+    protected override void SetBoost()
     {
-        Buy();
+        _accelerator = Player.GetComponent<Accelerator>();
+
+        _accelerator.SetAcceleration(Boost);
     }
 }

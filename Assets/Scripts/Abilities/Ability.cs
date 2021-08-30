@@ -1,22 +1,69 @@
+using System;
 using UnityEngine;
 
-public class Ability
+public class Ability : MonoBehaviour
 {
+    private const string AbilitySave = "AbilitySave";
+
+    [SerializeField] private Player _player;
+
     [SerializeField] private int _level;
 
-    [SerializeField] private int _cost;
+    [Header("Boost")]
+    [SerializeField] private int _startBoost;
+
+    [SerializeField] private int _increaseBoost;
+
+    [Header("Coast")]
+    [SerializeField] private int _startCost;
 
     [SerializeField] private int _increaseCost;
 
-    protected virtual void OnClick()
+    public Action BoostBuy;
+
+    private void Awake()
     {
-        
+        BoostBuy += SetBoost;
+
+        Load();
     }
 
+    public int Cost => _startCost + (_level * _increaseCost);
+
+    public int Boost => _startBoost + (_level * _increaseBoost);
+
+    public int Level { get => _level; }
+
+    protected Player Player { get => _player; }
+
     protected bool IsCanBuy => true;
+
+    protected virtual void SetBoost()
+    {
+
+    }
+
+    public void OnClick()
+    {
+        Buy();
+
+        BoostBuy?.Invoke();
+    }
 
     protected void Buy()
     {
         _level++;
     }
+
+    #region Save\Load
+    public void Save()
+    {
+        
+    }
+
+    public void Load()
+    {
+        BoostBuy?.Invoke();
+    }
+    #endregion
 }

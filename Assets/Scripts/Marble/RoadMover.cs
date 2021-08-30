@@ -14,8 +14,6 @@ public class RoadMover : MonoBehaviour
 
     [SerializeField] private bool _isPlayer;
 
-    [SerializeField] private float d;
-
     private bool _isCameraNeedBeRotated;
 
     private int _splineIndex;
@@ -86,8 +84,6 @@ public class RoadMover : MonoBehaviour
 
     private void Update()
     {
-        d = Distance;
-
         if (_isMove)
         {
             _lerp += Time.smoothDeltaTime * _speed;

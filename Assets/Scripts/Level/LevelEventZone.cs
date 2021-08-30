@@ -11,6 +11,8 @@ public class LevelEventZone : MonoBehaviour
 
     [SerializeField] private Transform _xZone;
 
+    [SerializeField] private Transform _directionJump;
+
     [Header("Splines")]
     [SerializeField] private Road _startSpline;
 
@@ -20,16 +22,22 @@ public class LevelEventZone : MonoBehaviour
 
     private Road _trackSpline;
 
+    private void Awake()
+    {
+        _startZone = _start.GetComponent<StartZone>();
+    }
+
+    public Vector3 DirectionJump => (_directionJump.position - BoostSplinePoint[BoostSplinePoint.Length - 1].position).normalized;
+
+    public Vector3 XZonePosition => _xZone.position;
+
     public Bezier.OrientedPoint[] StartSplinePoints { get; private set; }
 
     public Bezier.OrientedPoint[] RoadOrientedPoint { get; private set; }
 
     public Bezier.OrientedPoint[] BoostSplinePoint { get; private set; }
 
-    private void Awake()
-    {
-        _startZone = _start.GetComponent<StartZone>();
-    }
+    public float RoadDistance { get; private set; }
 
     public void SetEventsToTrack(Road road)
     {
@@ -39,11 +47,13 @@ public class LevelEventZone : MonoBehaviour
 
         StartSplinePoints = _startSpline.GetEvenlySpacedPoints(1, 1).Select(e => e.ToWorldSpace(_startSpline.transform)).ToArray();
 
-        BoostSplinePoint = _boostSpline.GetEvenlySpacedPoints(1, 1).Select(e => e.ToWorldSpace(_boostSpline.transform)).ToArray();
-
         SetStartZone();
 
         SetBoostAndFinish();
+
+        BoostSplinePoint = _boostSpline.GetEvenlySpacedPoints(1, 1).Select(e => e.ToWorldSpace(_boostSpline.transform)).ToArray();
+
+        RoadDistance = _startSpline.GetLength() + _trackSpline.GetLength() + _boostSpline.GetLength();
     }
 
     public void SetPlayersOnStartZone(Transform[] enemies, Transform player)

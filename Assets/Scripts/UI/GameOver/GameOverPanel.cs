@@ -4,11 +4,17 @@ public class GameOverPanel : MonoBehaviour
 {
     [SerializeField] private GameObject _gameOverBackgroundPanel;
 
+    [SerializeField] private GameObject _gamebackgroundPanel;
+
     [SerializeField] private GameObject _mainMenuBackgroundPanel;
 
     [SerializeField] private LevelPreparer _levelPreparer;
 
     [SerializeField] private GameObject[] _panels;
+
+    [SerializeField] private Player _player;
+
+    private EventMachine _eventMachine;
 
     private IGameOverPanels[] _gameOverPanels;
 
@@ -26,6 +32,8 @@ public class GameOverPanel : MonoBehaviour
 
             _gameOverPanels[i].Init(this);
         }
+
+        _eventMachine = _player.GetComponent<EventMachine>();
     }
 
     private void Start()
@@ -36,6 +44,8 @@ public class GameOverPanel : MonoBehaviour
         {
             _panels[i].SetActive(false);
         }
+
+        _eventMachine?.SubscribeOnRoadEnd(HideGamePanel);
     }
 
     public void GameOverUI(LevelInfo levelInfo)
@@ -69,6 +79,11 @@ public class GameOverPanel : MonoBehaviour
             // 
             GameOverUIFinish();
         }
+    }
+
+    public void HideGamePanel()
+    {
+        _gamebackgroundPanel.SetActive(false);
     }
 
     public void GameOverUIFinish()

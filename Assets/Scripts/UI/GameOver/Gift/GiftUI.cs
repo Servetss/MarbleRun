@@ -34,7 +34,7 @@ public class GiftUI : MonoBehaviour, IGameOverPanels
 
         _animator = GetComponent<Animator>();
 
-        _buttonActivness = new ButtonActivness(_giftButton.transform.GetChild(0).GetComponent<Text>(), this);
+        _buttonActivness = new ButtonActivness(_giftButton, this);
 
         ButtonsAddListeners();
 
@@ -120,7 +120,7 @@ public class GiftUI : MonoBehaviour, IGameOverPanels
 
         _acceptButton.SetActive(false);
 
-        // _giftReciveUI.FillGift();
+        _giftReciveUI.FillGift(new SkinSO());
     }
 
     #endregion

@@ -63,6 +63,16 @@ public class Accelerator : MonoBehaviour
         }
     }
 
+    public void SetAcceleration(int acceleration)
+    {
+        _acceleration = acceleration;
+    }
+
+    public void SetSpeedBoost(int boost)
+    {
+        _speedBoost = boost;
+    }
+
     private void AccelerateModeEnable()
     {
         _isPlayeMode = true;

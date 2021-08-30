@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class MoneyBonus : Ability
 {
-    protected override void OnClick()
+    protected override void SetBoost()
     {
-        Buy();
+
     }
 }

@@ -41,6 +41,8 @@ public class LevelPreparer : MonoBehaviour
 
     public int SelectedLevelIndex { get; private set; }
 
+    public int LevelCount { get; private set; }
+
     public Road SelecetedTrack { get => _levelContainer.GetLevelByIndex(SelectedLevelIndex).GetComponent<Road>(); }
 
     public LevelEventZone LevelEventZone { get => _levelEventZone; }
@@ -79,6 +81,8 @@ public class LevelPreparer : MonoBehaviour
         _previousLevelIndex = SelectedLevelIndex;
 
         SelectedLevelIndex++;
+
+        LevelCount++;
 
         if (SelectedLevelIndex >= _levelContainer.LevelsCount)
         {

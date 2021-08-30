@@ -10,18 +10,15 @@ public class ButtonActivness
 
     private GiftUI _giftUI;
 
-    private Text _buttonText;
+    private GameObject _giftButton;
 
     private bool _isBoostClicked;
 
     private bool _isPriseClicked;
 
-    public ButtonActivness(Text buttonText, GiftUI giftUI)
+    public ButtonActivness(GameObject giftButton, GiftUI giftUI)
     {
-        if (buttonText == null)
-            throw new ArgumentNullException();
-
-        _buttonText = buttonText;
+        _giftButton = giftButton;
 
         _giftUI = giftUI;
     }
@@ -46,7 +43,7 @@ public class ButtonActivness
 
     public void WhenFinishGiftImageFilling(bool isGiftReady)
     {
-        if((_isBoostClicked == false && _isPriseClicked == false) || isGiftReady)
+        if(isGiftReady)//(_isBoostClicked == false && _isPriseClicked == false) || isGiftReady)
             ShowButton();
     }
 
@@ -55,15 +52,11 @@ public class ButtonActivness
         if (isGiftReady)
         {
             HideButton();
-
-            _buttonText.text = OpenGift;
         }
-        else
-        {
-            ShowButton();
-
-            _buttonText.text = BoostName;
-        }
+        //else
+        //{
+        //    ShowButton();
+        //}
     }
 
     public void ResetData()
@@ -75,11 +68,11 @@ public class ButtonActivness
 
     private void ShowButton()
     {
-        _buttonText.transform.parent.gameObject.SetActive(true);
+        _giftButton.SetActive(true);
     }
 
     private void HideButton()
     {
-        _buttonText.transform.parent.gameObject.SetActive(false);
+        _giftButton.SetActive(false);
     }
 }
