@@ -16,12 +16,15 @@ public class AbilityPresenter
         _model.BoostBuy += OnAbilityChanged;
         _view.Click += OnViewClick;
 
+        Wallet.instance.SubscribeOnMoneyChange(OnMoneyChanged);
+
         OnAbilityChanged();
     }
 
     public void Disable()
     {
-        _view.Click -= _model.OnClick;
+        _model.BoostBuy -= OnAbilityChanged;
+        _view.Click -= OnViewClick;
     }
 
     private void OnAbilityChanged()
@@ -32,5 +35,10 @@ public class AbilityPresenter
     private void OnViewClick()
     {
         _model.OnClick();
+    }
+
+    private void OnMoneyChanged()
+    {
+        _view.WhenMoneyChange(_model.Cost);
     }
 }

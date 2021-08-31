@@ -86,6 +86,11 @@ public class RoadMover : MonoBehaviour
     {
         if (_isMove)
         {
+            if (_splineIndex == 2)
+            {
+                _speed -= Time.deltaTime * 5;
+            }
+
             _lerp += Time.smoothDeltaTime * _speed;
 
             Distance += Time.smoothDeltaTime * _speed;

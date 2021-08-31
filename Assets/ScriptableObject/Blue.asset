@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Blue
   m_EditorClassIdentifier: 
   _skinName: Blue
+  _skinCost: 1200
   _material: {fileID: 2100000, guid: bcf91bc0f12911140a019ee83076d06d, type: 2}
   _isUnlocked: 0
+  _isDefault: 0

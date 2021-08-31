@@ -18,7 +18,9 @@ public class GameOverCalculationUI : MonoBehaviour, IGameOverPanels
     {
         _levelText.text = "Level: " + levelInfo.PlayerLevel.ToString();
 
-        _coinReceive.text = levelInfo.CoinsGetOnTheLevel.ToString() + "$";
+        int coinsGet = levelInfo.CoinsGetOnTheLevel * levelInfo.Boost;
+
+        _coinReceive.text = coinsGet + "$";
     }
 
     public void ClosePanel()

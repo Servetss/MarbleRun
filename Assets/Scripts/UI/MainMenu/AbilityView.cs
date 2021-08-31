@@ -8,6 +8,9 @@ public class AbilityView : MonoBehaviour
 
     [SerializeField] private Text _abilityCost;
 
+    [Header("Components to color change")]
+    [SerializeField] private Image _buttonImage;
+
     public Action Click;
 
     public void OnButtonClick()
@@ -20,5 +23,12 @@ public class AbilityView : MonoBehaviour
         _boostText.text = (level * 10) + "%";
 
         _abilityCost.text = cost.ToString();
+    }
+
+    public void WhenMoneyChange(int abilityCost)
+    {
+        Color activnessColor = Wallet.instance.Value >= abilityCost ? Color.white : Color.gray;
+
+        _buttonImage.color = activnessColor;
     }
 }

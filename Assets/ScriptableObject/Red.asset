@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Red
   m_EditorClassIdentifier: 
   _skinName: Red
+  _skinCost: 1200
   _material: {fileID: 2100000, guid: 106a139b2914c1d40829a0d10bede8df, type: 2}
   _isUnlocked: 0
+  _isDefault: 0

@@ -19,6 +19,10 @@ public class SkinPresenter
 
         _view.ClickOnNextSkin += OnClickNext;
         _view.ClickOnPreviousSkin += OnClicPrevious;
+
+        _view.ClickOnBuySkin += OnSkinBuy;
+
+        _view.ClickOnSelectedSkin += OnSkinChanged;
     }
 
     public void Disable()
@@ -27,6 +31,17 @@ public class SkinPresenter
 
         _view.ClickOnNextSkin -= OnClickNext;
         _view.ClickOnPreviousSkin -= OnClicPrevious;
+
+        _view.ClickOnBuySkin -= OnSkinBuy;
+
+        _view.ClickOnSelectedSkin -= OnSkinChanged;
+    }
+
+    private void OnSkinBuy()
+    {
+        _model.BuySkin();
+
+        OnSkinChanged();
     }
 
     private void OnSkinChanged()

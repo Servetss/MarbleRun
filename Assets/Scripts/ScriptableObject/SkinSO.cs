@@ -7,6 +7,8 @@ public class SkinSO : ScriptableObject
 
     [SerializeField] private string _skinName;
 
+    [SerializeField] private int _skinCost;
+
     [SerializeField] private Material _material;
 
     [SerializeField] private bool _isUnlocked;
@@ -14,6 +16,8 @@ public class SkinSO : ScriptableObject
     [SerializeField] private bool _isDefault;
 
     public string Name { get => _skinName; }
+
+    public int SkinCost { get => _skinCost; }
 
     public Material Material { get => _material; }
 

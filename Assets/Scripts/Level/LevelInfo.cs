@@ -7,6 +7,8 @@ public class LevelInfo
 
     public int BoostClickCount { get; private set; }
 
+    public int Boost { get; private set; }
+
     public int Speed { get; private set; }
 
     public void AddLevel()
@@ -32,5 +34,10 @@ public class LevelInfo
     public void SetSpeed(int speed)
     {
         Speed = speed;
+    }
+
+    public void SetBoost(int boost)
+    {
+        Boost = boost;
     }
 }

@@ -6,7 +6,11 @@ public class Player : MonoBehaviour
 
     [SerializeField] private MainMenuPanel _mainMenuPanel;
 
+    [SerializeField] private BoostView _boostView;
+
     [SerializeField] private Animator _gameCanvasAnimator;
+
+    private xZone _selectedXZone;
 
     private EventMachine _eventMachine;
 
@@ -31,9 +35,13 @@ public class Player : MonoBehaviour
         _eventMachine.SubscribeOnBoostZoneFinish(HideBoostZone);
     }
 
+    public LevelInfo LevelInfo { get; private set; }
+
     public EventMachine PlayerEventMachine { get => _eventMachine; }
 
-    public LevelInfo LevelInfo { get; private set; }
+    public xZone XZone { get => _selectedXZone; }
+
+    public BoostView BoostView { get => _boostView; }
 
     private void Start()
     {
@@ -70,16 +78,6 @@ public class Player : MonoBehaviour
     }
 
     #region Skin panel animation
-    public void SkinModeOn()
-    {
-        _animator.SetBool("ChangeSkin", true);
-    }
-
-    public void SkinModeOff()
-    {
-        _animator.SetBool("ChangeSkin", false);
-    }
-
     public void SkinPanelActive()
     {
         _mainMenuPanel.OpenSkinPanel();
@@ -115,6 +113,13 @@ public class Player : MonoBehaviour
             other.GetComponent<Coin>().PickUp();
 
             LevelInfo.AddCoin();
+        }
+
+        if (other.GetComponent<xZone>())
+        {
+            _selectedXZone = other.GetComponent<xZone>();
+
+            LevelInfo.SetBoost(other.GetComponent<xZone>().Boost);
         }
     }
 }
