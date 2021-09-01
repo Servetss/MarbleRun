@@ -9,6 +9,8 @@ public class SkinSO : ScriptableObject
 
     [SerializeField] private int _skinCost;
 
+    [SerializeField] private Sprite _skinOnUI;
+
     [SerializeField] private Material _material;
 
     [SerializeField] private bool _isUnlocked;
@@ -18,6 +20,8 @@ public class SkinSO : ScriptableObject
     public string Name { get => _skinName; }
 
     public int SkinCost { get => _skinCost; }
+
+    public Sprite SkinOnUI { get => _skinOnUI; }
 
     public Material Material { get => _material; }
 

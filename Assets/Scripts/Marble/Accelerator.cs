@@ -23,9 +23,9 @@ public class Accelerator : MonoBehaviour
         _playerEventMachine = GetComponent<EventMachine>();
     }
 
-    private float MinimalSpeed {get => _speedBoost + 30;}
+    public float MinimalSpeed {get => _speedBoost + 30;}
 
-    private float MaximalSpeed { get => _speedBoost + 60; }
+    public float MaximalSpeed { get => _speedBoost + 60; }
 
     private void Start()
     {

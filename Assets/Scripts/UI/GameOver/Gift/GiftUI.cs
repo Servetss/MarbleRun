@@ -109,7 +109,6 @@ public class GiftUI : MonoBehaviour, IGameOverPanels
     #endregion
 
     #region Gift Unlocked
-
     public void UlockASkin()
     {
         CancelInvoke("ShowAcceptButton");
@@ -120,7 +119,7 @@ public class GiftUI : MonoBehaviour, IGameOverPanels
 
         _acceptButton.SetActive(false);
 
-        _giftReciveUI.FillGift(new SkinSO());
+        _giftReciveUI.FillGift(_skinContainer.GetFirstLockedSkinOrNull());
     }
 
     #endregion

@@ -30,6 +30,17 @@ public class SkinContainer : MonoBehaviour
         return _skins[index];
     }
 
+    public SkinSO GetFirstLockedSkinOrNull()
+    {
+        for (int i = 0; i < _skins.Length; i++)
+        {
+            if (_skins[i].IsUnlocked == false)
+                return _skins[i];
+        }
+
+        return null;
+    }
+
     public int GetNextSkinIndex(int actualIndex)
     {
         return GetClosestIndex(_skins.Length, actualIndex, 1);

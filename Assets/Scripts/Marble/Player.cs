@@ -46,24 +46,25 @@ public class Player : MonoBehaviour
     private void Start()
     {
         PlayerEventMachine.SubscribeOnFinish(TrackFinish);
+
+        PlayerEventMachine.SubscribeOnMoveToNextLevel(NextLevel);
+
+        PlayerEventMachine.SubscribeOnRoadStartStart(() => {LevelInfo.IsWin = false; });
     }
 
     private void LevelStart()
     {
         PlayerEventMachine.RoadStartMethod();
-
-        PlayerEventMachine.SubscribeOnMoveToNextLevel(NextLevel);
     }
 
     private void TrackFinish()
     {
-        LevelInfo.AddLevel();
+        if(LevelInfo.IsWin)
+            LevelInfo.AddLevel();
     }
 
     public void NextLevel()
     {
-        GetComponent<Rigidbody>().isKinematic = true;
-
         LevelInfo.ResetCoins();
     }
 
@@ -106,7 +107,7 @@ public class Player : MonoBehaviour
     }
     #endregion
 
-    public void OnTriggerEnter(Collider other)
+    public void OnPlayerMeshTriggerEnter(Collider other)
     {
         if (other.GetComponent<Coin>())
         {

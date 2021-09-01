@@ -7,33 +7,48 @@ public class PositionOnTheTrackView : MonoBehaviour
 
     private EventMachine _eventMachine;
 
-    private bool _isCanChange;
+    private Player _player;
 
     private void Awake()
     {
         _eventMachine = GetComponent<EventMachine>();
+
+        _player = GetComponent<Player>();
     }
+
+    public bool IsCanChange { get; private set; }
+
+    public int PositionNum { get; private set; }
 
     private void Start()
     {
-        _eventMachine?.SubscribeOnRoadStartStart(EnablesPositionChanging);
+        IsCanChange = true;
+
+        _eventMachine?.SubscribeOnMoveToNextLevel(EnablesPositionChanging);
 
         _eventMachine?.SubscribeOnRoadEnd(DisablePositionChanging);
     }
 
     public void SetPosition(int positionNum)
     {
-        if(_isCanChange)
-            _numberPosition.text = positionNum.ToString();
+        if (IsCanChange)
+        {
+            PositionNum = positionNum;
+
+            if(_player != null)
+                _player.LevelInfo.IsWin = positionNum == 1;
+
+            _numberPosition.text = NumberParser.NumberToPositionText(positionNum);
+        }
     }
 
     public void EnablesPositionChanging()
     {
-        _isCanChange = true;
+        IsCanChange = true;
     }
 
     public void DisablePositionChanging()
     {
-        _isCanChange = false;
+        IsCanChange = false;
     }
 }

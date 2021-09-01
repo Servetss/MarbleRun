@@ -28,6 +28,8 @@ public class AIAcceleration : MonoBehaviour
     private void Awake()
     {
         _roadMover = GetComponent<RoadMover>();
+
+        _playerEventMachine = GetComponent<EventMachine>();
     }
     private void Start()
     {
@@ -36,25 +38,37 @@ public class AIAcceleration : MonoBehaviour
         _playerEventMachine?.SubscribeOnRoadStartStart(DelaySpeedChange);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (_isSpeedChanging)
         {
-            _lerp += Time.fixedDeltaTime * _lerpSpeed;
-
-            _speed = Mathf.Lerp(_fromSpeed, _toSpeed, _lerp);
-
-            _roadMover.SetSpeed(_speed);
-
-            if (_lerp >= 1)
+            if (_roadMover.SplineIndex != 2)
             {
-                _isSpeedChanging = false;
+                _lerp += Time.deltaTime * _lerpSpeed;
 
-                _lerp = 0;
+                _speed = Mathf.Lerp(_fromSpeed, _toSpeed, _lerp);
 
-                _fromSpeed = _speed;
+                _roadMover.SetSpeed(_speed);
 
-                DelaySpeedChange();
+                if (_lerp >= 1)
+                {
+                    _isSpeedChanging = false;
+
+                    _lerp = 0;
+
+                    _fromSpeed = _speed;
+
+                    DelaySpeedChange();
+                }
+            }
+            else
+            {
+                if (_speed < 90)
+                {
+                    _speed += Time.deltaTime * 10;
+
+                    _roadMover.SetSpeed(_speed);
+                }
             }
         }
     }

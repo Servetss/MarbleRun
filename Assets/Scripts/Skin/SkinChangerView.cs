@@ -44,6 +44,9 @@ public class SkinChangerView : MonoBehaviour
 
     public void SetSkin(SkinSO skin)
     {
+        if (skin == null)
+            return;
+
         _sphere.material = skin.Material;
 
         if (skin.IsUnlocked)
@@ -54,11 +57,13 @@ public class SkinChangerView : MonoBehaviour
         {
             EnableBuyButton();
 
-            _skinCost_T.text = skin.SkinCost.ToString();
+            _skinCost_T.text = NumberParser.FromNumberToShortText(skin.SkinCost);
 
             Color activnessColor = Wallet.instance.Value >= skin.SkinCost ? Color.white : Color.gray;
 
             _buy_B.GetComponent<Image>().color = activnessColor;
+
+            _skinCost_T.color = activnessColor;
         }
     }
 

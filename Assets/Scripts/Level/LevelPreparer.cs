@@ -16,6 +16,8 @@ public class LevelPreparer : MonoBehaviour
 
     [SerializeField] private LevelEventZone _levelEventZone;
 
+    [SerializeField] private GameProgressView _gameProgressView;
+
     [Header("Marbles")]
     [SerializeField] private Player _player;
 
@@ -58,18 +60,23 @@ public class LevelPreparer : MonoBehaviour
 
     public void SelectNewLevel()
     {
-        SelectLevelIndex();
+        if (PlayerMarble.LevelInfo.IsWin)
+        {
+            SelectLevelIndex();
+
+            _gameProgressView.CompleteLevel();
+        }
 
         PutOnTheLevel();
     }
 
     private void PutOnTheLevel()
     {
-        Replace();
-
         _playerEventMachine.NextLevelMethod();
 
         _enemys.NextLevel();
+
+        Replace();
 
         _levelEventZone.SetEventsToTrack(SelecetedTrack);
 

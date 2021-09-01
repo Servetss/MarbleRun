@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c0669b31e51924d92d776910db7f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEventMachine: {fileID: 0}
   _speed: 50
   _dementionRotate: 1
 --- !u!1 &2066810531274377283
@@ -89,7 +90,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5869094316732728268
 MonoBehaviour:

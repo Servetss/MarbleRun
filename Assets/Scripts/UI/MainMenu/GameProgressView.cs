@@ -5,28 +5,19 @@ public class GameProgressView : MonoBehaviour
 {
     [SerializeField] private Player _player;
 
-    [SerializeField] private Text _levelText;
-
     [SerializeField] private LevelPreparer _levelPreparer;
 
-    [SerializeField] private GameObject[] _checkImages;
+    [SerializeField] private Text _levelText;
 
-    private EventMachine _eventMachine;
+    [SerializeField] private GameObject[] _checkImages;
 
     private int _checedLevels;
 
     private void Awake()
     {
-        _eventMachine = _player.GetComponent<EventMachine>();
-
-        _checedLevels = -2;
+        _checedLevels = -1;
 
         ShowLevel();
-    }
-
-    private void Start()
-    {
-        _eventMachine?.SubscribeOnMoveToNextLevel(CompleteLevel);
     }
 
     public void CompleteLevel()

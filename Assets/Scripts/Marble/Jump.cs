@@ -7,7 +7,7 @@ public class Jump : MonoBehaviour
 
     [SerializeField] private Finish _finish;
 
-    public Vector3[] _trajectoryPoints;
+    private Vector3[] _trajectoryPoints;
 
     private int _jumpCount;
 
@@ -23,6 +23,8 @@ public class Jump : MonoBehaviour
     private float _lerp;
 
     private int _pointIndex;
+    
+    public Vector3[] TrajectoryPoints { get => _trajectoryPoints; }
 
     private void FixedUpdate()
     {
@@ -85,7 +87,7 @@ public class Jump : MonoBehaviour
         _isLerpMove = true;
     }
 
-    public Vector3[] ShowTrajectory(Vector3 origin, Vector3 speed)
+    private Vector3[] ShowTrajectory(Vector3 origin, Vector3 speed)
     {
         Vector3[] points = new Vector3[100];
 

@@ -24,7 +24,7 @@ public class MarbleImpulse : MonoBehaviour
 
         _playerEventMachine = GetComponent<EventMachine>();
 
-        _playerEventMachine.SubscribeOnFinish(DisableJumpCamera);
+        _playerEventMachine.SubscribeOnMoveToNextLevel(DisableJumpCamera);
 
         _boost.Init(this);
     }
@@ -39,7 +39,7 @@ public class MarbleImpulse : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnPlayerMeshTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "BoostZone")
         {
@@ -53,7 +53,7 @@ public class MarbleImpulse : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    public void OnPlayerMeshTriggerExit(Collider other)
     {
         if (other.gameObject.name == "BoostZone")
         {

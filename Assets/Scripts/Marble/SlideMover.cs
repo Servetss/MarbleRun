@@ -6,13 +6,13 @@ public class SlideMover : MonoBehaviour
 
     [SerializeField] private float _speed;
 
+    [SerializeField] private Camera _camera;
+
     private EventMachine _playerEventMachine;
 
     private Transform _mesh;
 
     private Transform _sphereInMesh;
-
-    [SerializeField] private Camera _camera;
 
     private Vector3 _clickedPosition;
 
@@ -90,13 +90,11 @@ public class SlideMover : MonoBehaviour
 
                 _mesh.localPosition = new Vector3(_actualPosition, _mesh.localPosition.y, _mesh.localPosition.z);
 
-                //_sphereInMesh.localEulerAngles = new Vector3(0, _moveRotationY, -_moveRotationX);
-
                 _mesh.localEulerAngles = new Vector3(0, _moveRotationY, -_moveRotationX);
 
                 _camera.transform.localEulerAngles = new Vector3(_camera.transform.localEulerAngles.x, _camera.transform.transform.localEulerAngles.y, -_cameraRotateZ);
 
-                _camera.transform.localPosition = new Vector3(_actualPosition / 2, _camera.transform.localPosition.y, _camera.transform.transform.localPosition.z);
+                _camera.transform.localPosition = new Vector3(_actualPosition / 1.5f, _camera.transform.localPosition.y, _camera.transform.transform.localPosition.z);
             }
 
             if (Input.GetMouseButtonUp(0))
@@ -136,11 +134,11 @@ public class SlideMover : MonoBehaviour
 
     public void SetActualPosition(float position)
     {
-        _actualPosition = position;
+        _actualPosition = Mathf.Abs(position);
 
         _mesh.localPosition = new Vector3(_actualPosition, _mesh.localPosition.y, _mesh.localPosition.z);
 
-        _camera.transform.localPosition = new Vector3(_actualPosition / 2, _camera.transform.localPosition.y, _camera.transform.transform.localPosition.z);
+        _camera.transform.localPosition = new Vector3(_actualPosition / 1.5f, _camera.transform.localPosition.y, _camera.transform.transform.localPosition.z);
     }
 
     private void EnableMove()
@@ -151,8 +149,6 @@ public class SlideMover : MonoBehaviour
     private void DisableMove()
     {
         _isCanMove = false;
-
-        _mouseDiff = 0;
 
         _actualPosition = 0;
 

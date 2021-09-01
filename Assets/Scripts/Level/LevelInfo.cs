@@ -1,6 +1,8 @@
 ﻿
 public class LevelInfo
 {
+    public bool IsWin;
+
     public int PlayerLevel { get; private set; }
 
     public int CoinsGetOnTheLevel { get; private set; }

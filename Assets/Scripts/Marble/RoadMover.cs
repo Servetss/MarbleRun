@@ -14,9 +14,9 @@ public class RoadMover : MonoBehaviour
 
     [SerializeField] private bool _isPlayer;
 
-    private bool _isCameraNeedBeRotated;
+    [SerializeField] private float _distance;
 
-    private int _splineIndex;
+    private bool _isCameraNeedBeRotated;
 
     private int _maximumSplines = 3;
 
@@ -24,7 +24,7 @@ public class RoadMover : MonoBehaviour
 
     private float _lerp;
 
-    private bool _isMove;
+    private Vector3 _previousPosition;
 
     private Vector3 _startPosition;
 
@@ -43,7 +43,11 @@ public class RoadMover : MonoBehaviour
 
     public float Speed { get => _speed; }
 
-    public float Distance { get; private set; }
+    public float Distance { get => _distance; }
+
+    public bool IsMove { get; private set; }
+
+    public int SplineIndex { get; private set; }
 
     public PositionOnTheTrackView PositionOnTheTrackView { get; private set; }
 
@@ -63,16 +67,18 @@ public class RoadMover : MonoBehaviour
 
     public void SetDistance(float distance)
     {
-        Distance = distance;
+        _distance = distance;
     }
 
     private void StartMoveBySpline()
     {
-        _isCameraNeedBeRotated = _splineIndex < 2;
+        _isCameraNeedBeRotated = SplineIndex < 2;
 
-        Road road = _levelPreparer.LevelEventZone.MarbleRoad(_splineIndex);
+        Road road = _levelPreparer.LevelEventZone.MarbleRoad(SplineIndex);
 
         SetRoad(road.GetEvenlySpacedPoints(1, 1).Select(e => e.ToWorldSpace(road.transform)).ToArray());
+
+        IsMove = true;
     }
 
     private void SetRoad(Bezier.OrientedPoint[] orientedPoints)
@@ -84,29 +90,29 @@ public class RoadMover : MonoBehaviour
 
     private void Update()
     {
-        if (_isMove)
+        if (IsMove)
         {
-            if (_splineIndex == 2)
+            if (SplineIndex == 2 && _speed > 60)
             {
                 _speed -= Time.deltaTime * 5;
             }
 
-            _lerp += Time.smoothDeltaTime * _speed;
-
-            Distance += Time.smoothDeltaTime * _speed;
+            _lerp += Time.deltaTime * _speed;
 
             Vector3 position = Vector3.Lerp(_startPosition, _directiobPosition, _lerp) + _roadOrientedPoint[_pointIndex].normal / 2;
 
             Quaternion rotation = Quaternion.LerpUnclamped(_startRotation, _directionRotation, _lerp);
 
+            _distance += Vector3.Distance(transform.position, position);
+
             transform.position = position;
 
-            if(_isCameraNeedBeRotated)
+            if (_isCameraNeedBeRotated)
                 transform.rotation = rotation;
 
             if (_lerp >= 1)
             {
-                _isMove = false;
+                IsMove = false;
 
                 _lerp = 0;
 
@@ -144,25 +150,25 @@ public class RoadMover : MonoBehaviour
 
         _directionRotation = Quaternion.LookRotation(_roadOrientedPoint[_pointIndex + 1].forward, _roadOrientedPoint[_pointIndex + 1].normal);
 
-        _isMove = true;
+        IsMove = true;
     }
 
     private void LastSplineIndex()
     {
-        _splineIndex++;
+        SplineIndex++;
 
         _pointIndex = 0;
 
-        _isMove = false;
+        IsMove = false;
 
 
-        if (_splineIndex >= _maximumSplines)
+        if (SplineIndex >= _maximumSplines)
         {
             PlayerEventMachine?.RoadEndMethod();
 
-            Distance = 0;
+            _distance = 0;
 
-            _splineIndex = 0;
+            SplineIndex = 0;
         }
         else
         {
@@ -172,13 +178,13 @@ public class RoadMover : MonoBehaviour
 
     private void DisableMover()
     {
-        if (_isMove)
+        if (IsMove)
         {
-            _isMove = false;
+            IsMove = false;
 
-            Distance = 0;
+            _distance = 0;
 
-            _splineIndex = 0;
+            SplineIndex = 0;
         }
     }
 }

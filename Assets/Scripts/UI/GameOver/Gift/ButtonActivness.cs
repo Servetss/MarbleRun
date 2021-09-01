@@ -43,8 +43,10 @@ public class ButtonActivness
 
     public void WhenFinishGiftImageFilling(bool isGiftReady)
     {
-        if(isGiftReady)//(_isBoostClicked == false && _isPriseClicked == false) || isGiftReady)
+        if (isGiftReady)//(_isBoostClicked == false && _isPriseClicked == false) || isGiftReady)
+        {
             ShowButton();
+        }
     }
 
     public void WhenGiftImageFilling(bool isGiftReady)

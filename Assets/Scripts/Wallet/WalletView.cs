@@ -12,6 +12,6 @@ public class WalletView : MonoBehaviour
 
     private void MoneyChange()
     {
-        _moneyText.text = Wallet.instance.Value.ToString();
+        _moneyText.text = NumberParser.FromNumberToShortText(Wallet.instance.Value);
     }
 }

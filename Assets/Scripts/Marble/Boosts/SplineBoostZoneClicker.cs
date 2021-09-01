@@ -8,6 +8,8 @@ public class SplineBoostZoneClicker : IBoost
 
     private BoostView _boostView;
 
+    private Accelerator _accelerator;
+
     private Jump _jump;
 
     private bool _isTriggerStay;
@@ -29,6 +31,8 @@ public class SplineBoostZoneClicker : IBoost
         _playerEventMachine.SubscribeOnRoadEnd(JumpInTheEnd);
 
         _boostView = marbleImpulse.GetComponent<Player>().BoostView;
+
+        _accelerator = marbleImpulse.GetComponent<Accelerator>();
     }
 
     public bool BoostCondition()
@@ -42,7 +46,7 @@ public class SplineBoostZoneClicker : IBoost
 
         _roadMover.Accelerate(3);
 
-        _boostView.SetFillAmount(_minimumAccelerate, _maximumAccelerate, _roadMover.Speed);
+        _boostView.SetFillAmount((int)_accelerator.MinimalSpeed, (int)_accelerator.MaximalSpeed, _roadMover.Speed);
     }
 
     public void EnterTrigger()

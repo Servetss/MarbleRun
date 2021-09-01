@@ -26,7 +26,7 @@ public class Wallet : MonoBehaviour
     [ContextMenu("Add some money")]
     public void AddSomeMoney()
     {
-        AddMoney(1000);
+        AddMoney(1200);
     }
 
     public void AddMoney(int value)

@@ -15,11 +15,11 @@ public class MarbleJumpEditor : Editor
 
     private void OnSceneGUI()
     {
-        if (_jump._trajectoryPoints != null)
+        if (_jump.TrajectoryPoints != null)
         {
             Handles.color = Color.red;
 
-            Handles.DrawLines(_jump._trajectoryPoints);
+            Handles.DrawLines(_jump.TrajectoryPoints);
         }
     }
 }

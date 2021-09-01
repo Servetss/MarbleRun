@@ -22,7 +22,7 @@ public class AbilityView : MonoBehaviour
     {
         _boostText.text = (level * 10) + "%";
 
-        _abilityCost.text = cost.ToString();
+        _abilityCost.text = NumberParser.FromNumberToShortText(cost);
     }
 
     public void WhenMoneyChange(int abilityCost)
@@ -30,5 +30,7 @@ public class AbilityView : MonoBehaviour
         Color activnessColor = Wallet.instance.Value >= abilityCost ? Color.white : Color.gray;
 
         _buttonImage.color = activnessColor;
+
+        _abilityCost.color = activnessColor;
     }
 }

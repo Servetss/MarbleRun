@@ -10,12 +10,16 @@ public class Spinner : MonoBehaviour
 
     [SerializeField] private Demention _dementionRotate;
 
+    private Vector3 _savedVector;
+
     private float _spinnengAngle;
 
     public bool IsPlayed { get; private set; }
 
     private void Start()
     {
+        _savedVector = transform.localEulerAngles;
+
         if (_playerEventMachine != null)
         {
             _playerEventMachine.SubscribeOnRoadStartStart(EnableSpinning);
@@ -39,13 +43,13 @@ public class Spinner : MonoBehaviour
             switch (_dementionRotate)
             {
                 case Demention.X:
-                    transform.localEulerAngles = new Vector3(_spinnengAngle, 0, 0);
+                    transform.localEulerAngles = new Vector3(_spinnengAngle, _savedVector.y, _savedVector.z);
                     break;
                 case Demention.Y:
-                    transform.localEulerAngles = new Vector3(0, _spinnengAngle, 0);
+                    transform.localEulerAngles = new Vector3(_savedVector.x, _spinnengAngle, _savedVector.z);
                     break;
                 case Demention.Z:
-                    transform.localEulerAngles = new Vector3(0, 0, _spinnengAngle);
+                    transform.localEulerAngles = new Vector3(_savedVector.x, _savedVector.y, _spinnengAngle);
                     break;
             }
         }
