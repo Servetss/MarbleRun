@@ -7,6 +7,8 @@ public class GameOverCalculationUI : MonoBehaviour, IGameOverPanels
 
     [SerializeField] private Text _coinReceive;
 
+    [SerializeField] private Ability _moneyBoostAbility;
+
     private GameOverPanel _gameOverPanel;
 
     public void Init(GameOverPanel gameOverPanel)
@@ -20,7 +22,7 @@ public class GameOverCalculationUI : MonoBehaviour, IGameOverPanels
 
         int coinsGet = levelInfo.CoinsGetOnTheLevel * levelInfo.Boost;
 
-        _coinReceive.text = coinsGet + "$";
+        _coinReceive.text = (coinsGet * _moneyBoostAbility.Boost) + "$";
     }
 
     public void ClosePanel()

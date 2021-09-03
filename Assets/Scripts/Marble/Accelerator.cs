@@ -63,12 +63,12 @@ public class Accelerator : MonoBehaviour
         }
     }
 
-    public void SetAcceleration(int acceleration)
+    public void SetAcceleration(float acceleration)
     {
         _acceleration = acceleration;
     }
 
-    public void SetSpeedBoost(int boost)
+    public void SetSpeedBoost(float boost)
     {
         _speedBoost = boost;
     }

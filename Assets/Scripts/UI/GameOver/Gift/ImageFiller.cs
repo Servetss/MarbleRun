@@ -6,7 +6,7 @@ public class ImageFiller : MonoBehaviour
 {
     private const string FillerSave = "FillerSave";
 
-    private const float LerpSpeed = 1;
+    private const float LerpSpeed = 0.1f;
 
     [SerializeField] private Image _giftImage;
 

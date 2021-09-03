@@ -4,7 +4,7 @@ public class MaterialShining : MonoBehaviour
 {
     [SerializeField] private EventMachine _playerEventmachine;
 
-    [Range(1, 15)]
+    [Range(0.1f, 15)]
     [SerializeField] private float _animationSpeed;
 
     [SerializeField] private Color _colorTo;
@@ -21,7 +21,7 @@ public class MaterialShining : MonoBehaviour
 
     private void Start()
     {
-        _playerEventmachine.SubscribeOnMoveToNextLevel(StopAnim);
+        _playerEventmachine?.SubscribeOnMoveToNextLevel(StopAnim);
     }
 
     private void Update()

@@ -45,7 +45,7 @@ public class AIJump : MonoBehaviour
         {
             if (_isLerpMove)
             {
-                _lerp += Time.fixedDeltaTime;
+                _lerp += Time.fixedDeltaTime * 0.1f;
 
                 transform.position = Vector3.Lerp(_trajectoryPoints[_pointIndex], _trajectoryPoints[_pointIndex + 1], _lerp);
 

@@ -18,7 +18,7 @@ public class AbilityView : MonoBehaviour
         Click?.Invoke();
     }
 
-    public void SetView(int level, int cost, int boost)
+    public void SetView(int level, int cost, float boost)
     {
         _boostText.text = (level * 10) + "%";
 

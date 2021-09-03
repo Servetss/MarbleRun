@@ -10,9 +10,9 @@ public class Ability : MonoBehaviour
     [SerializeField] private int _level;
 
     [Header("Boost")]
-    [SerializeField] private int _startBoost;
+    [SerializeField] private float _startBoost;
 
-    [SerializeField] private int _increaseBoost;
+    [SerializeField] private float _increaseBoost;
 
     [Header("Coast")]
     [SerializeField] private int _startCost;
@@ -30,7 +30,7 @@ public class Ability : MonoBehaviour
 
     public int Cost => _startCost + (_level * _increaseCost);
 
-    public int Boost => _startBoost + (_level * _increaseBoost);
+    public float Boost => _startBoost + (_level * _increaseBoost);
 
     public int Level { get => _level; }
 

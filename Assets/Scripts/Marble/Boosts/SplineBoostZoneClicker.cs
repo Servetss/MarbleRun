@@ -16,10 +16,6 @@ public class SplineBoostZoneClicker : IBoost
 
     private int _clickCount;
 
-    private int _minimumAccelerate = 60;
-
-    private int _maximumAccelerate = 100;
-
     public void Init(MarbleImpulse marbleImpulse)
     {
         _roadMover = marbleImpulse.GetComponent<RoadMover>();
@@ -44,7 +40,9 @@ public class SplineBoostZoneClicker : IBoost
     {
         _clickCount++;
 
-        _roadMover.Accelerate(3);
+        float boostAdd = _roadMover.Speed + velocity <= (_accelerator.MaximalSpeed + 50) ? velocity : (_accelerator.MaximalSpeed + 50) - _roadMover.Speed;
+
+        _roadMover.Accelerate(boostAdd);
 
         _boostView.SetFillAmount((int)_accelerator.MinimalSpeed, (int)_accelerator.MaximalSpeed, _roadMover.Speed);
     }

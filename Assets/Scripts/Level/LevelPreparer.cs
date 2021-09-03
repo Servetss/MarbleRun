@@ -34,7 +34,7 @@ public class LevelPreparer : MonoBehaviour
         if (_levelContainer == null)
             throw new ArgumentNullException();
 
-        _playerEventMachine = _player.PlayerEventMachine;
+        _playerEventMachine = _player.GetComponent<EventMachine>();
     }
 
     public Player PlayerMarble { get => _player; }
@@ -55,7 +55,7 @@ public class LevelPreparer : MonoBehaviour
 
         Load();
 
-        PutOnTheLevel();
+        Invoke("PutOnTheLevel", Time.fixedDeltaTime);
     }
 
     public void SelectNewLevel()
@@ -101,9 +101,9 @@ public class LevelPreparer : MonoBehaviour
 
     private void Replace()
     {
-        ShowLevel(_levelContainer.GetLevelByIndex(SelectedLevelIndex));
-
         HideLevel(_levelContainer.GetLevelByIndex(_previousLevelIndex));
+
+        ShowLevel(_levelContainer.GetLevelByIndex(SelectedLevelIndex));
     }
 
     private void ShowLevel(GameObject level)

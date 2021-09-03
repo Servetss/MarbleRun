@@ -42,7 +42,7 @@ public class SlideMover : MonoBehaviour
 
     private void Awake()
     {
-        _playerEventMachine = GetComponent<Player>().PlayerEventMachine;
+        _playerEventMachine = GetComponent<EventMachine>();
     }
 
     private void Start()

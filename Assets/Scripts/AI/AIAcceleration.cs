@@ -65,7 +65,7 @@ public class AIAcceleration : MonoBehaviour
             {
                 if (_speed < 90)
                 {
-                    _speed += Time.deltaTime * 10;
+                    _speed += Time.deltaTime;
 
                     _roadMover.SetSpeed(_speed);
                 }

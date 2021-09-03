@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 10;
+
         LevelInfo = new LevelInfo();
 
         _animator = GetComponent<Animator>();
@@ -33,6 +35,8 @@ public class Player : MonoBehaviour
         _eventMachine.SubscribeOnBoostZoneStart(ShowBoostZoneImage);
 
         _eventMachine.SubscribeOnBoostZoneFinish(HideBoostZone);
+
+        Application.targetFrameRate = 60;
     }
 
     public LevelInfo LevelInfo { get; private set; }
@@ -45,11 +49,11 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        PlayerEventMachine.SubscribeOnFinish(TrackFinish);
+        PlayerEventMachine?.SubscribeOnFinish(TrackFinish);
 
-        PlayerEventMachine.SubscribeOnMoveToNextLevel(NextLevel);
+        PlayerEventMachine?.SubscribeOnMoveToNextLevel(NextLevel);
 
-        PlayerEventMachine.SubscribeOnRoadStartStart(() => {LevelInfo.IsWin = false; });
+        PlayerEventMachine?.SubscribeOnRoadStartStart(() => {LevelInfo.IsWin = false; });
     }
 
     private void LevelStart()

@@ -20,7 +20,7 @@ public class Jump : MonoBehaviour
 
     private bool _isLerpMove;
 
-    private float _lerp;
+    [SerializeField] private float _lerp;
 
     private int _pointIndex;
     
@@ -89,11 +89,11 @@ public class Jump : MonoBehaviour
 
     private Vector3[] ShowTrajectory(Vector3 origin, Vector3 speed)
     {
-        Vector3[] points = new Vector3[100];
+        Vector3[] points = new Vector3[500];
 
         for (int i = 0; i < points.Length; i++)
         {
-            float time = i * 0.1f;
+            float time = i * 0.01f;
 
             points[i] = origin + speed * time + Physics.gravity * time * time / 2f;
         }

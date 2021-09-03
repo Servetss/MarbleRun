@@ -24,15 +24,15 @@ public class BoostView : MonoBehaviour
         _playerEventMachine.SubscribeOnRoadEnd(RoadEnd);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (_isBoostZone)
         {
             if (_boostFill.fillAmount < To)
-                _boostFill.fillAmount += Time.deltaTime * 0.5f;
+                _boostFill.fillAmount += Time.fixedDeltaTime * 0.05f;
             else if (_boostFill.fillAmount > To)
             {
-                _boostFill.fillAmount -= Time.deltaTime * 0.5f;
+                _boostFill.fillAmount -= Time.fixedDeltaTime * 0.05f;
             }
         }
     }

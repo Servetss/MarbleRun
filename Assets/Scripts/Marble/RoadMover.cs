@@ -2,6 +2,7 @@ using Barmetler;
 using Barmetler.RoadSystem;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RoadMover : MonoBehaviour
 {
@@ -22,7 +23,8 @@ public class RoadMover : MonoBehaviour
 
     private int _pointIndex;
 
-    private float _lerp;
+    [Range(0, 1)]
+    [SerializeField] private float _lerp;
 
     private Vector3 _previousPosition;
 
@@ -33,6 +35,8 @@ public class RoadMover : MonoBehaviour
     private Quaternion _startRotation;
 
     private Quaternion _directionRotation;
+
+    [SerializeField] private Text _speedText;
 
     private void Awake()
     {
@@ -88,16 +92,21 @@ public class RoadMover : MonoBehaviour
         StartPosition();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        //if (_speedText != null)
+        //{
+        //    _speedText.text = _speed.ToString();
+        //}
+
         if (IsMove)
         {
             if (SplineIndex == 2 && _speed > 60)
             {
-                _speed -= Time.deltaTime * 5;
+                _speed -= Time.fixedDeltaTime * 0.5f;// * 5;
             }
 
-            _lerp += Time.deltaTime * _speed;
+            _lerp += Time.fixedDeltaTime * (_speed * 0.1f);
 
             Vector3 position = Vector3.Lerp(_startPosition, _directiobPosition, _lerp) + _roadOrientedPoint[_pointIndex].normal / 2;
 

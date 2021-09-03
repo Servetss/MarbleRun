@@ -8,6 +8,8 @@ public class Finish : MonoBehaviour
 
     [SerializeField] private MaterialShining _materialShining;
 
+    [SerializeField] private Ability _moneyBoostAbility;
+
     public LevelEventZone LevelEventZone { get => _levelEventZone; }
 
     public void MarbleStop(Player player)
@@ -21,7 +23,7 @@ public class Finish : MonoBehaviour
 
     private void LevelFinish(LevelInfo levelInfo)
     {
-        Wallet.instance.AddMoney(levelInfo.CoinsGetOnTheLevel * levelInfo.Boost);
+        Wallet.instance.AddMoney((levelInfo.CoinsGetOnTheLevel * levelInfo.Boost) * (int)_moneyBoostAbility.Boost);
 
         _gameOverPanel.GameOverUI(levelInfo);
     }

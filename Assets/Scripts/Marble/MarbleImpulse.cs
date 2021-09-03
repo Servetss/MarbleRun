@@ -20,13 +20,16 @@ public class MarbleImpulse : MonoBehaviour
 
         _animator = GetComponent<Animator>();
 
+        _playerEventMachine = GetComponent<EventMachine>();
+        
         _boost = _boostСharacteristic.GetSelectBoostType();
 
-        _playerEventMachine = GetComponent<EventMachine>();
-
-        _playerEventMachine.SubscribeOnMoveToNextLevel(DisableJumpCamera);
-
         _boost.Init(this);
+    }
+
+    private void Start()
+    {
+        _playerEventMachine?.SubscribeOnMoveToNextLevel(DisableJumpCamera);
     }
 
     public Rigidbody Rigidbody { get; private set; }

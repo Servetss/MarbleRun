@@ -45,7 +45,7 @@ public class MarblesPositionOnTheTrack : MonoBehaviour
 
         _playerRoadMover = _player.GetComponent<RoadMover>();
 
-        _playerEventMachine = _player.PlayerEventMachine;
+        _playerEventMachine = _player.GetComponent<EventMachine>();
 
         _enemys = _levelPreparer.Enemys;
 
