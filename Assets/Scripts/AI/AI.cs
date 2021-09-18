@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class AI : MonoBehaviour
 {
-    private EventMachine _eventMachine;
+    [SerializeField] private AIAcceleration _aiAcceleration;
 
-    private Rigidbody _rigidbody;
+    private AIAcceleration _accelerator;
+
+    private EventMachine _eventMachine;
 
     private void Awake()
     {
         _eventMachine = GetComponent<EventMachine>();
 
-        _rigidbody = GetComponent<Rigidbody>();
+        _accelerator = GetComponent<AIAcceleration>();
     }
 
     public void StartRoad()
@@ -20,22 +22,33 @@ public class AI : MonoBehaviour
 
     public void MoveToNextLevel()
     {
-        _rigidbody.isKinematic = true;
-
-        _rigidbody.useGravity = false;
-
         _eventMachine?.NextLevelMethod();
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void SetNewMaxSpeed(int levelBoost)
+    {
+        float speedValue = 3.2f;
+
+        _aiAcceleration.IncreaseSpeed(levelBoost * speedValue);
+    }
+
+    public void OnMarbleSphereTriggerEnter(Collider other)
     {
         if (other.name == "BoostZone")
         {
             _eventMachine?.BoostZoneStartMethod();
         }
+        else if (other.GetComponent<Obstacle>())
+        {
+            other.GetComponent<Obstacle>().DestroyObstacle();
+
+            SoundManager.Instance.OnObstacleCrash(transform.position);
+
+            _accelerator.ChangeFromSpeedToSpeed(-15);
+        }
     }
 
-    private void OnTriggerExit(Collider other)
+    public void OnMarbleSphereTriggerExit(Collider other)
     {
         if (other.gameObject.name == "BoostZone")
         {

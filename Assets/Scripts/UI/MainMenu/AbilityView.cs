@@ -20,7 +20,7 @@ public class AbilityView : MonoBehaviour
 
     public void SetView(int level, int cost, float boost)
     {
-        _boostText.text = (level * 10) + "%";
+        _boostText.text = ((level + 1) * 10) + "%";
 
         _abilityCost.text = NumberParser.FromNumberToShortText(cost);
     }

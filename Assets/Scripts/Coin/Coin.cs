@@ -1,9 +1,25 @@
 using UnityEngine;
 
-public class Coin : MonoBehaviour
+public class Coin : MonoBehaviour, IObjectActivator
 {
+    [SerializeField] private GameObject _mesh;
+
+    [SerializeField] private ParticleSystem _particle;
+
     public void PickUp()
     {
-        gameObject.SetActive(false);
+        _mesh.SetActive(false);
+
+        _particle.Play();
+    }
+
+    //public void CoinActivate()
+    //{
+    //    _mesh.SetActive(true);
+    //}
+
+    public void Activate()
+    {
+        _mesh.SetActive(true);
     }
 }

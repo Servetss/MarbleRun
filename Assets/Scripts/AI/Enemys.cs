@@ -43,4 +43,12 @@ public class Enemys : MonoBehaviour
 
         return transforms;
     }
+
+    public void SetNextMaxSpeedForEnemies(int level)
+    {
+        for (int i = 0; i < _enemys.Length; i++)
+        {
+            _enemys[i].SetNewMaxSpeed(level);
+        }
+    }
 }

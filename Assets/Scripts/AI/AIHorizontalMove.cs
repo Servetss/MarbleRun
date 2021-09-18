@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AIHorizontalMove : MonoBehaviour
 {
-    [Range(0.1f, 2)]
+    [Range(0.01f, 1)]
     [SerializeField] private float _positionChangeSpeed;
 
     [SerializeField] private float _delayForChangePosition;

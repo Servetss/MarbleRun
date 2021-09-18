@@ -37,6 +37,8 @@ public class AIJump : MonoBehaviour
     private void Start()
     {
         _eventMachine?.SubscribeOnRoadEnd(JumpStart);
+
+        _eventMachine?.SubscribeOnMoveToNextLevel(DisableMover);
     }
 
     private void FixedUpdate()
@@ -45,7 +47,7 @@ public class AIJump : MonoBehaviour
         {
             if (_isLerpMove)
             {
-                _lerp += Time.fixedDeltaTime * 0.1f;
+                _lerp += Time.fixedDeltaTime;
 
                 transform.position = Vector3.Lerp(_trajectoryPoints[_pointIndex], _trajectoryPoints[_pointIndex + 1], _lerp);
 
@@ -107,15 +109,26 @@ public class AIJump : MonoBehaviour
 
     private Vector3[] ShowTrajectory(Vector3 origin, Vector3 speed)
     {
-        Vector3[] points = new Vector3[100];
+        Vector3[] points = new Vector3[500];
 
         for (int i = 0; i < points.Length; i++)
         {
-            float time = i * 0.1f;
+            float time = i * 0.01f;
 
             points[i] = origin + speed * time + Physics.gravity * time * time / 2f;
         }
 
         return points;
+    }
+
+    private void DisableMover()
+    {
+        _isLerpMove = false;
+
+        _isJump = false;
+
+        _jumpCount = 0;
+
+        _eventMachine.FinishMethod();
     }
 }

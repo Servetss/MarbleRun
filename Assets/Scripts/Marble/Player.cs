@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Animator _gameCanvasAnimator;
 
+    private Accelerator _accelerator;
+
     private xZone _selectedXZone;
 
     private EventMachine _eventMachine;
@@ -25,6 +27,8 @@ public class Player : MonoBehaviour
         _animator = GetComponent<Animator>();
 
         _eventMachine = GetComponent<EventMachine>();
+
+        _accelerator = GetComponent<Accelerator>();
 
         _eventMachine.SubscribeOnBoostZoneStart(EnableAnimator);
 
@@ -103,6 +107,8 @@ public class Player : MonoBehaviour
     public void ShowBoostZoneImage()
     {
         _gameCanvasAnimator.SetBool("IsBoostZone", true);
+
+        _gameCanvasAnimator.SetTrigger("BoostZoneTrigger");
     }
 
     public void HideBoostZone()
@@ -113,14 +119,25 @@ public class Player : MonoBehaviour
 
     public void OnPlayerMeshTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Coin>())
+        if (other.GetComponent<Obstacle>())
+        {
+            other.GetComponent<Obstacle>().DestroyObstacle();
+
+            SoundManager.Instance.Vibration();
+
+            SoundManager.Instance.OnObstacleCrash(transform.position);
+
+            _accelerator.ChangeSpeed(-30);
+        }
+        else if (other.GetComponent<Coin>())
         {
             other.GetComponent<Coin>().PickUp();
 
+            SoundManager.Instance.OnCoinPickUp();
+
             LevelInfo.AddCoin();
         }
-
-        if (other.GetComponent<xZone>())
+        else if (other.GetComponent<xZone>())
         {
             _selectedXZone = other.GetComponent<xZone>();
 

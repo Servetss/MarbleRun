@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class GameProgressView : MonoBehaviour
 {
+    private const string SaveGameView = "GameProgressView ";
+
     [SerializeField] private Player _player;
 
     [SerializeField] private LevelPreparer _levelPreparer;
@@ -15,14 +17,21 @@ public class GameProgressView : MonoBehaviour
 
     private void Awake()
     {
-        _checedLevels = -1;
+        //ResetLoad();
 
+        Load();
+    }
+
+    private void Start()
+    {
         ShowLevel();
     }
 
     public void CompleteLevel()
     {
         _checedLevels++;
+
+        Save();
 
         ShowLevel();
     }
@@ -39,4 +48,21 @@ public class GameProgressView : MonoBehaviour
             _checkImages[i].SetActive(i <=_checedLevels);
         }
     }
+
+    #region Save \ Load
+    public void Save()
+    {
+        PlayerPrefs.SetInt(SaveGameView, _checedLevels + 1);
+    }
+
+    public void Load()
+    {
+        _checedLevels = PlayerPrefs.GetInt(SaveGameView) - 1;
+    }
+
+    public void ResetLoad()
+    {
+        PlayerPrefs.SetInt(SaveGameView, 0);
+    }
+    #endregion
 }

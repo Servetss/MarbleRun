@@ -6,11 +6,11 @@ public class Accelerator : MonoBehaviour
 
     [SerializeField] private float _acceleration = 8;
 
+    [SerializeField] private float _speed;
+
     private EventMachine _playerEventMachine;
 
     private RoadMover _roadMover;
-
-    private float _speed;
 
     private bool _isRelised;
 
@@ -61,6 +61,11 @@ public class Accelerator : MonoBehaviour
                 _roadMover.SetSpeed(_speed);
             }
         }
+    }
+
+    public void ChangeSpeed(float value)
+    {
+        _speed += value;
     }
 
     public void SetAcceleration(float acceleration)

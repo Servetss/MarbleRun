@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class SkinModel
 {
+    private const string SkinModelSave = "SkinModelSave";
+
     private SkinContainer _skinContainer;
 
     private int _skinIndexToView;
@@ -14,6 +16,10 @@ public class SkinModel
     public SkinModel(SkinContainer skinContainer)
     {
         _skinContainer = skinContainer;
+
+        Load();
+
+        SelectSkin();
     }
 
     public SkinSO SkinOnPlayer { get; private set; }
@@ -43,6 +49,8 @@ public class SkinModel
         SkinOnPlayer = SelectedSkin;
 
         SkinChange?.Invoke();
+
+        Save();
     }
 
     public void BuySkin()
@@ -58,4 +66,18 @@ public class SkinModel
             SkinChange?.Invoke();
         }
     }
+
+    #region Save \ Load
+    private void Save()
+    {
+        PlayerPrefs.SetInt(SkinModelSave, _skinIndexToView);
+    }
+
+    public void Load()
+    {
+        _skinIndexToView = PlayerPrefs.GetInt(SkinModelSave);
+
+        SelectedSkin = _skinContainer.GetSkinByIndex(_skinIndexToView);
+    }
+    #endregion
 }

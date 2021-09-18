@@ -14,7 +14,7 @@ public class Ability : MonoBehaviour
 
     [SerializeField] private float _increaseBoost;
 
-    [Header("Coast")]
+    [Header("Cost")]
     [SerializeField] private int _startCost;
 
     [SerializeField] private int _increaseCost;
@@ -23,9 +23,19 @@ public class Ability : MonoBehaviour
 
     private void Awake()
     {
-        BoostBuy += SetBoost;
-
         Load();
+
+        BoostBuy += SetBoost;
+    }
+
+    private void Start()
+    {
+        SetBoost();
+    }
+
+    protected virtual void OnStart()
+    {
+        
     }
 
     public int Cost => _startCost + (_level * _increaseCost);
@@ -58,17 +68,27 @@ public class Ability : MonoBehaviour
         Wallet.instance.SpendMoney(Cost);
 
         _level++;
+
+        Save();
     }
 
     #region Save\Load
     public void Save()
     {
-        
+        PlayerPrefs.SetInt(AbilitySave + gameObject.name, _level);
     }
 
     public void Load()
     {
+        _level = PlayerPrefs.GetInt(AbilitySave + gameObject.name);
+
         BoostBuy?.Invoke();
+    }
+
+    [ContextMenu("Reset save")]
+    public void ResetSave()
+    {
+        PlayerPrefs.SetInt(AbilitySave + gameObject.name, 0);
     }
     #endregion
 }

@@ -23,7 +23,7 @@ public class Jump : MonoBehaviour
     [SerializeField] private float _lerp;
 
     private int _pointIndex;
-    
+
     public Vector3[] TrajectoryPoints { get => _trajectoryPoints; }
 
     private void FixedUpdate()
@@ -64,9 +64,10 @@ public class Jump : MonoBehaviour
 
                             _finish.MarbleStop(GetComponent<Player>());
                         }
-                    }
+                        SoundManager.Instance.OnXZoneJump();
                     }
                 }
+            }
         }
     }
 

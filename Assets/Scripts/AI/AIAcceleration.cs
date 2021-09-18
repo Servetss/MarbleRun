@@ -2,10 +2,16 @@ using UnityEngine;
 
 public class AIAcceleration : MonoBehaviour
 {
+    [SerializeField] private RoadMover _playerRoadMover;
+
     [Range(0.5f, 5)]
     [SerializeField] private float _lerpSpeed = 2;
 
     [SerializeField] private float _delayForChangeAcceleration;
+
+    [SerializeField] private float _defaultMinimumSpeed;
+
+    [SerializeField] private float _defaultMaximumSpeed;
 
     [SerializeField] private float _minimumSpeed;
 
@@ -14,6 +20,8 @@ public class AIAcceleration : MonoBehaviour
     private EventMachine _playerEventMachine;
 
     private RoadMover _roadMover;
+
+    private bool _isBoostZoneAndPlayerAboutToLose;
 
     private bool _isSpeedChanging;
 
@@ -30,12 +38,18 @@ public class AIAcceleration : MonoBehaviour
         _roadMover = GetComponent<RoadMover>();
 
         _playerEventMachine = GetComponent<EventMachine>();
+
+        _minimumSpeed = _defaultMinimumSpeed;
+
+        _maximumSpeed = _defaultMaximumSpeed;
     }
     private void Start()
     {
         _fromSpeed = _speed;
 
-        _playerEventMachine?.SubscribeOnRoadStartStart(DelaySpeedChange);
+        _playerEventMachine?.SubscribeOnRoadStartStart(ChangeSpeed);
+
+        _playerEventMachine?.SubscribeOnBoostZoneStart(SlowDown);
     }
 
     private void Update()
@@ -65,12 +79,42 @@ public class AIAcceleration : MonoBehaviour
             {
                 if (_speed < 90)
                 {
-                    _speed += Time.deltaTime;
+                    if (_isBoostZoneAndPlayerAboutToLose)
+                    {
+                        _roadMover.SetSpeed(_speed - 15);
+                    }
+                    else
+                    {
+                        _speed += Time.deltaTime;
 
-                    _roadMover.SetSpeed(_speed);
+                        _roadMover.SetSpeed(_speed);
+                    }
                 }
             }
         }
+    }
+
+    public void IncreaseSpeed(float value)
+    {
+        _minimumSpeed = _defaultMinimumSpeed + value;
+
+        _maximumSpeed = _defaultMaximumSpeed + value;
+
+        if (gameObject.name == "MarbleAI (4)")
+        {
+            Debug.Log(gameObject.name + ":  " + _defaultMinimumSpeed + "  " + value + "  " + _minimumSpeed);
+        }
+    }
+
+    public void ChangeFromSpeedToSpeed(int value)
+    {
+        _fromSpeed += value;
+
+        _toSpeed += value;
+
+        _speed += value;
+
+        _roadMover.SetSpeed(_speed);
     }
 
     private void DelaySpeedChange()
@@ -83,5 +127,10 @@ public class AIAcceleration : MonoBehaviour
         _toSpeed = Random.Range(_minimumSpeed, _maximumSpeed);
 
         _isSpeedChanging = true;
+    }
+
+    private void SlowDown()
+    {
+        _isBoostZoneAndPlayerAboutToLose = _roadMover.Distance - _playerRoadMover.Distance > 15;
     }
 }

@@ -23,6 +23,8 @@ public class SkinPresenter
         _view.ClickOnBuySkin += OnSkinBuy;
 
         _view.ClickOnSelectedSkin += OnSkinChanged;
+
+        _model.SkinChange?.Invoke();
     }
 
     public void Disable()

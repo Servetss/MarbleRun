@@ -187,13 +187,12 @@ public class RoadMover : MonoBehaviour
 
     private void DisableMover()
     {
-        if (IsMove)
-        {
-            IsMove = false;
+        IsMove = false;
 
-            _distance = 0;
+        SplineIndex = 0;
 
-            SplineIndex = 0;
-        }
+        _pointIndex = 0;
+
+        _distance = 0;
     }
 }

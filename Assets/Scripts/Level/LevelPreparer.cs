@@ -1,7 +1,5 @@
-﻿using Barmetler;
-using Barmetler.RoadSystem;
+﻿using Barmetler.RoadSystem;
 using System;
-using System.Linq;
 using UnityEngine;
 
 public class LevelPreparer : MonoBehaviour
@@ -23,6 +21,11 @@ public class LevelPreparer : MonoBehaviour
 
     [SerializeField] private Enemys _enemys;
 
+    [Header("Background")]
+    [SerializeField] private Transform _water;
+
+    [SerializeField] private Transform _background;
+
     private EventMachine _playerEventMachine;
 
     private Transform _playerTransform;
@@ -35,6 +38,8 @@ public class LevelPreparer : MonoBehaviour
             throw new ArgumentNullException();
 
         _playerEventMachine = _player.GetComponent<EventMachine>();
+
+        //ResetLoad();
     }
 
     public Player PlayerMarble { get => _player; }
@@ -55,7 +60,20 @@ public class LevelPreparer : MonoBehaviour
 
         Load();
 
+        HideNotActiveLevels();
+
+        _gameProgressView.ShowLevel();
+
         Invoke("PutOnTheLevel", Time.fixedDeltaTime);
+    }
+
+    private void HideNotActiveLevels()
+    {
+        for (int i = 0; i < _levelContainer.LevelsCount; i++)
+        {
+            if(i != SelectedLevelIndex)
+                HideLevel(_levelContainer.GetLevelByIndex(i));
+        }
     }
 
     public void SelectNewLevel()
@@ -104,6 +122,12 @@ public class LevelPreparer : MonoBehaviour
         HideLevel(_levelContainer.GetLevelByIndex(_previousLevelIndex));
 
         ShowLevel(_levelContainer.GetLevelByIndex(SelectedLevelIndex));
+
+        Vector3 levelPosition = _levelContainer.GetLevelByIndex(SelectedLevelIndex).transform.position;
+
+        _water.position = new Vector3(levelPosition.x, -117.3f, levelPosition.z);
+
+        _background.position = new Vector3(levelPosition.x, -117.3f, levelPosition.z);
     }
 
     private void ShowLevel(GameObject level)
@@ -127,6 +151,8 @@ public class LevelPreparer : MonoBehaviour
         PlayerPrefs.SetInt(LevelSave + PreviousSave, _previousLevelIndex);
 
         PlayerPrefs.SetInt(LevelSave + SelectedSave, SelectedLevelIndex);
+
+        PlayerPrefs.SetInt(LevelSave + "LevelCount", LevelCount);
     }
 
     private void Load()
@@ -134,6 +160,17 @@ public class LevelPreparer : MonoBehaviour
         _previousLevelIndex = PlayerPrefs.GetInt(LevelSave + PreviousSave);
 
         SelectedLevelIndex = PlayerPrefs.GetInt(LevelSave + SelectedSave);
+
+        LevelCount = PlayerPrefs.GetInt(LevelSave + "LevelCount");
+    }
+
+    private void ResetLoad()
+    {
+        PlayerPrefs.SetInt(LevelSave + PreviousSave, 0);
+
+        PlayerPrefs.SetInt(LevelSave + SelectedSave, 0);
+
+        PlayerPrefs.SetInt(LevelSave + "LevelCount", 0);
     }
     #endregion
 }

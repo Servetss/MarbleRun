@@ -26,7 +26,7 @@ public class PositionOnTheTrackView : MonoBehaviour
 
         _eventMachine?.SubscribeOnMoveToNextLevel(EnablesPositionChanging);
 
-        _eventMachine?.SubscribeOnRoadEnd(DisablePositionChanging);
+        _eventMachine?.SubscribeOnBoostZoneFinish(DisablePositionChanging);
     }
 
     public void SetPosition(int positionNum)
