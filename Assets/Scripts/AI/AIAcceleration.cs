@@ -99,11 +99,6 @@ public class AIAcceleration : MonoBehaviour
         _minimumSpeed = _defaultMinimumSpeed + value;
 
         _maximumSpeed = _defaultMaximumSpeed + value;
-
-        if (gameObject.name == "MarbleAI (4)")
-        {
-            Debug.Log(gameObject.name + ":  " + _defaultMinimumSpeed + "  " + value + "  " + _minimumSpeed);
-        }
     }
 
     public void ChangeFromSpeedToSpeed(int value)

@@ -24,7 +24,7 @@ public class GiftReciveUI : MonoBehaviour
         {
             _skinImage.sprite = _coinSprite;
 
-            _coinRecieveText.text = NumberParser.FromNumberToShortText(2000);
+            _coinRecieveText.text = NumberParser.FromNumberToShortText(2000) + "$";
 
             Wallet.instance.AddMoney(2000);
         }

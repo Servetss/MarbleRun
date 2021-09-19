@@ -8,6 +8,8 @@ public class Accelerator : MonoBehaviour
 
     [SerializeField] private float _speed;
 
+    [SerializeField] private ParticleSystem _speedParticle;
+
     private EventMachine _playerEventMachine;
 
     private RoadMover _roadMover;
@@ -63,6 +65,11 @@ public class Accelerator : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        SpeedParticleActivness();
+    }
+
     public void ChangeSpeed(float value)
     {
         _speed += value;
@@ -76,6 +83,21 @@ public class Accelerator : MonoBehaviour
     public void SetSpeedBoost(float boost)
     {
         _speedBoost = boost;
+    }
+
+    private void SpeedParticleActivness()
+    {
+        if (_isPlayeMode)
+        {
+            if (_speedParticle.isPlaying == false && _speed >= (MaximalSpeed - 1))
+                _speedParticle.Play();
+            else if(_speedParticle.isPlaying && _speed < (MaximalSpeed - 1))
+                _speedParticle.Stop();
+        }
+        else if (_isPlayeMode == false && _speedParticle.isPlaying)
+        {
+            _speedParticle.Stop();
+        }
     }
 
     private void AccelerateModeEnable()
