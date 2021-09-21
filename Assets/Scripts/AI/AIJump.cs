@@ -8,7 +8,7 @@ public class AIJump : MonoBehaviour
 
     private RoadMover _roadMover;
 
-    private float _jumpStrenght = 10;
+    private float _jumpStrenght = 20;
 
     private Vector3[] _trajectoryPoints;
 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Skin 2
   m_EditorClassIdentifier: 
   _skinName: 
-  _skinCost: 200
+  _skinCost: 1200
   _skinOnUI: {fileID: -2227362561352573604, guid: fab3dedbb5e997e44ba5f527a558b360, type: 3}
   _material: {fileID: 2100000, guid: e975c6e238e91df4ebd0b34c611fcf95, type: 2}
   _isUnlocked: 0
