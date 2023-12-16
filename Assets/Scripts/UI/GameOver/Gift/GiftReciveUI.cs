@@ -20,7 +20,7 @@ public class GiftReciveUI : MonoBehaviour
 
         skin = _posibilityToSkinDrop >= random ? skin : null;
 
-        if (skin == null)
+        if (skin == null || skin.SkinOnUI == null)
         {
             _skinImage.sprite = _coinSprite;
 

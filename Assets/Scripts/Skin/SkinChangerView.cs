@@ -14,6 +14,8 @@ public class SkinChangerView : MonoBehaviour
 
     [SerializeField] private Text _skinCost_T;
 
+    [SerializeField] private GameObject _playerAOShadow;
+
     public Action ClickOnNextSkin;
 
     public Action ClickOnPreviousSkin;
@@ -34,11 +36,15 @@ public class SkinChangerView : MonoBehaviour
 
     public void OnSkinModeEnable()
     {
+        _playerAOShadow.SetActive(false);
+
         _animator.SetBool("ChangeSkin", true);
     }
 
     public void OnSkinModeDisable()
     {
+        _playerAOShadow.SetActive(true);
+
         _animator.SetBool("ChangeSkin", false);
     }
 

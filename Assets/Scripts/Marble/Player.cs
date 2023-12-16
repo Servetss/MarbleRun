@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Firebase.Analytics;
+using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -62,6 +63,8 @@ public class Player : MonoBehaviour
 
     private void LevelStart()
     {
+        FirebaseAnalytics.LogEvent("Race_Start_" + (_levelPreparer.LevelCount + 1));
+
         PlayerEventMachine.RoadStartMethod();
     }
 

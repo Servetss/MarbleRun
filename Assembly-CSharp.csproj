@@ -224,6 +224,7 @@
     <None Include="Assets\Firebase\Plugins\Google.MiniJson.dll" />
     <None Include="Assets\Firebase\Plugins\iOS\Firebase.App.dll" />
     <None Include="Assets\Visual\Shaders\EarthShader.shader" />
+    <None Include="Assets\Visual\Shaders\ColorAlphaInvert.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -40,7 +40,7 @@ public class StartZone : MonoBehaviour
 
         marble.position = vectorOnTheSpline + startZone.OrientedPoints[0].normal / 2;
 
-        marble.GetChild(0).localPosition = new Vector3(distance, 0, 0);
+        marble.GetChild(0).localPosition = new Vector3(distance, marble.GetChild(0).localPosition.y, marble.GetChild(0).localPosition.z);
 
         roadMover.SetSplineIndex(startZone.GetIndexOnPlineByTransform(onStartPosition));
 

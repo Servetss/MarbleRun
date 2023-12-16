@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Firebase.Analytics;
+using UnityEngine;
 
 public class Finish : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class Finish : MonoBehaviour
 
     public void MarbleStop(Player player)
     {
+        FirebaseAnalytics.LogEvent("Race_Finish");
+
         _materialShining.StartAnim(player.XZone.GetComponent<MeshRenderer>());
 
         player.PlayerEventMachine.FinishMethod();

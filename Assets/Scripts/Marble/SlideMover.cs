@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SlideMover : MonoBehaviour
 {
@@ -7,6 +8,11 @@ public class SlideMover : MonoBehaviour
     [SerializeField] private float _speed;
 
     [SerializeField] private Camera _camera;
+
+    [Header("Shadow")]
+    [SerializeField] private Transform _shadow;
+
+    [SerializeField] private Transform _shadow2;
 
     private EventMachine _playerEventMachine;
 
@@ -90,6 +96,10 @@ public class SlideMover : MonoBehaviour
 
                 _mesh.localPosition = new Vector3(_actualPosition, _mesh.localPosition.y, _mesh.localPosition.z);
 
+                _shadow.localPosition = new Vector3(_mesh.localPosition.x, _shadow.localPosition.y, _shadow.localPosition.z);
+
+                _shadow2.localPosition = new Vector3(_mesh.localPosition.x, _shadow2.localPosition.y, _shadow2.localPosition.z);
+
                 _mesh.localEulerAngles = new Vector3(0, _moveRotationY, -_moveRotationX);
 
                 _camera.transform.localEulerAngles = new Vector3(_camera.transform.localEulerAngles.x, _camera.transform.transform.localEulerAngles.y, -_cameraRotateZ);
@@ -137,6 +147,10 @@ public class SlideMover : MonoBehaviour
         _actualPosition = Mathf.Abs(position);
 
         _mesh.localPosition = new Vector3(_actualPosition, _mesh.localPosition.y, _mesh.localPosition.z);
+
+        _shadow.localPosition = new Vector3(_actualPosition, _shadow.localPosition.y, _shadow.localPosition.z);
+
+        _shadow2.localPosition = new Vector3(_actualPosition, _shadow2.localPosition.y, _shadow2.localPosition.z);
 
         _camera.transform.localPosition = new Vector3(_actualPosition / 1.5f, _camera.transform.localPosition.y, _camera.transform.transform.localPosition.z);
     }

@@ -3,6 +3,7 @@ Shader "Unlit/RealShader"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _MainColor ("Color", Color) = (1,1,1,1)
 
         _LightRange ("Light Range", Range(0.0, 5)) = 0.5
 
@@ -62,6 +63,8 @@ Shader "Unlit/RealShader"
             samplerCUBE _CubeMapTex;
             half4 _CubeMapTex_HDR;
 
+            float4 _MainColor;
+
             float _LightRange;
 
             float4 _FresnelColor;
@@ -109,7 +112,7 @@ Shader "Unlit/RealShader"
                 float NdotV = 1- saturate(dot(i.normal, V.xyz));
 
                 // sample the texture
-                fixed4 col = tex2D(_MainTex, i.uv) * NdotL;
+                fixed4 col = tex2D(_MainTex, i.uv) * max(NdotL,_LightRange) * _MainColor;
 
 
                 half3 R = reflect(-V , i.normal);
