@@ -10,9 +10,19 @@ public class SkinContainer : MonoBehaviour
 
     private void Awake()
     {
+        SkinLoads();
+
         SkinModel skinModel = new SkinModel(this);
 
         _skinPresenter = new SkinPresenter(_skinChangerView, skinModel);
+    }
+
+    private void SkinLoads()
+    {
+        for (int i = 0; i < _skins.Length; i++)
+        {
+            _skins[i].Load();
+        }
     }
 
     private void OnEnable()

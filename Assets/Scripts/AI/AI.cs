@@ -1,13 +1,18 @@
+using Firebase.RemoteConfig;
 using UnityEngine;
 
 public class AI : MonoBehaviour
 {
+    public const string AccelerationAI = "ai_acceleration";
+
     [SerializeField] private AIAcceleration _aiAcceleration;
 
     private AIAcceleration _accelerator;
 
     private EventMachine _eventMachine;
 
+    private int _saveLevel;
+    
     private void Awake()
     {
         _eventMachine = GetComponent<EventMachine>();
@@ -17,6 +22,8 @@ public class AI : MonoBehaviour
 
     public void StartRoad()
     {
+        SetNewMaxSpeed(_saveLevel);
+
         _eventMachine?.RoadStartMethod();
     }
 
@@ -27,7 +34,17 @@ public class AI : MonoBehaviour
 
     public void SetNewMaxSpeed(int levelBoost)
     {
-        float speedValue = 3.2f;
+        // default balance 3.2
+
+        _saveLevel = levelBoost;
+
+        var remoteConfig = FirebaseRemoteConfig.DefaultInstance;
+        float Acceleration = 3.2f;
+
+        if (remoteConfig != null && RemoteConfig.Instance.IsLoaded)
+            Acceleration = (float)remoteConfig.GetValue(AccelerationAI).DoubleValue;
+        
+        float speedValue = Acceleration;
 
         _aiAcceleration.IncreaseSpeed(levelBoost * speedValue);
     }

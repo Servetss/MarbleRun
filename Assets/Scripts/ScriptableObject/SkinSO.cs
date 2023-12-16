@@ -25,7 +25,7 @@ public class SkinSO : ScriptableObject
 
     public Material Material { get => _material; }
 
-    public bool IsUnlocked { get => _isUnlocked; }
+    public bool IsUnlocked { get => _isUnlocked || _skinCost == 0; }
 
     public void UnlockTheSkin()
     {
@@ -37,12 +37,12 @@ public class SkinSO : ScriptableObject
     #region Save\Load
     public void Save()
     {
-        PlayerPrefs.SetInt(SaveSkin + _skinName, _isUnlocked ? 1 : 0);
+        PlayerPrefs.SetInt(SaveSkin + name, _isUnlocked ? 1 : 0);
     }
 
     public void Load()
     {
-        _isUnlocked = PlayerPrefs.GetInt(SaveSkin + _skinName) == 1;
+        _isUnlocked = PlayerPrefs.GetInt(SaveSkin + name) == 1;
     }
     #endregion
 }

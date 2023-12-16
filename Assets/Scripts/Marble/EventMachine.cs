@@ -1,8 +1,11 @@
+using Firebase.Analytics;
 using System;
 using UnityEngine;
 
 public class EventMachine : MonoBehaviour
 {
+    [SerializeField] private LevelPreparer _levelPreparer;
+
     private Action RoadStart;
 
     private Action RoadEnd;
@@ -53,6 +56,9 @@ public class EventMachine : MonoBehaviour
 
     public void RoadStartMethod()
     {
+
+        FirebaseAnalytics.LogEvent("Race_Start_" + (_levelPreparer.LevelCount + 1));
+
         RoadStart?.Invoke();
     }
 
@@ -73,6 +79,8 @@ public class EventMachine : MonoBehaviour
 
     public void FinishMethod()
     {
+        FirebaseAnalytics.LogEvent("Race_Finish");
+
         Finish?.Invoke();
     }
 

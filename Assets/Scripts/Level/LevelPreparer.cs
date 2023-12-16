@@ -1,4 +1,5 @@
 ﻿using Barmetler.RoadSystem;
+using Firebase.Analytics;
 using System;
 using UnityEngine;
 
@@ -113,6 +114,8 @@ public class LevelPreparer : MonoBehaviour
         {
             SelectedLevelIndex = 0;
         }
+
+        FirebaseAnalytics.LogEvent("Next_Level" + (LevelCount + 1));
 
         Save();
     }

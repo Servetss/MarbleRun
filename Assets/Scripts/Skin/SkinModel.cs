@@ -24,13 +24,15 @@ public class SkinModel
 
     public SkinSO SkinOnPlayer { get; private set; }
 
-    public SkinSO SelectedSkin { get; private set; }
+    public SkinSO PreviewSelectedSkin { get; private set; }
+
+    public SkinSO SkinInShopSave { get; private set; }
 
     public void MoveToNextSkin()
     {
         _skinIndexToView = _skinContainer.GetNextSkinIndex(_skinIndexToView);
 
-        SelectedSkin = _skinContainer.GetSkinByIndex(_skinIndexToView);
+        PreviewSelectedSkin = _skinContainer.GetSkinByIndex(_skinIndexToView);
 
         SelectSkin();
     }
@@ -39,29 +41,32 @@ public class SkinModel
     {
         _skinIndexToView = _skinContainer.GetPreviousSkinIndex(_skinIndexToView);
 
-        SelectedSkin = _skinContainer.GetSkinByIndex(_skinIndexToView);
+        PreviewSelectedSkin = _skinContainer.GetSkinByIndex(_skinIndexToView);
 
         SelectSkin();
     }
 
     public void SelectSkin()
     {
-        SkinOnPlayer = SelectedSkin;
+        SkinOnPlayer = PreviewSelectedSkin;
 
+        if (SkinOnPlayer.IsUnlocked)
+        {
+            Save();
+        }
+        
         SkinChange?.Invoke();
-
-        Save();
     }
 
     public void BuySkin()
     {
-        if (Wallet.instance.Value >= SelectedSkin.SkinCost)
+        if (Wallet.instance.Value >= PreviewSelectedSkin.SkinCost)
         {
-            Wallet.instance.SpendMoney(SelectedSkin.SkinCost);
+            Wallet.instance.SpendMoney(PreviewSelectedSkin.SkinCost);
 
-            SelectedSkin.UnlockTheSkin();
+            PreviewSelectedSkin.UnlockTheSkin();
 
-            SkinOnPlayer = SelectedSkin;
+            SkinOnPlayer = PreviewSelectedSkin;
 
             SkinChange?.Invoke();
         }
@@ -77,7 +82,7 @@ public class SkinModel
     {
         _skinIndexToView = PlayerPrefs.GetInt(SkinModelSave);
 
-        SelectedSkin = _skinContainer.GetSkinByIndex(_skinIndexToView);
+        PreviewSelectedSkin = _skinContainer.GetSkinByIndex(_skinIndexToView);
     }
     #endregion
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Firebase.Analytics;
+using UnityEngine;
 
 public class GameOverPanel : MonoBehaviour
 {
@@ -69,7 +70,7 @@ public class GameOverPanel : MonoBehaviour
         _panels[panelOpenedIndex].SetActive(false);
 
         panelOpenedIndex++;
-
+        
         if (panelOpenedIndex < _panels.Length)
         {
             OpenPanel();
@@ -81,6 +82,11 @@ public class GameOverPanel : MonoBehaviour
         }
     }
 
+    public void ShowADS()
+    {
+        ADS.Instance.ShowInterstitial();
+    }
+    
     public void HideGamePanel()
     {
         _gamebackgroundPanel.SetActive(false);

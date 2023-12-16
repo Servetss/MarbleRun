@@ -48,7 +48,7 @@ public class SkinPresenter
 
     private void OnSkinChanged()
     {
-        _view.SetSkin(_model.SelectedSkin);
+        _view.SetSkin(_model.PreviewSelectedSkin);
     }
 
     private void OnClickNext()

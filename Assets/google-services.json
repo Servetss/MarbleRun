@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "941961967291",
+    "project_id": "marble-run-78c60",
+    "storage_bucket": "marble-run-78c60.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:941961967291:android:07108f2b47a37f651f5b9e",
+        "android_client_info": {
+          "package_name": "com.ArtMindGames.MarbleRun"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYHGnFrxZxeLf_GfigWazw5Qclp0SMxPA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
