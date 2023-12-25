@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15050066b82ae6542b22b9121867bbdc, type: 3}
-  m_Name: SkinLavaLamp
+  m_Name: Tier_3_7
   m_EditorClassIdentifier: 
   _skinName: 
-  _skinCost: 2000
-  _skinOnUI: {fileID: 0}
-  _material: {fileID: 2100000, guid: fa1f77fb5336a844bb292c93fa94baf8, type: 2}
-  _isUnlocked: 1
+  _skinCost: 2700
+  _skinOnUI: {fileID: -2227362561352573604, guid: fab3dedbb5e997e44ba5f527a558b360, type: 3}
+  _material: {fileID: 2100000, guid: e975c6e238e91df4ebd0b34c611fcf95, type: 2}
+  _isUnlocked: 0
   _isDefault: 0

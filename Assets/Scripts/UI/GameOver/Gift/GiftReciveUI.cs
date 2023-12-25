@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class GiftReciveUI : MonoBehaviour
@@ -9,7 +10,7 @@ public class GiftReciveUI : MonoBehaviour
 
     [SerializeField] private Sprite _coinSprite;
 
-    [SerializeField] private Text _coinRecieveText;
+    [SerializeField] private TextMeshProUGUI _coinRecieveText;
 
     [Range(0, 100)]
     [SerializeField] private int _posibilityToSkinDrop;

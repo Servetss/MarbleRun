@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
 
     private void LevelStart()
     {
-        FirebaseAnalytics.LogEvent("Race_Start_" + (_levelPreparer.LevelCount + 1));
+        FirebaseAnalytics.LogEvent("Race_Start", "level_start_count", (_levelPreparer.LevelCount + 1));
 
         PlayerEventMachine.RoadStartMethod();
     }

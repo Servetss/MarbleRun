@@ -33,6 +33,8 @@ public class LevelPreparer : MonoBehaviour
 
     private int _previousLevelIndex;
 
+    public Action OnNextLevel;
+
     private void Awake()
     {
         if (_levelContainer == null)
@@ -115,7 +117,9 @@ public class LevelPreparer : MonoBehaviour
             SelectedLevelIndex = 0;
         }
 
-        FirebaseAnalytics.LogEvent("Next_Level" + (LevelCount + 1));
+        FirebaseAnalytics.LogEvent("Next_Level", "level",(LevelCount + 1));
+
+        OnNextLevel?.Invoke();
 
         Save();
     }

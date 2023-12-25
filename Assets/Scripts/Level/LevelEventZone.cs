@@ -29,6 +29,15 @@ public class LevelEventZone : MonoBehaviour
 
     public Vector3 DirectionJump => (_directionJump.position - BoostSplinePoint[BoostSplinePoint.Length - 1].position).normalized;
 
+    public Vector3 ForwardOfDirectionJump()
+    {
+        Vector3 direction = _directionJump.position - BoostSplinePoint[BoostSplinePoint.Length - 1].position;
+
+        direction.y = 0;
+        
+        return direction.normalized;
+    }
+
     public Vector3 XZonePosition => _xZone.position;
 
     public Bezier.OrientedPoint[] StartSplinePoints { get; private set; }

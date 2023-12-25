@@ -38,6 +38,8 @@ public class SlideMover : MonoBehaviour
 
     private float _lerp;
 
+    private float _cameraLerp;
+    
     private float _Xposition;
 
     private float _Yposition;
@@ -75,6 +77,8 @@ public class SlideMover : MonoBehaviour
                 _isLerp = false;
 
                 _lerp = 0;
+
+                _cameraLerp = 0;
 
                 _clickedPosition = Input.mousePosition;
             }
@@ -121,14 +125,16 @@ public class SlideMover : MonoBehaviour
 
         if (_isLerp)
         {
-            _lerp += Time.deltaTime * 5;
+            _lerp += Time.deltaTime * 0.2f;
+
+            _cameraLerp += Time.deltaTime * 1;
 
             float x = Mathf.Lerp(_Xposition, 0, _lerp);
             
             float y = Mathf.Lerp(_Yposition, 0, _lerp);
 
-            float z = Mathf.Lerp(_cameraZPostion, 0, _lerp);
-
+            float z = Mathf.Lerp(_cameraZPostion, 0, _cameraLerp);
+            
             _mesh.localEulerAngles = new Vector3(0, y, x);
 
             _camera.transform.localEulerAngles = new Vector3(_camera.transform.localEulerAngles.x, _camera.transform.localEulerAngles.y, z);

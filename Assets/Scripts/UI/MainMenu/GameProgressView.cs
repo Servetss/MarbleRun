@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +10,7 @@ public class GameProgressView : MonoBehaviour
 
     [SerializeField] private LevelPreparer _levelPreparer;
 
-    [SerializeField] private Text _levelText;
+    [SerializeField] private TextMeshProUGUI _levelText;
 
     [SerializeField] private GameObject[] _checkImages;
 

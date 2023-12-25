@@ -4,7 +4,7 @@ public class MaterialShining : MonoBehaviour
 {
     [SerializeField] private EventMachine _playerEventmachine;
 
-    [Range(0.1f, 15)]
+    [Range(0.01f, 1)]
     [SerializeField] private float _animationSpeed;
 
     [SerializeField] private Color _colorTo;
@@ -30,7 +30,7 @@ public class MaterialShining : MonoBehaviour
         {
             _distance += Time.deltaTime * _animationSpeed;
 
-            _sin = Mathf.Abs(Mathf.Sin(_distance));
+            _sin = Mathf.Abs(Mathf.Sin(_distance * Mathf.PI));
 
             _material.SetColor("_Color", Color.Lerp(_colorFrom, _colorTo, _sin));
         }

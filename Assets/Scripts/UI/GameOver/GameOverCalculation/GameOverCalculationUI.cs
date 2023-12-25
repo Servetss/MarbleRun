@@ -1,13 +1,13 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using TMPro;
+using UnityEngine;
 
 public class GameOverCalculationUI : MonoBehaviour, IGameOverPanels
 {
-    [SerializeField] private Text _levelText;
+    [SerializeField] private TextMeshProUGUI _levelText;
 
-    [SerializeField] private Text _coinReceive;
+    [SerializeField] private TextMeshProUGUI _coinReceive;
 
-    [SerializeField] private Text _playerPlace;
+    [SerializeField] private TextMeshProUGUI _playerPlace;
 
     [SerializeField] private Ability _moneyBoostAbility;
 

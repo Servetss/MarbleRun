@@ -1,9 +1,10 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PositionOnTheTrackView : MonoBehaviour
 {
-    [SerializeField] private Text _numberPosition;
+    [SerializeField] private TextMeshProUGUI _numberPosition;
 
     private EventMachine _eventMachine;
 
@@ -38,7 +39,8 @@ public class PositionOnTheTrackView : MonoBehaviour
             if(_player != null)
                 _player.LevelInfo.IsWin = positionNum == 1;
 
-            _numberPosition.text = NumberParser.NumberToPositionText(positionNum);
+            if(_numberPosition != null)
+                _numberPosition.text = NumberParser.NumberToPositionText(positionNum);
         }
     }
 
