@@ -1,5 +1,4 @@
-﻿using Firebase.Analytics;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameOverPanel : MonoBehaviour
 {
@@ -10,6 +9,8 @@ public class GameOverPanel : MonoBehaviour
     [SerializeField] private GameObject _mainMenuBackgroundPanel;
 
     [SerializeField] private LevelPreparer _levelPreparer;
+
+    [SerializeField] private MainMenuPanel _mainMenuPanel;
 
     [SerializeField] private GameObject[] _panels;
 
@@ -80,6 +81,7 @@ public class GameOverPanel : MonoBehaviour
             // 
             GameOverUIFinish();
         }
+
     }
 
     public void ShowADS()
@@ -101,5 +103,7 @@ public class GameOverPanel : MonoBehaviour
         _mainMenuBackgroundPanel.SetActive(true);
 
         _levelPreparer.SelectNewLevel();
+
+        _mainMenuPanel.OnRaceFinishAndGoToMainMenu();
     }
 }

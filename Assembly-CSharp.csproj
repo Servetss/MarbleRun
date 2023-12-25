@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Level\LevelInfo.cs" />
     <Compile Include="Assets\Scripts\Skin\SkinChanger.cs" />
     <Compile Include="Assets\Scripts\Marble\Jump.cs" />
+    <Compile Include="Assets\Scripts\Animations\WaitCustom.cs" />
     <Compile Include="Assets\Scripts\UI\GameOver\Gift\ButtonActivness.cs" />
     <Compile Include="Assets\Scripts\Marble\Player.cs" />
     <Compile Include="Assets\Appodeal\Common\Appodeal\IInAppPurchase.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Assets\Scripts\Skin\SkinChangerView.cs" />
     <Compile Include="Assets\Appodeal\Platforms\Appodeal\Dummy\DummyAppStoreInAppPurchaseBuilder.cs" />
     <Compile Include="Assets\Scripts\AI\AIJump.cs" />
+    <Compile Include="Assets\Scripts\Animations\UIHideAnimation.cs" />
     <Compile Include="Assets\Scripts\Wallet\NumberParser.cs" />
     <Compile Include="Assets\Appodeal\Platforms\Appodeal\iOS\AppodealObjCBridge.cs" />
     <Compile Include="Assets\ImportedAssets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
@@ -181,7 +183,6 @@
     <Compile Include="Assets\Scripts\Skin\SkinContainer.cs" />
     <Compile Include="Assets\Scripts\Marble\Boosts\IBoost.cs" />
     <Compile Include="Assets\Scripts\Marble\MeshTrigger.cs" />
-    <Compile Include="Assets\Scripts\Animations\WaitCustom.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -80,7 +80,7 @@ public class WaitCustom : MonoBehaviour
 public class AnimationStruct
 {
     public AnimatedData AnimatedData;
-    
+
     public float Time;
 
     public float Speed;
@@ -90,6 +90,28 @@ public class AnimationStruct
         AnimatedData = animatedData;
 
         Speed = speed;
+    }
+}
+
+public class RectTransformAnimation : AnimatedData
+{
+    private RectTransform _rectTransform;
+
+    private Vector3 _startPosition;
+
+    private Vector3 _targetPosition;
+
+    public RectTransformAnimation(RectTransform rectTransform, Vector3 targetPosition)
+    {
+        _rectTransform = rectTransform;
+
+        _startPosition = _rectTransform.anchoredPosition;
+
+        _targetPosition = targetPosition;
+    }
+    public override void Evaluate(float time)
+    {
+        _rectTransform.anchoredPosition = Vector3.Lerp(_startPosition, _targetPosition, time);
     }
 }
 
