@@ -21,6 +21,8 @@ public class Ability : MonoBehaviour
 
     public Action BoostBuy;
 
+    public Action BoostCanNotBuy;
+
     private void Awake()
     {
         Load();
@@ -55,11 +57,21 @@ public class Ability : MonoBehaviour
 
     public void OnClick()
     {
+        Buy();
+
+        BoostBuy?.Invoke();
+
+        return;
+
         if (Wallet.instance.Value >= Cost)
         {
             Buy();
 
             BoostBuy?.Invoke();
+        }
+        else
+        {
+            BoostCanNotBuy?.Invoke();
         }
     }
 

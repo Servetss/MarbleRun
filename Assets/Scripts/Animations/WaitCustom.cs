@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaitCustom : MonoBehaviour
 {
@@ -155,6 +156,171 @@ public class XZoneAnimate : AnimatedData
         float animationValue = BounceEasing(time) * _height;
         
         _xZonePlatform.localPosition = new Vector3(_xZonePlatform.localPosition.x, _xZonePlatform.localPosition.y, _defaultHeight - animationValue);
+    }
+}
+
+public class BounceAnimation : AnimatedData
+{
+    private Transform _transform;
+
+    private Vector3 _vectorOne;
+
+    private Vector3 _amplitudeVector;
+
+    private float _amplitude;
+
+    public BounceAnimation(Transform transform)
+    {
+        _transform = transform;
+
+        _vectorOne = Vector3.one;
+    }
+
+    public void SetAmplitude(float amplitude)
+    {
+        _amplitude = amplitude;
+    }
+    private float Ease(float time, float frequency, float strenght)
+    {
+        time = Mathf.Clamp01(time);
+
+        return Mathf.Sin(time * frequency * Mathf.PI) * Mathf.Pow(1 - time, strenght);
+    }
+
+    public override void Evaluate(float time)
+    {
+        float frequency = 4f;
+
+        float strenght = 1.8f;
+
+        float ease = -Ease(time, frequency, strenght) * _amplitude;
+
+        _amplitudeVector.x = ease;
+        _amplitudeVector.y = ease;
+
+        _transform.localScale = _vectorOne + _amplitudeVector;
+    }
+}
+
+public class ShineAnimation : AnimatedData
+{
+    private Transform _shinePanel;
+
+    private Image _shineImage;
+
+    private Vector3 _vectorOne;
+
+    private Vector3 _easingVector;
+
+    private Color _shineColor;
+
+    public ShineAnimation(Transform shinePanel, Image shineImage)
+    {
+        _shinePanel = shinePanel;
+
+        _shineImage = shineImage;
+
+        _shineColor = _shineImage.color;
+
+        _vectorOne = Vector3.one;
+    }
+
+    public override void Evaluate(float time)
+    {
+        float size = LeanTween.easeOutQuad(1, 0, time) * 0.05f;
+
+        //float shine = LeanTween.easeOutQuad(1, 0, time * 3);
+        float shine = Mathf.Sin(time * Mathf.PI) * 0.2f;
+
+
+
+        //// Shine Scale //
+        //_easingVector.x = size;
+
+        //_easingVector.y = size;
+
+        //_shinePanel.localScale = _vectorOne - _easingVector;
+
+
+        // Shine Color //
+        _shineColor.a = shine;
+
+        _shineImage.color = _shineColor;
+    }
+}
+
+public class ColorChange : AnimatedData
+{
+    private Image _image;
+
+    private Color _startColor;
+
+    private Color _targetColor;
+
+    public ColorChange(Image image, Color startColor, Color targetColor)
+    {
+        _image = image;
+
+        _startColor = startColor;
+
+        _targetColor = targetColor;
+    }
+
+    public override void Evaluate(float time)
+    {
+        float sinAnimation = Mathf.Sin(time * Mathf.PI);
+
+        _image.color = Color.Lerp(_startColor, _targetColor, sinAnimation);
+    }
+}
+
+public class CameraShake : AnimatedData
+{
+    private Camera _mainCamera;
+
+    private Animator _marbleAnimator;
+
+    private Vector3 _defaultLocalPosition;
+
+    private Vector3 _directionMove;
+
+    private float _defaultFieldOfView;
+
+    public CameraShake(Camera mainCamera, Animator marbleAnimator)
+    {
+        _mainCamera = mainCamera;
+
+        _marbleAnimator = marbleAnimator;
+
+        _defaultFieldOfView = _mainCamera.fieldOfView;
+
+        //_defaultLocalPosition = _mainCamera.transform.localPosition;
+    }
+
+    public void SetRandomPosition()
+    {
+        if(_defaultLocalPosition.Equals(Vector3.zero))
+            _defaultLocalPosition = _mainCamera.transform.localPosition;
+
+        _directionMove = Random.insideUnitCircle;
+    }
+
+    private float Easing(float time, float frequence, float height)
+    {
+        return Mathf.Sin(time * Mathf.PI * frequence) * Mathf.Pow(1 - time, height);
+    }
+    
+    public override void Evaluate(float time)
+    {
+        _marbleAnimator.enabled = time > 0.8f;//
+
+        time = Mathf.Clamp(time, 0, 0.8f);
+
+        float bouncing = Easing(time, 4.9f, 1.5f);
+
+        _mainCamera.fieldOfView = _defaultFieldOfView + bouncing * 1f;
+        
+        _mainCamera.transform.localPosition = _defaultLocalPosition + (_directionMove * bouncing * 0.12f);
     }
 }
 

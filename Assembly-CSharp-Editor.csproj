@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Appodeal\Editor\NetworksManager\Data\NetworkDependency.cs" />
     <Compile Include="Assets\Appodeal\Editor\Utils\AppodealEditorSettings.cs" />
+    <Compile Include="Assets\LeanTween\Editor\LeanTweenDocumentationEditor.cs" />
     <Compile Include="Assets\Appodeal\Editor\Checkers\MultidexActivator.cs" />
     <Compile Include="Assets\Appodeal\Editor\NetworksManager\AppodealAdapterManager.cs" />
     <Compile Include="Assets\Editor\MarbleImpulseEditor.cs" />

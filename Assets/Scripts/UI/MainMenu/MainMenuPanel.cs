@@ -8,6 +8,8 @@ public class MainMenuPanel : MonoBehaviour
 
     [SerializeField] private GameObject _startButton;
 
+    [SerializeField] private GameObject _playerAOShadow;
+
     [Header("Animation")]
     [SerializeField] private UIHideAnimation[] _mainMenuHideAnimations;
     
@@ -18,6 +20,20 @@ public class MainMenuPanel : MonoBehaviour
         _startButton.SetActive(true);
 
         _skinPanel.SetActive(false);
+
+        _playerAOShadow.SetActive(true);
+    }
+
+    public void OpenMainMenuPanelWithoutStartButton()
+    {
+        _skinPanel.SetActive(false);
+    }
+
+    public void OnShopButtonClick()
+    {
+        _mainMenuPanel.SetActive(false);
+
+        _playerAOShadow.SetActive(false);
     }
 
     public void OpenSkinPanel()

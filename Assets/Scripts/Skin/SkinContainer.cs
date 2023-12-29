@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class SkinContainer : MonoBehaviour
 {
@@ -6,15 +7,21 @@ public class SkinContainer : MonoBehaviour
 
     [SerializeField] private SkinChangerView _skinChangerView;
 
+    private SkinModel _skinModel;
+
     private SkinPresenter _skinPresenter;
+
+    public Action OnShopBackClick;
 
     private void Awake()
     {
         SkinLoads();
 
-        SkinModel skinModel = new SkinModel(this);
+        _skinModel = new SkinModel(this);
 
-        _skinPresenter = new SkinPresenter(_skinChangerView, skinModel);
+        _skinPresenter = new SkinPresenter(_skinChangerView, _skinModel);
+
+        _skinChangerView.OnBackClick += OnBackShopClick;
     }
 
     private void SkinLoads()
@@ -49,6 +56,11 @@ public class SkinContainer : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void OnBackShopClick()
+    {
+        _skinModel.SelectPreviousUnlocked();
     }
 
     public int GetNextSkinIndex(int actualIndex)

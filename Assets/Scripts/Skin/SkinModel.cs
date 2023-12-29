@@ -9,6 +9,8 @@ public class SkinModel
 
     private int _skinIndexToView;
 
+    private int _selectedUnlocked;
+    
     public Action SkinChange;
 
     public Action SkinBuy;
@@ -20,6 +22,8 @@ public class SkinModel
         Load();
 
         SelectSkin();
+
+        _skinContainer.OnShopBackClick += SelectSkin;
     }
 
     public SkinSO SkinOnPlayer { get; private set; }
@@ -46,12 +50,27 @@ public class SkinModel
         SelectSkin();
     }
 
+    public void SelectPreviousUnlocked()
+    {
+        PreviewSelectedSkin = _skinContainer.GetSkinByIndex(_selectedUnlocked);
+
+        SkinOnPlayer = PreviewSelectedSkin;
+
+        _skinIndexToView = _selectedUnlocked;
+        
+        SkinChange?.Invoke();
+
+        Save();
+    }
+
     public void SelectSkin()
     {
         SkinOnPlayer = PreviewSelectedSkin;
 
         if (SkinOnPlayer.IsUnlocked)
         {
+            _selectedUnlocked = _skinIndexToView;
+
             Save();
         }
         
@@ -63,6 +82,8 @@ public class SkinModel
         if (Wallet.instance.Value >= PreviewSelectedSkin.SkinCost)
         {
             Wallet.instance.SpendMoney(PreviewSelectedSkin.SkinCost);
+            
+            _selectedUnlocked = _skinIndexToView;
 
             PreviewSelectedSkin.UnlockTheSkin();
 

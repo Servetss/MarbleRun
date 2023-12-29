@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,9 +13,9 @@ public class SkinChangerView : MonoBehaviour
 
     [SerializeField] private GameObject _buy_B;
 
-    [SerializeField] private Text _skinCost_T;
-
-    [SerializeField] private GameObject _playerAOShadow;
+    [SerializeField] private TextMeshProUGUI _skinCost_T;
+    
+    private MainMenuPanel _mainMenuPanel;
 
     public Action ClickOnNextSkin;
 
@@ -23,6 +24,13 @@ public class SkinChangerView : MonoBehaviour
     public Action ClickOnBuySkin;
 
     public Action ClickOnSelectedSkin;
+
+    public Action OnBackClick;
+
+    private void Awake()
+    {
+        _mainMenuPanel = GetComponent<MainMenuPanel>();
+    }
 
     public void OnBuySkin()
     {
@@ -36,14 +44,16 @@ public class SkinChangerView : MonoBehaviour
 
     public void OnSkinModeEnable()
     {
-        _playerAOShadow.SetActive(false);
+        _mainMenuPanel.OnShopButtonClick();
 
         _animator.SetBool("ChangeSkin", true);
     }
 
     public void OnSkinModeDisable()
     {
-        _playerAOShadow.SetActive(true);
+        OnBackClick?.Invoke();
+        
+        _mainMenuPanel.OpenMainMenuPanelWithoutStartButton();
 
         _animator.SetBool("ChangeSkin", false);
     }
