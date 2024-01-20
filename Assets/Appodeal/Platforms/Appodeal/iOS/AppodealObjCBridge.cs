@@ -84,7 +84,7 @@ namespace AppodealAds.Unity.iOS
 
         [DllImport("__Internal")]
         internal static extern void AppodealSetBannerAnimation(bool value);
-        
+
         [DllImport("__Internal")]
         internal static extern void AppodealSetBannerRotation(int leftBannerRotation, int rightBannerRotation);
 
@@ -147,7 +147,7 @@ namespace AppodealAds.Unity.iOS
 
         [DllImport("__Internal")]
         internal static extern void AppodealSetCustomFilterBool(string name, bool value);
-        
+
         [DllImport("__Internal")]
         internal static extern void AppodealSetCustomFilterString(string name, string value);
 
@@ -186,7 +186,7 @@ namespace AppodealAds.Unity.iOS
 
         [DllImport("__Internal")]
         internal static extern bool AppodealIsPrecacheAd(int adType);
-        
+
         [DllImport("__Internal")]
         internal static extern bool AppodealIsAutoCacheEnabled(int adType);
 

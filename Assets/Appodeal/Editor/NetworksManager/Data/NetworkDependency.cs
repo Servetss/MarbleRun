@@ -11,7 +11,7 @@ namespace Appodeal.Editor.AppodealManager.Data
         Service,
         Core
     }
-    
+
     [Serializable]
     public class ServerConfig
     {

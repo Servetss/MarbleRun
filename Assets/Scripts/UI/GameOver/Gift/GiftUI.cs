@@ -64,7 +64,7 @@ public class GiftUI : MonoBehaviour, IGameOverPanels
 
         _giftReady.SetActive(false);
 
-        StartFillGiftImage(0.35f);
+        StartFillGiftImage(0.2f); //0.35f
     }
 
     public void ClosePanel()
@@ -75,6 +75,8 @@ public class GiftUI : MonoBehaviour, IGameOverPanels
 
         _acceptButton.SetActive(false);
 
+        _giftFilling.SetActive(true);
+        
         _gameOverPanel.GoToNextPanel();
     }
 

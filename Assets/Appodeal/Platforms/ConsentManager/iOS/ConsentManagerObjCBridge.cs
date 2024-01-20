@@ -98,7 +98,7 @@ namespace ConsentManager.Platforms.iOS
         private static extern void RequestConsentInfoUpdate(string appodealAppKey,
             ConsentInfoUpdatedCallback onConsentInfoUpdated,
             ConsentInfoUpdatedFailedCallback onFailedToUpdateConsentInfo);
-        
+
         [DllImport("__Internal")]
         private static extern void DisableAppTrackingTransparencyRequest();
 
@@ -132,7 +132,7 @@ namespace ConsentManager.Platforms.iOS
         [DllImport("__Internal")]
         private static extern IntPtr GetConsent();
     }
-    
+
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal class VendorBuilderObjCBridge
     {
@@ -233,7 +233,7 @@ namespace ConsentManager.Platforms.iOS
 
         private static List<int> getList(string raw)
         {
-            return raw.Split(new[] { "," }, 
+            return raw.Split(new[] { "," },
                 StringSplitOptions.RemoveEmptyEntries)
                 .Select(item => Convert.ToInt32(item)).ToList();
         }
@@ -289,7 +289,7 @@ namespace ConsentManager.Platforms.iOS
         {
             return GetAuthorizationStatus();
         }
-        
+
         public static string getIabConsentString()
         {
             return GetIabString();
@@ -305,7 +305,7 @@ namespace ConsentManager.Platforms.iOS
 
         [DllImport("__Internal")]
         private static extern string GetStatus();
-        
+
         [DllImport("__Internal")]
         private static extern string GetAuthorizationStatus();
 
@@ -314,7 +314,7 @@ namespace ConsentManager.Platforms.iOS
 
         [DllImport("__Internal")]
         private static extern string HasConsentForVendor(string bundle);
-        
+
     }
 
     [SuppressMessage("ReSharper", "InconsistentNaming")]
@@ -416,7 +416,7 @@ namespace ConsentManager.Platforms.iOS
         {
             consentManagerException = intPtr;
         }
-        
+
         public ConsentManagerExceptionObjCBridge()
         {
             consentManagerException = GetConsentManagerException();

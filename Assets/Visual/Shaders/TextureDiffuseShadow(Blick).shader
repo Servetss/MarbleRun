@@ -52,19 +52,19 @@
             sampler2D _DiffuseTex;
             float4 _DiffuseTex_ST;
 
-            float4 _MainColor;
+            fixed4 _MainColor;
 
-            float4 _DiffuseColor;
+            fixed4 _DiffuseColor;
 
-            float4 _RimLightColor;
+            fixed4 _RimLightColor;
 
-            float _FresnelRange;
+            fixed _FresnelRange;
             
-            float _LightRange ;
+            fixed _LightRange ;
             
-            float _Range;
+            fixed _Range;
 
-            float _ShadowStrenght;
+            fixed _ShadowStrenght;
 
             v2f vert (appdata v)
             {
@@ -74,8 +74,7 @@
                 
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _DiffuseTex);
-
-                o.viewDirection = WorldSpaceViewDir(v.vertex);
+                
                 o.ws_pos = mul(unity_ObjectToWorld, v.vertex).xyz;
                 
                 return o;
@@ -101,8 +100,6 @@
 
                 fixed4 NdotL2 = max(min(dot(_WorldSpaceLightPos0.xyz, i.normal) + _LightRange, 1), 0.8);
                 
-                float NdotV = 1 - saturate(dot(i.normal, V.xyz));
-
                 fixed4 diffuseColor = tex2D(_DiffuseTex, i.uv);
                 
                 diffuseColor = DiffuseColor(diffuseColor, i.normal, H, _Range, _ShadowStrenght);

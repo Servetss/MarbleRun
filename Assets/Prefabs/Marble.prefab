@@ -541,6 +541,7 @@ GameObject:
   - component: {fileID: 5289490092610015739}
   - component: {fileID: 2446420147508633833}
   - component: {fileID: 8342325482155744284}
+  - component: {fileID: 3619208700553395225}
   - component: {fileID: 1724946569707989369}
   m_Layer: 0
   m_Name: Marble
@@ -648,7 +649,6 @@ MonoBehaviour:
   JumpStrenght: 0
   _finish: {fileID: 0}
   _shadowEffect: {fileID: 761643163823704484}
-  _lerp: 0
 --- !u!114 &5289490092610015739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -691,6 +691,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _numberPosition: {fileID: 0}
+--- !u!114 &3619208700553395225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8266060855210805552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bba4ceca3176714fa97cfe01dce6395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _upgrade: {fileID: 0}
+  _ability: []
 --- !u!95 &1724946569707989369
 Animator:
   serializedVersion: 5

@@ -901,7 +901,7 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
                                .ToList().ForEach(dep => latestDependencies.Add(dep.name, dep));
 
                     if (latestDependencies.Count > 0)
-                    {                        
+                    {
                         var missingAdapters = internalDependencies.Keys.Where(key => !latestDependencies.ContainsKey(key)).ToList();
                         if (missingAdapters.Count > 0) {
                             AppodealDependencyUtils.ShowInternalErrorDialog(this,
@@ -911,7 +911,7 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
                     }
                 }
             }
-            
+
             #endregion
 
             coroutine = null;
@@ -1036,8 +1036,8 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
                             if (networkDependency.name == AppodealDependencyUtils.Appodeal && !specName.Contains(AppodealDependencyUtils.Replace_dependency_core)) return true;
 
                             if (networkDependency.name != AppodealDependencyUtils.Appodeal && specName.Contains(AppodealDependencyUtils.Replace_dependency_core)) return true;
-                            
-                            if (networkDependency.name == AppodealDependencyUtils.GoogleAdMob && 
+
+                            if (networkDependency.name == AppodealDependencyUtils.GoogleAdMob &&
                                 !specName.Contains(AppodealDependencyUtils.ReplaceAdmobDepValue)) return true;
 
                             if (specName.Contains(AppodealDependencyUtils.Replace_network_dependency_value) || specName.Contains(AppodealDependencyUtils.Replace_service_dependency_value))
@@ -1046,7 +1046,7 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
                                     AppodealDependencyUtils.GetAndroidDependencyName(specName),
                                     AppodealDependencyUtils.GetAndroidDependencyVersion(specName),
                                     AppodealDependencyUtils.GetAndroidContent(dependencyPath));
-                                
+
                                 return false;
                             }
                             else if (specName.Contains(AppodealDependencyUtils.Replace_dependency_core))
@@ -1055,7 +1055,7 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
                                     "appodeal",
                                     AppodealDependencyUtils.GetAndroidDependencyCoreVersion(specName),
                                     AppodealDependencyUtils.GetAndroidContent(dependencyPath));
-                                
+
                                 return false;
                             }
                             else

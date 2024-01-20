@@ -9,12 +9,12 @@ public class ADS : MonoBehaviour, IAppodealInitializationListener, IInterstitial
     public static ADS Instance;
 
     private int _showIndex;
-    
+
     private void Awake()
     {
         Instance = this;
     }
-    
+
     private void Start()
     {
         int adTypes = Appodeal.INTERSTITIAL;

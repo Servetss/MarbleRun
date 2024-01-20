@@ -70,8 +70,8 @@ Material:
     m_Floats:
     - _BumpScale: 1
     - _CloudDistance: 0.036
-    - _CloudSpeed: 0.02
-    - _CloudStrenght: 0.563
+    - _CloudSpeed: 0.04
+    - _CloudStrenght: 0.55
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0

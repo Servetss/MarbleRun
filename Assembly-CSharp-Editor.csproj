@@ -47,7 +47,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.16</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.18</UnityProjectGeneratorVersion>
     <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>2020.3.48f1</UnityVersion>
@@ -56,62 +56,67 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Appodeal\Editor\NetworksManager\Data\NetworkDependency.cs" />
-    <Compile Include="Assets\Appodeal\Editor\Utils\AppodealEditorSettings.cs" />
-    <Compile Include="Assets\LeanTween\Editor\LeanTweenDocumentationEditor.cs" />
     <Compile Include="Assets\Appodeal\Editor\Checkers\MultidexActivator.cs" />
     <Compile Include="Assets\Appodeal\Editor\NetworksManager\AppodealAdapterManager.cs" />
     <Compile Include="Assets\Editor\MarbleImpulseEditor.cs" />
     <Compile Include="Assets\ImportedAssets\JMO Assets\Cartoon FX Easy Editor\Editor\CFXEasyEditor.cs" />
-    <Compile Include="Assets\Appodeal\Editor\Utils\AppodealUnityUtils.cs" />
     <Compile Include="Assets\Appodeal\Editor\NetworksManager\Data\AppodealUnityPlugin.cs" />
-    <Compile Include="Assets\Editor\MarbleJumpEditor.cs" />
     <Compile Include="Assets\Appodeal\Editor\NetworksManager\EditorCoroutineExtensions.cs" />
     <Compile Include="Assets\Appodeal\Editor\Utils\AppodealPostProcess.cs" />
+    <Compile Include="Assets\Appodeal\Editor\Utils\AppodealInternalSettings.cs" />
+    <Compile Include="Assets\ImportedAssets\Toony Colors\Editor\TCF_MaterialInspector.cs" />
+    <Compile Include="Assets\Appodeal\Editor\Utils\RemoveHelper.cs" />
+    <Compile Include="Assets\Appodeal\Editor\NetworksManager\EditorCoroutines.cs" />
+    <Compile Include="Assets\Appodeal\Editor\NetworksManager\Data\NetworkDependency.cs" />
+    <Compile Include="Assets\Appodeal\Editor\Utils\AppodealEditorSettings.cs" />
+    <Compile Include="Assets\LeanTween\Editor\LeanTweenDocumentationEditor.cs" />
+    <Compile Include="Assets\Appodeal\Editor\Utils\AppodealUnityUtils.cs" />
+    <Compile Include="Assets\Editor\MarbleJumpEditor.cs" />
     <Compile Include="Assets\Appodeal\Editor\NetworksManager\AppodealDependencyUtils.cs" />
     <Compile Include="Assets\Appodeal\Editor\InternalResources\AppodealSettings.cs" />
-    <Compile Include="Assets\Appodeal\Editor\Utils\AppodealInternalSettings.cs" />
     <Compile Include="Assets\Appodeal\Editor\Checkers\CheckerWindow.cs" />
-    <Compile Include="Assets\ImportedAssets\Toony Colors\Editor\TCF_MaterialInspector.cs" />
     <Compile Include="Assets\Appodeal\Editor\Utils\AppodealPreProcess.cs" />
-    <Compile Include="Assets\Appodeal\Editor\Utils\RemoveHelper.cs" />
     <Compile Include="Assets\Appodeal\Editor\NetworksManager\XmlUtilities.cs" />
     <Compile Include="Assets\Appodeal\Editor\Utils\iOSPostprocessUtils.cs" />
-    <Compile Include="Assets\Appodeal\Editor\NetworksManager\EditorCoroutines.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\ExternalDependencyManager\Editor\Google.VersionHandler.dll" />
     <None Include="Assets\ImportedAssets\JMO Assets\Editor\JMOAssets_CartoonFXFreeWelcome.dll" />
-    <None Include="Assets\ExternalDependencyManager\Editor\1.2.177\Google.PackageManagerResolver.dll" />
     <None Include="Assets\Appodeal\Editor\NetworkConfigs\IABDependencies.xml" />
+    <None Include="Assets\Appodeal\Editor\NetworkConfigs\BigoAdsDependencies.xml" />
+    <None Include="Assets\Appodeal\Editor\NetworkConfigs\InMobiDependencies.xml" />
     <None Include="Assets\Firebase\Editor\RemoteConfigDependencies.xml" />
     <None Include="Assets\Firebase\Editor\FirebaseCrashlytics_version-11.6.0_manifest.txt" />
+    <None Include="Assets\ExternalDependencyManager\Editor\1.2.176\Google.JarResolver.dll" />
     <None Include="Assets\Appodeal\Editor\NetworkConfigs\AppsFlyerDependencies.xml" />
     <None Include="Assets\Appodeal\Editor\NetworkConfigs\FirebaseDependencies.xml" />
+    <None Include="Assets\Appodeal\Editor\NetworkConfigs\BidonDependencies.xml" />
     <None Include="Assets\Appodeal\Editor\NetworkConfigs\VungleDependencies.xml" />
     <None Include="Assets\Appodeal\Editor\NetworkConfigs\UnityDependencies.xml" />
-    <None Include="Assets\ExternalDependencyManager\Editor\1.2.177\Google.IOSResolver.dll" />
     <None Include="Assets\Appodeal\Editor\NetworkConfigs\AppodealDependencies.xml" />
-    <None Include="Assets\ExternalDependencyManager\Editor\Google.VersionHandler.dll" />
+    <None Include="Assets\Appodeal\Editor\NetworkConfigs\MintegralDependencies.xml" />
+    <None Include="Assets\ExternalDependencyManager\Editor\external-dependency-manager_version-1.2.176_manifest.txt" />
     <None Include="Assets\Appodeal\Editor\NetworkConfigs\BidMachineDependencies.xml" />
-    <None Include="Assets\ExternalDependencyManager\Editor\external-dependency-manager_version-1.2.177_manifest.txt" />
     <None Include="Assets\Firebase\Editor\Firebase.Crashlytics.Editor.dll" />
     <None Include="Assets\Appodeal\Editor\NetworkConfigs\MyTargetDependencies.xml" />
-    <None Include="Assets\ExternalDependencyManager\Editor\1.2.177\Google.VersionHandlerImpl.dll" />
+    <None Include="Assets\ExternalDependencyManager\Editor\1.2.176\Google.IOSResolver.dll" />
+    <None Include="Assets\ExternalDependencyManager\Editor\1.2.176\Google.VersionHandlerImpl.dll" />
     <None Include="Assets\Appodeal\Editor\NetworkConfigs\StackAnalyticsDependencies.xml" />
+    <None Include="Assets\Appodeal\Editor\NetworkConfigs\DTExchangeDependencies.xml" />
     <None Include="Assets\Appodeal\Editor\NetworkConfigs\YandexDependencies.xml" />
     <None Include="Assets\Appodeal\Editor\NetworkConfigs\AdjustDependencies.xml" />
     <None Include="Assets\Appodeal\Editor\NetworkConfigs\MetaAudienceNetworkDependencies.xml" />
     <None Include="Assets\Appodeal\Editor\NetworkConfigs\GoogleAdMobDependencies.xml" />
     <None Include="Assets\Firebase\Editor\AppDependencies.xml" />
+    <None Include="Assets\ExternalDependencyManager\Editor\1.2.176\Google.PackageManagerResolver.dll" />
     <None Include="Assets\Appodeal\Editor\InternalResources\remove_list.xml" />
     <None Include="Assets\Firebase\Editor\FirebaseAnalytics_version-11.6.0_manifest.txt" />
     <None Include="Assets\Firebase\Editor\AnalyticsDependencies.xml" />
-    <None Include="Assets\Appodeal\Editor\NetworkConfigs\SentryAnalyticsDependencies.xml" />
+    <None Include="Assets\Appodeal\Editor\NetworkConfigs\SentryDependencies.xml" />
     <None Include="Assets\Appodeal\Editor\NetworkConfigs\AdColonyDependencies.xml" />
     <None Include="Assets\Appodeal\Editor\NetworkConfigs\MetaDependencies.xml" />
     <None Include="Assets\Firebase\Editor\FirebaseRemoteConfig_version-11.6.0_manifest.txt" />
     <None Include="Assets\Firebase\Editor\CrashlyticsDependencies.xml" />
-    <None Include="Assets\ExternalDependencyManager\Editor\1.2.177\Google.JarResolver.dll" />
     <None Include="Assets\Appodeal\Editor\NetworkConfigs\IronSourceDependencies.xml" />
     <None Include="Assets\Appodeal\Editor\NetworkConfigs\AppLovinDependencies.xml" />
     <None Include="Assets\Firebase\Editor\Firebase.Editor.dll" />
@@ -354,32 +359,32 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>D:\ffffffffffffff\Programs\2020.3.48f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Google.VersionHandler">
-      <HintPath>Assets\ExternalDependencyManager\Editor\Google.VersionHandler.dll</HintPath>
-    </Reference>
     <Reference Include="Firebase.Crashlytics">
       <HintPath>Assets\Firebase\Plugins\Firebase.Crashlytics.dll</HintPath>
     </Reference>
     <Reference Include="log4netPlastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.0.4\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.VersionHandlerImpl">
+      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.176\Google.VersionHandlerImpl.dll</HintPath>
     </Reference>
     <Reference Include="Firebase.App">
       <HintPath>Assets\Firebase\Plugins\Firebase.App.dll</HintPath>
     </Reference>
-    <Reference Include="Google.JarResolver">
-      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.177\Google.JarResolver.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Plastic.Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.12\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Plastic.Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.0.4\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.IOSResolver">
+      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.176\Google.IOSResolver.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.12\Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.0.4\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Firebase.TaskExtension">
       <HintPath>Assets\Firebase\Plugins\Firebase.TaskExtension.dll</HintPath>
@@ -387,8 +392,11 @@
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.12\Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
-    <Reference Include="Google.IOSResolver">
-      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.177\Google.IOSResolver.dll</HintPath>
+    <Reference Include="ICSharpCode.NRefactory">
+      <HintPath>Library\PackageCache\com.unity.render-pipelines.core@10.10.1\Editor\ShaderGenerator\ICSharpCode.NRefactory.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.VersionHandler">
+      <HintPath>Assets\ExternalDependencyManager\Editor\Google.VersionHandler.dll</HintPath>
     </Reference>
     <Reference Include="Firebase.Crashlytics.Editor">
       <HintPath>Assets\Firebase\Editor\Firebase.Crashlytics.Editor.dll</HintPath>
@@ -399,9 +407,6 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Google.PackageManagerResolver">
-      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.177\Google.PackageManagerResolver.dll</HintPath>
-    </Reference>
     <Reference Include="Firebase.Editor">
       <HintPath>Assets\Firebase\Editor\Firebase.Editor.dll</HintPath>
     </Reference>
@@ -411,17 +416,20 @@
     <Reference Include="Firebase.Analytics">
       <HintPath>Assets\Firebase\Plugins\Firebase.Analytics.dll</HintPath>
     </Reference>
-    <Reference Include="Google.VersionHandlerImpl">
-      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.177\Google.VersionHandlerImpl.dll</HintPath>
+    <Reference Include="unityplastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.0.4\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.JarResolver">
+      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.176\Google.JarResolver.dll</HintPath>
     </Reference>
     <Reference Include="Google.MiniJson">
       <HintPath>Assets\Firebase\Plugins\Google.MiniJson.dll</HintPath>
     </Reference>
+    <Reference Include="Google.PackageManagerResolver">
+      <HintPath>Assets\ExternalDependencyManager\Editor\1.2.176\Google.PackageManagerResolver.dll</HintPath>
+    </Reference>
     <Reference Include="Firebase.Platform">
       <HintPath>Assets\Firebase\Plugins\Firebase.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="unityplastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
@@ -780,11 +788,11 @@
     <Reference Include="System.Xml.XPath.XDocument">
       <HintPath>D:\ffffffffffffff\Programs\2020.3.48f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.TestRunner">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.TestRunner">
       <HintPath>Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TestRunner">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Recorder.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Recorder.Editor.dll</HintPath>
@@ -795,11 +803,8 @@
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Recorder.Base">
-      <HintPath>Library\ScriptAssemblies\Unity.Recorder.Base.dll</HintPath>
+    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.dll</HintPath>
@@ -807,29 +812,20 @@
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualStudio.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.Purchasing.SecurityStub">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityStub.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    <Reference Include="Unity.Searcher.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.PlasticSCM.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Analytics">
       <HintPath>Library\ScriptAssemblies\Analytics.dll</HintPath>
@@ -840,11 +836,56 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Analytics.DataPrivacy">
+      <HintPath>Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ShaderGraph.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.Codeless">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.Codeless.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Recorder">
+      <HintPath>Library\ScriptAssemblies\Unity.Recorder.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Tilemap.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Recorder.Base">
+      <HintPath>Library\ScriptAssemblies\Unity.Recorder.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualStudio.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline">
+      <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.PlasticSCM.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Services.Core">
       <HintPath>Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll</HintPath>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core.Analytics">
       <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
@@ -852,14 +893,17 @@
     <Reference Include="UnityEngine.Purchasing.SecurityCore">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityCore.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Purchasing.Codeless">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.Codeless.dll</HintPath>
+    <Reference Include="Unity.RenderPipelines.Universal.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
       <HintPath>Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core.Environments">
       <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
@@ -876,14 +920,18 @@
     <Reference Include="UnityEditor.SpatialTracking">
       <HintPath>Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Recorder">
-      <HintPath>Library\ScriptAssemblies\Unity.Recorder.dll</HintPath>
+    <Reference Include="Unity.RenderPipelines.Core.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{C2466AA8-117C-0808-3B6E-498C9B7DDFCC}</Project>
       <Name>Assembly-CSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="Boxophobic.SkyboxCubemapExtended.Editor.csproj">
+      <Project>{3E4607B0-611A-FCB8-EAF0-37669D059FA1}</Project>
+      <Name>Boxophobic.SkyboxCubemapExtended.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Boxophobic.Utils.Editor.csproj">
       <Project>{C529DDC9-4CC7-E7E4-AD08-23CA0BA6C4DE}</Project>
@@ -892,10 +940,6 @@
     <ProjectReference Include="Barmetler.RoadSystem.Editor.csproj">
       <Project>{1F782877-E68F-8BC1-6E39-8CFAF1F66E68}</Project>
       <Name>Barmetler.RoadSystem.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Boxophobic.SkyboxCubemapExtended.Editor.csproj">
-      <Project>{3E4607B0-611A-FCB8-EAF0-37669D059FA1}</Project>
-      <Name>Boxophobic.SkyboxCubemapExtended.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Boxophobic.Utils.Scripts.csproj">
       <Project>{AE976924-504E-5CA0-3B3D-80EE127E918C}</Project>

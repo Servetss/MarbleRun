@@ -34,7 +34,7 @@ namespace ConsentManager.Platforms.iOS
             ConsentManagerObjCBridge.requestConsentInfoUpdate(appodealAppKey, onConsentInfoUpdated,
                 onFailedToUpdateConsentInfo);
         }
-        
+
         public void disableAppTrackingTransparencyRequest()
         {
             ConsentManagerObjCBridge.disableAppTrackingTransparencyRequest();

@@ -13,6 +13,8 @@ public class SkinChangerView : MonoBehaviour
 
     [SerializeField] private GameObject _buy_B;
 
+    [SerializeField] private TextMeshProUGUI _buyText;
+
     [SerializeField] private TextMeshProUGUI _skinCost_T;
     
     private MainMenuPanel _mainMenuPanel;
@@ -80,6 +82,8 @@ public class SkinChangerView : MonoBehaviour
             _buy_B.GetComponent<Image>().color = activnessColor;
 
             _skinCost_T.color = activnessColor;
+
+            _buyText.color = activnessColor;
         }
     }
 

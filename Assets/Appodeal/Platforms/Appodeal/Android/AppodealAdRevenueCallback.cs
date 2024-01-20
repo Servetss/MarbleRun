@@ -14,12 +14,12 @@ namespace AppodealAds.Unity.Android
         : UnityEngine.AndroidJavaProxy
     {
         private readonly IAdRevenueListener _listener;
-        
+
         internal AppodealAdRevenueCallback(IAdRevenueListener listener) : base("com.appodeal.ads.revenue.AdRevenueCallbacks")
         {
             _listener = listener;
         }
-        
+
         private void onAdRevenueReceive(UnityEngine.AndroidJavaObject ad)
         {
             _listener?.onAdRevenueReceived(

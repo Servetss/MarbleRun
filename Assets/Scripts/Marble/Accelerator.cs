@@ -18,16 +18,16 @@ public class Accelerator : MonoBehaviour
 
     private bool _isPlayeMode;
 
+    public float MinimalSpeed {get => _speedBoost + 30;}
+
+    public float MaximalSpeed { get => _speedBoost + 60; }
+
     private void Awake()
     {
         _roadMover = GetComponent<RoadMover>();
 
         _playerEventMachine = GetComponent<EventMachine>();
     }
-
-    public float MinimalSpeed {get => _speedBoost + 30;}
-
-    public float MaximalSpeed { get => _speedBoost + 60; }
 
     private void Start()
     {
@@ -44,15 +44,17 @@ public class Accelerator : MonoBehaviour
     {
         if (_isPlayeMode)
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                _isRelised = true;
-            }
+            _isRelised = true;
 
-            if (Input.GetMouseButtonUp(0))
-            {
-                _isRelised = false;
-            }
+            //if (Input.GetMouseButtonDown(0))
+            //{
+            //    _isRelised = true;
+            //}
+
+            //if (Input.GetMouseButtonUp(0))
+            //{
+            //    _isRelised = false;
+            //}
 
             if ((_isRelised == false && _speed == MinimalSpeed) == false && (_isRelised && _speed == MaximalSpeed) == false)
             {

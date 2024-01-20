@@ -260,7 +260,7 @@ namespace ConsentManager.Platforms.Android
     public class AndroidConsentForm : IConsentForm
     {
         private readonly AndroidJavaObject consentForm;
-        
+
         private AndroidJavaObject activity;
 
         public AndroidConsentForm(AndroidJavaObject builder)

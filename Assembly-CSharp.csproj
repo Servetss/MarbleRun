@@ -57,181 +57,182 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Appodeal\Platforms\ConsentManager\ConsentManagerClientFactory.cs" />
+    <Compile Include="Assets\Epic Toon FX\Scripts\ETFXPitchRandomizer.cs" />
     <Compile Include="Assets\Scripts\Marble\Boosts\SplineBoostZoneClicker.cs" />
+    <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXFireProjectile.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanTween.cs" />
-    <Compile Include="Assets\LeanTween\Examples\Scripts\LogoCinematic.cs" />
-    <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralCameraShake.cs" />
     <Compile Include="Assets\Appodeal\Platforms\Appodeal\Android\AppodealInitializationCallback.cs" />
-    <Compile Include="Assets\Scripts\AI\AIAcceleration.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTDescr.cs" />
-    <Compile Include="Assets\Scripts\ADS\ADS.cs" />
-    <Compile Include="Assets\Scripts\Marble\MarbleImpulse.cs" />
-    <Compile Include="Assets\ImportedAssets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RotateCamera.cs" />
     <Compile Include="Assets\ImportedAssets\JMO Assets\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanTweenExt.cs" />
     <Compile Include="Assets\Scripts\Marble\Boosts\BoostZoneClicker.cs" />
     <Compile Include="Assets\Scripts\Level\LevelInfo.cs" />
-    <Compile Include="Assets\Scripts\Skin\SkinChanger.cs" />
-    <Compile Include="Assets\Scripts\Marble\Jump.cs" />
-    <Compile Include="Assets\Scripts\Animations\WaitCustom.cs" />
+    <Compile Include="Assets\Epic Toon FX\Scripts\ETFXLightFade.cs" />
+    <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXButtonScript.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingUnitTests.cs" />
-    <Compile Include="Assets\LeanTween\Examples\Archived\TestingPunch.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTSeq.cs" />
-    <Compile Include="Assets\Scripts\UI\GameOver\Gift\ButtonActivness.cs" />
-    <Compile Include="Assets\Scripts\Marble\Player.cs" />
     <Compile Include="Assets\Appodeal\Common\Appodeal\IInAppPurchase.cs" />
-    <Compile Include="Assets\Appodeal\Platforms\Appodeal\Android\AppodealAdRevenueCallback.cs" />
-    <Compile Include="Assets\Scripts\AI\AI.cs" />
     <Compile Include="Assets\Scripts\Settings\SettingsModel.cs" />
-    <Compile Include="Assets\Scripts\UI\GameOver\GameOverPanel.cs" />
-    <Compile Include="Assets\Appodeal\Platforms\Appodeal\Dummy\DummyPlayStoreInAppPurchaseBuilder.cs" />
     <Compile Include="Assets\Appodeal\Platforms\Appodeal\Android\AppodealBannerCallbacks.cs" />
     <Compile Include="Assets\Appodeal\Api\Appodeal\Appodeal.cs" />
-    <Compile Include="Assets\Appodeal\Common\Appodeal\IInAppPurchaseValidationListener.cs" />
-    <Compile Include="Assets\Appodeal\Platforms\ConsentManager\Dummy\Dummy.cs" />
-    <Compile Include="Assets\Scripts\SceneObjectsActivators\IObjectActivator.cs" />
     <Compile Include="Assets\Appodeal\Common\Appodeal\IAppodealAdsClient.cs" />
     <Compile Include="Assets\Scripts\Abilities\AbilityPresenter.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralUISpace.cs" />
     <Compile Include="Assets\Scripts\Level\MarblesPositionOnTheTrack.cs" />
-    <Compile Include="Assets\LeanTween\Framework\LeanAudio.cs" />
-    <Compile Include="Assets\Appodeal\Platforms\Appodeal\Android\AppodealInterstitialCallbacks.cs" />
-    <Compile Include="Assets\Appodeal\Platforms\Appodeal\Android\AndroidPlayStoreInAppPurchaseBuilder.cs" />
     <Compile Include="Assets\ImportedAssets\JMO Assets\Cartoon FX\Scripts\CFX_AutoRotate.cs" />
-    <Compile Include="Assets\Scripts\Skin\SkinModel.cs" />
-    <Compile Include="Assets\Scripts\Settings\SettingView.cs" />
+    <Compile Include="Assets\Epic Toon FX\Demo\Scripts\VFX Library\ParticleEffectsLibrary.cs" />
     <Compile Include="Assets\Scripts\UI\GamePanel\GamePanel.cs" />
-    <Compile Include="Assets\Appodeal\Common\ConsentManager\IConsentInfoUpdateListener.cs" />
+    <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXMouseOrbit.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralSimpleUI.cs" />
     <Compile Include="Assets\Appodeal\Platforms\ConsentManager\Android\AndroidConsentManagerClient.cs" />
-    <Compile Include="Assets\Scripts\Wallet\WalletView.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplineEndless.cs" />
     <Compile Include="Assets\Scripts\ScriptableObject\SkinSO.cs" />
     <Compile Include="Assets\Scripts\UI\GameOver\Gift\GiftUI.cs" />
-    <Compile Include="Assets\Appodeal\Common\Appodeal\IRewardedVideoAdListener.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathBezier.cs" />
     <Compile Include="Assets\Scripts\UI\AIPersonalizationView.cs" />
-    <Compile Include="Assets\LeanTween\Examples\Scripts\PathSpline.cs" />
-    <Compile Include="Assets\Scripts\Level\LevelContainer.cs" />
     <Compile Include="Assets\Scripts\Abilities\MoneyBonus.cs" />
+    <Compile Include="Assets\Scripts\Level\LevelContainer.cs" />
     <Compile Include="Assets\ImportedAssets\JMO Assets\Cartoon FX\Demo\Assets\CFX_AutoStopLoopedEffect.cs" />
-    <Compile Include="Assets\Appodeal\Platforms\Appodeal\iOS\AppodealAdsClient.cs" />
     <Compile Include="Assets\Scripts\SceneObjectsActivators\SceneObjectsActivator.cs" />
     <Compile Include="Assets\Scripts\UI\MainMenu\MainMenuPanel.cs" />
-    <Compile Include="Assets\Scripts\AI\AIHorizontalMove.cs" />
+    <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXTarget.cs" />
     <Compile Include="Assets\Scripts\Skin\SkinChangerView.cs" />
     <Compile Include="Assets\Appodeal\Platforms\Appodeal\Dummy\DummyAppStoreInAppPurchaseBuilder.cs" />
-    <Compile Include="Assets\Scripts\AI\AIJump.cs" />
-    <Compile Include="Assets\Scripts\Animations\UIHideAnimation.cs" />
-    <Compile Include="Assets\Scripts\Wallet\NumberParser.cs" />
-    <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralAdvancedTechniques.cs" />
+    <Compile Include="Assets\Epic Toon FX\Scripts\ETFXRotation.cs" />
     <Compile Include="Assets\Appodeal\Platforms\Appodeal\iOS\AppodealObjCBridge.cs" />
-    <Compile Include="Assets\ImportedAssets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
     <Compile Include="Assets\Scripts\Animations\MaterialShining.cs" />
-    <Compile Include="Assets\LeanTween\Framework\LeanSmooth.cs" />
     <Compile Include="Assets\Scripts\Level\Background.cs" />
-    <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralBasics2d.cs" />
-    <Compile Include="Assets\Appodeal\Common\Appodeal\IAppodealInitializationListener.cs" />
     <Compile Include="Assets\Scripts\Marble\Boosts\TestBoost.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplines.cs" />
-    <Compile Include="Assets\Appodeal\Platforms\Appodeal\AppodealAdsClientFactory.cs" />
     <Compile Include="Assets\Scripts\Skin\SkinPresenter.cs" />
-    <Compile Include="Assets\Appodeal\Common\ConsentManager\IConsentManager.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralEventsListeners.cs" />
-    <Compile Include="Assets\Scripts\UI\GameOver\GameOverCalculation\GameOverCalculationUI.cs" />
     <Compile Include="Assets\Scripts\Visual\ShaderAdapter.cs" />
-    <Compile Include="Assets\Appodeal\Platforms\Appodeal\Android\AndroidAppodealClient.cs" />
-    <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplineTrack.cs" />
     <Compile Include="Assets\Scripts\UI\GameOver\IGameOverPanel.cs" />
-    <Compile Include="Assets\Scripts\ToolBarSettings.cs" />
     <Compile Include="Assets\ImportedAssets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDir.cs" />
     <Compile Include="Assets\Scripts\Level\LevelEventZone.cs" />
-    <Compile Include="Assets\Scripts\xZone\xZone.cs" />
     <Compile Include="Assets\Scripts\UI\GamePanel\BoostView.cs" />
     <Compile Include="Assets\Scripts\Abilities\SpeedBonus.cs" />
-    <Compile Include="Assets\Scripts\Level\Finish.cs" />
-    <Compile Include="Assets\Scripts\Marble\EventMachine.cs" />
-    <Compile Include="Assets\Scripts\UI\MainMenu\GameProgressView.cs" />
-    <Compile Include="Assets\Appodeal\Common\Appodeal\IInterstitialAdListener.cs" />
     <Compile Include="Assets\Appodeal\Platforms\Appodeal\iOS\IosAppStoreInAppPurchase.cs" />
-    <Compile Include="Assets\Appodeal\Platforms\Appodeal\Android\AndroidPlayStoreInAppPurchase.cs" />
-    <Compile Include="Assets\ImportedAssets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_Translate.cs" />
-    <Compile Include="Assets\LeanTween\Framework\LeanTest.cs" />
     <Compile Include="Assets\Scripts\Animations\VectorAnimationCurve.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollower.cs" />
     <Compile Include="Assets\Appodeal\Platforms\ConsentManager\iOS\iOSConsentManagerClient.cs" />
-    <Compile Include="Assets\Scripts\AI\Enemys.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingZLegacy.cs" />
+    <Compile Include="Assets\Scripts\AI\Enemys.cs" />
     <Compile Include="Assets\Scripts\Wallet\Wallet.cs" />
-    <Compile Include="Assets\Appodeal\Platforms\Appodeal\iOS\IosAppStoreInAppPurchaseBuilder.cs" />
-    <Compile Include="Assets\LeanTween\Examples\Scripts\PathSpline2d.cs" />
     <Compile Include="Assets\Scripts\Level\LevelPreparer.cs" />
-    <Compile Include="Assets\Appodeal\Common\ConsentManager\IConsentFormListener.cs" />
     <Compile Include="Assets\Appodeal\Platforms\Appodeal\Android\InAppPurchaseValidationCallbacks.cs" />
-    <Compile Include="Assets\Scripts\Abilities\Ability.cs" />
+    <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXEffectController.cs" />
     <Compile Include="Assets\Scripts\Level\Level.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingZLegacyExt.cs" />
-    <Compile Include="Assets\Appodeal\Common\Appodeal\IBannerAdListener.cs" />
     <Compile Include="Assets\Scripts\Marble\SlideMover.cs" />
-    <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplinePerformance.cs" />
     <Compile Include="Assets\Appodeal\Common\Appodeal\AppodealAdRevenue.cs" />
     <Compile Include="Assets\Scripts\Marble\RoadMover.cs" />
-    <Compile Include="Assets\Scripts\Coin\Coin.cs" />
-    <Compile Include="Assets\Appodeal\Platforms\ConsentManager\iOS\ConsentManagerObjCBridge.cs" />
-    <Compile Include="Assets\Appodeal\Demo\Scripts\AppodealDemo.cs" />
-    <Compile Include="Assets\Scripts\UI\MainMenu\AbilityView.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathBezier2d.cs" />
-    <Compile Include="Assets\Scripts\UI\PositionOnTheTrackView.cs" />
-    <Compile Include="Assets\Scripts\Abilities\AbilitySetup.cs" />
-    <Compile Include="Assets\ImportedAssets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_New.cs" />
-    <Compile Include="Assets\ImportedAssets\Toony Colors\Demo 2.0\TCF_Demo.cs" />
-    <Compile Include="Assets\Appodeal\Platforms\ConsentManager\Android\ConsentInfoUpdateCallbacks.cs" />
-    <Compile Include="Assets\Scripts\AI\AIMarbleTrigger.cs" />
+    <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXSceneManager.cs" />
     <Compile Include="Assets\Scripts\UI\GameOver\Gift\ImageFiller.cs" />
-    <Compile Include="Assets\Scripts\ADS\RemoteConfig.cs" />
-    <Compile Include="Assets\Appodeal\Platforms\Appodeal\Android\AppodealMrecCallbacks.cs" />
-    <Compile Include="Assets\Scripts\Abilities\AccelerationBonus.cs" />
-    <Compile Include="Assets\ImportedAssets\JMO Assets\Cartoon FX\Scripts\CFX_LightFlicker.cs" />
+    <Compile Include="Assets\ImportedAssets\JMO Assets\Cartoon FX\Scripts\CFX_AutoDestructShuriken.cs" />
     <Compile Include="Assets\Scripts\Marble\Accelerator.cs" />
     <Compile Include="Assets\Appodeal\Platforms\Appodeal\Android\AppodealRewardedVideoCallbacks.cs" />
-    <Compile Include="Assets\ImportedAssets\JMO Assets\Cartoon FX\Scripts\CFX_AutoDestructShuriken.cs" />
     <Compile Include="Assets\Scripts\Obstacle\Obstacle.cs" />
     <Compile Include="Assets\Appodeal\Platforms\ConsentManager\Android\ConsentFormCallbacks.cs" />
-    <Compile Include="Assets\Scripts\Level\StartZone.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTDescrOptional.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralEasingTypes.cs" />
     <Compile Include="Assets\Scripts\Animations\Spinner.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralSequencer.cs" />
-    <Compile Include="Assets\Scripts\Audio\SoundManager.cs" />
     <Compile Include="Assets\Appodeal\Platforms\Appodeal\Dummy\DummyClient.cs" />
-    <Compile Include="Assets\Appodeal\Api\ConsentManager\ConsentManager.cs" />
-    <Compile Include="Assets\Appodeal\Common\Appodeal\IAdRevenueListener.cs" />
+    <Compile Include="Assets\Epic Toon FX\Demo\Scripts\VFX Library\PEButtonScript.cs" />
     <Compile Include="Assets\LeanTween\Examples\Archived\OldGUIExamplesCS.cs" />
     <Compile Include="Assets\Scripts\UI\GameOver\Gift\GiftReciveUI.cs" />
-    <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralBasic.cs" />
     <Compile Include="Assets\Scripts\Persons\PersonalizationBase.cs" />
     <Compile Include="Assets\Appodeal\Common\Appodeal\IMrecAdListener.cs" />
-    <Compile Include="Assets\Scripts\Skin\SkinContainer.cs" />
-    <Compile Include="Assets\Scripts\Marble\Boosts\IBoost.cs" />
-    <Compile Include="Assets\LeanTween\Examples\Archived\TestingRigidbodyCS.cs" />
-    <Compile Include="Assets\Scripts\Marble\MeshTrigger.cs" />
-    <Compile Include="Assets\LeanTween\Examples\Scripts\Following.cs" />
-    <Compile Include="Assets\Epic Toon FX\Demo\Scripts\VFX Library\ParticleEffectsLibrary.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXLoopScript.cs" />
-    <Compile Include="Assets\Epic Toon FX\Scripts\ETFXPitchRandomizer.cs" />
-    <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXFireProjectile.cs" />
-    <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXMouseOrbit.cs" />
-    <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXProjectileScript.cs" />
-    <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXSceneManager.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\LogoCinematic.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralCameraShake.cs" />
+    <Compile Include="Assets\Scripts\AI\AIAcceleration.cs" />
+    <Compile Include="Assets\Scripts\ADS\ADS.cs" />
+    <Compile Include="Assets\Scripts\Marble\MarbleImpulse.cs" />
+    <Compile Include="Assets\ImportedAssets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RotateCamera.cs" />
+    <Compile Include="Assets\Scripts\Skin\SkinChanger.cs" />
+    <Compile Include="Assets\Scripts\Marble\Jump.cs" />
+    <Compile Include="Assets\Scripts\Animations\WaitCustom.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Archived\TestingPunch.cs" />
+    <Compile Include="Assets\Scripts\UI\GameOver\Gift\ButtonActivness.cs" />
+    <Compile Include="Assets\Scripts\Marble\Player.cs" />
+    <Compile Include="Assets\Appodeal\Platforms\Appodeal\Android\AppodealAdRevenueCallback.cs" />
+    <Compile Include="Assets\Scripts\AI\AI.cs" />
+    <Compile Include="Assets\Scripts\UI\GameOver\GameOverPanel.cs" />
+    <Compile Include="Assets\Appodeal\Platforms\Appodeal\Dummy\DummyPlayStoreInAppPurchaseBuilder.cs" />
+    <Compile Include="Assets\Appodeal\Common\Appodeal\IInAppPurchaseValidationListener.cs" />
+    <Compile Include="Assets\Appodeal\Platforms\ConsentManager\Dummy\Dummy.cs" />
+    <Compile Include="Assets\Scripts\SceneObjectsActivators\IObjectActivator.cs" />
+    <Compile Include="Assets\LeanTween\Framework\LeanAudio.cs" />
+    <Compile Include="Assets\Appodeal\Platforms\Appodeal\Android\AppodealInterstitialCallbacks.cs" />
+    <Compile Include="Assets\Appodeal\Platforms\Appodeal\Android\AndroidPlayStoreInAppPurchaseBuilder.cs" />
+    <Compile Include="Assets\Scripts\Skin\SkinModel.cs" />
+    <Compile Include="Assets\Scripts\Marble\UpgradeView.cs" />
+    <Compile Include="Assets\Scripts\Settings\SettingView.cs" />
+    <Compile Include="Assets\Appodeal\Common\ConsentManager\IConsentInfoUpdateListener.cs" />
+    <Compile Include="Assets\Scripts\Wallet\WalletView.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXEffectCycler.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\VFX Library\UICanvasManager.cs" />
-    <Compile Include="Assets\Epic Toon FX\Scripts\ETFXLightFade.cs" />
-    <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXButtonScript.cs" />
+    <Compile Include="Assets\Appodeal\Common\Appodeal\IRewardedVideoAdListener.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\PathSpline.cs" />
+    <Compile Include="Assets\Appodeal\Platforms\Appodeal\iOS\AppodealAdsClient.cs" />
+    <Compile Include="Assets\Scripts\AI\AIHorizontalMove.cs" />
     <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXEffectControllerPooled.cs" />
-    <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXTarget.cs" />
-    <Compile Include="Assets\Epic Toon FX\Demo\Scripts\VFX Library\PEButtonScript.cs" />
-    <Compile Include="Assets\Epic Toon FX\Scripts\ETFXRotation.cs" />
-    <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXEffectController.cs" />
+    <Compile Include="Assets\Scripts\AI\AIJump.cs" />
+    <Compile Include="Assets\Scripts\Animations\UIHideAnimation.cs" />
+    <Compile Include="Assets\Scripts\Wallet\NumberParser.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralAdvancedTechniques.cs" />
+    <Compile Include="Assets\ImportedAssets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
+    <Compile Include="Assets\LeanTween\Framework\LeanSmooth.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralBasics2d.cs" />
+    <Compile Include="Assets\Appodeal\Common\Appodeal\IAppodealInitializationListener.cs" />
+    <Compile Include="Assets\Appodeal\Platforms\Appodeal\AppodealAdsClientFactory.cs" />
+    <Compile Include="Assets\Appodeal\Common\ConsentManager\IConsentManager.cs" />
+    <Compile Include="Assets\Scripts\UI\GameOver\GameOverCalculation\GameOverCalculationUI.cs" />
+    <Compile Include="Assets\Appodeal\Platforms\Appodeal\Android\AndroidAppodealClient.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplineTrack.cs" />
+    <Compile Include="Assets\Scripts\ToolBarSettings.cs" />
+    <Compile Include="Assets\Scripts\xZone\xZone.cs" />
+    <Compile Include="Assets\Scripts\Level\Finish.cs" />
+    <Compile Include="Assets\Scripts\Marble\EventMachine.cs" />
+    <Compile Include="Assets\Scripts\UI\MainMenu\GameProgressView.cs" />
+    <Compile Include="Assets\Appodeal\Common\Appodeal\IInterstitialAdListener.cs" />
+    <Compile Include="Assets\Appodeal\Platforms\Appodeal\Android\AndroidPlayStoreInAppPurchase.cs" />
+    <Compile Include="Assets\ImportedAssets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_Translate.cs" />
+    <Compile Include="Assets\LeanTween\Framework\LeanTest.cs" />
+    <Compile Include="Assets\Appodeal\Platforms\Appodeal\iOS\IosAppStoreInAppPurchaseBuilder.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\PathSpline2d.cs" />
+    <Compile Include="Assets\Appodeal\Common\ConsentManager\IConsentFormListener.cs" />
+    <Compile Include="Assets\Scripts\Abilities\Ability.cs" />
+    <Compile Include="Assets\Appodeal\Common\Appodeal\IBannerAdListener.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplinePerformance.cs" />
+    <Compile Include="Assets\Scripts\Coin\Coin.cs" />
+    <Compile Include="Assets\Appodeal\Platforms\ConsentManager\iOS\ConsentManagerObjCBridge.cs" />
+    <Compile Include="Assets\Appodeal\Demo\Scripts\AppodealDemo.cs" />
+    <Compile Include="Assets\Scripts\UI\MainMenu\AbilityView.cs" />
+    <Compile Include="Assets\Scripts\UI\PositionOnTheTrackView.cs" />
+    <Compile Include="Assets\Scripts\Abilities\AbilitySetup.cs" />
+    <Compile Include="Assets\Epic Toon FX\Demo\Scripts\ETFXProjectileScript.cs" />
+    <Compile Include="Assets\ImportedAssets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_New.cs" />
+    <Compile Include="Assets\ImportedAssets\Toony Colors\Demo 2.0\TCF_Demo.cs" />
+    <Compile Include="Assets\Appodeal\Platforms\ConsentManager\Android\ConsentInfoUpdateCallbacks.cs" />
+    <Compile Include="Assets\Scripts\AI\AIMarbleTrigger.cs" />
+    <Compile Include="Assets\Scripts\ADS\RemoteConfig.cs" />
+    <Compile Include="Assets\Appodeal\Platforms\Appodeal\Android\AppodealMrecCallbacks.cs" />
+    <Compile Include="Assets\Scripts\Abilities\AccelerationBonus.cs" />
+    <Compile Include="Assets\ImportedAssets\JMO Assets\Cartoon FX\Scripts\CFX_LightFlicker.cs" />
+    <Compile Include="Assets\Scripts\Level\StartZone.cs" />
+    <Compile Include="Assets\Scripts\Audio\SoundManager.cs" />
+    <Compile Include="Assets\Appodeal\Api\ConsentManager\ConsentManager.cs" />
+    <Compile Include="Assets\Appodeal\Common\Appodeal\IAdRevenueListener.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralBasic.cs" />
+    <Compile Include="Assets\Scripts\Skin\SkinContainer.cs" />
+    <Compile Include="Assets\Scripts\Marble\Boosts\IBoost.cs" />
+    <Compile Include="Assets\Scripts\Marble\MeshTrigger.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Archived\TestingRigidbodyCS.cs" />
+    <Compile Include="Assets\LeanTween\Examples\Scripts\Following.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -251,6 +252,7 @@
     <None Include="Assets\ImportedAssets\JMO Assets\Cartoon FX\CartoonFX Free.txt" />
     <None Include="Assets\ImportedAssets\BOXOPHOBIC\Skybox Cubemap Extended\Core\Shaders\Skybox Cubemap Extended.shader" />
     <None Include="Assets\Visual\Shaders\AnimationShader.shader" />
+    <None Include="Assets\Visual\Shaders\Particle.shader" />
     <None Include="Assets\Visual\Shaders\Depricated\Rim Alpha Track.shader" />
     <None Include="Assets\Firebase\Plugins\Firebase.App.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
@@ -920,11 +922,8 @@
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Recorder.Base">
-      <HintPath>Library\ScriptAssemblies\Unity.Recorder.Base.dll</HintPath>
+    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.dll</HintPath>
@@ -932,29 +931,20 @@
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualStudio.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.Purchasing.SecurityStub">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityStub.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    <Reference Include="Unity.Searcher.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.PlasticSCM.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Analytics">
       <HintPath>Library\ScriptAssemblies\Analytics.dll</HintPath>
@@ -965,11 +955,56 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Analytics.DataPrivacy">
+      <HintPath>Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ShaderGraph.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.Codeless">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.Codeless.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Recorder">
+      <HintPath>Library\ScriptAssemblies\Unity.Recorder.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Tilemap.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Recorder.Base">
+      <HintPath>Library\ScriptAssemblies\Unity.Recorder.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualStudio.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline">
+      <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.PlasticSCM.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Services.Core">
       <HintPath>Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll</HintPath>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core.Analytics">
       <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
@@ -977,14 +1012,17 @@
     <Reference Include="UnityEngine.Purchasing.SecurityCore">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityCore.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Purchasing.Codeless">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.Codeless.dll</HintPath>
+    <Reference Include="Unity.RenderPipelines.Universal.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
       <HintPath>Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core.Environments">
       <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
@@ -1001,47 +1039,15 @@
     <Reference Include="UnityEditor.SpatialTracking">
       <HintPath>Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Recorder">
-      <HintPath>Library\ScriptAssemblies\Unity.Recorder.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Searcher.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ShaderGraph.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Boxophobic.SkyboxCubemapExtended.Editor.csproj">
+      <Project>{3E4607B0-611A-FCB8-EAF0-37669D059FA1}</Project>
+      <Name>Boxophobic.SkyboxCubemapExtended.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Boxophobic.Utils.Editor.csproj">
       <Project>{C529DDC9-4CC7-E7E4-AD08-23CA0BA6C4DE}</Project>
       <Name>Boxophobic.Utils.Editor</Name>
@@ -1049,10 +1055,6 @@
     <ProjectReference Include="Barmetler.RoadSystem.Editor.csproj">
       <Project>{1F782877-E68F-8BC1-6E39-8CFAF1F66E68}</Project>
       <Name>Barmetler.RoadSystem.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Boxophobic.SkyboxCubemapExtended.Editor.csproj">
-      <Project>{3E4607B0-611A-FCB8-EAF0-37669D059FA1}</Project>
-      <Name>Boxophobic.SkyboxCubemapExtended.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Boxophobic.Utils.Scripts.csproj">
       <Project>{AE976924-504E-5CA0-3B3D-80EE127E918C}</Project>

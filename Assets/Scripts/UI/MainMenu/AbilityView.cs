@@ -90,7 +90,7 @@ public class AbilityView : MonoBehaviour
     
     public void SetView(int level, int cost, float boost)
     {
-        _boostText.text = "LVL: " + (level + 1);
+        _boostText.text = "LVL " + (level + 1);
 
         _abilityCost.text = NumberParser.FromNumberToShortText(cost);
     }

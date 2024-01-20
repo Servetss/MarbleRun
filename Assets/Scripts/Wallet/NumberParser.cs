@@ -20,7 +20,7 @@ public static class NumberParser
 
             numberBeforeReduction = numberBeforeReduction.Remove(numberBeforeReduction.Length - 1);
 
-            numberReduction = "k";
+            numberReduction = "K";
         }
         else if (numberCount > 6)
         {
@@ -30,7 +30,7 @@ public static class NumberParser
 
             numberBeforeReduction = numberBeforeReduction.Remove(numberBeforeReduction.Length - 1);
 
-            numberReduction = "m";
+            numberReduction = "M";
         }
 
         return numberBeforeReduction + numberAfterDot + numberReduction;
@@ -45,16 +45,16 @@ public static class NumberParser
         switch (lastNum)
         {
             case "1":
-                lastNum = "st";
+                lastNum = "ST";
                 break;
             case "2":
-                lastNum = "nd";
+                lastNum = "ND";
                 break;
             case "3":
-                lastNum = "rd";
+                lastNum = "RD";
                 break;
             default:
-                lastNum = "th";
+                lastNum = "TH";
                 break;
         }
 

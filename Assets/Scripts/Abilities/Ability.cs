@@ -57,12 +57,6 @@ public class Ability : MonoBehaviour
 
     public void OnClick()
     {
-        Buy();
-
-        BoostBuy?.Invoke();
-
-        return;
-
         if (Wallet.instance.Value >= Cost)
         {
             Buy();

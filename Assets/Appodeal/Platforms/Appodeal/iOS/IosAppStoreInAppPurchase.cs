@@ -6,7 +6,7 @@ using AppodealAds.Unity.Api;
 using AppodealAds.Unity.Common;
 
 namespace AppodealAds.Unity.iOS
-{    
+{
     public class IosAppStoreInAppPurchase : IAppStoreInAppPurchase
     {
         public IAppStoreInAppPurchase NativeInAppPurchase { get; }

@@ -612,14 +612,14 @@ namespace ConsentManager.ConsentManagerDemo.Scripts
         }
 
         #endregion
-        
+
         #region IAdRevenueListener implementation
 
         public void onAdRevenueReceived(AppodealAdRevenue ad)
         {
             Debug.Log($"[APDUnity] [Callback] onAdRevenueReceived({ad.ToJsonString(true)})");
         }
-        
+
         #endregion
     }
 }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skinName: 
   _skinCost: 2400
-  _skinOnUI: {fileID: 0}
+  _skinOnUI: {fileID: 21300000, guid: 8223decc67afac2498069aafa5a9e431, type: 3}
   _material: {fileID: 2100000, guid: 65f76adaa5246824ea3199342cc821dc, type: 2}
   _isUnlocked: 0
   _isDefault: 0

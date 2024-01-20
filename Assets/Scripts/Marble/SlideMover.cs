@@ -92,11 +92,11 @@ public class SlideMover : MonoBehaviour
 
                 _actualPosition = Mathf.Clamp(_actualPosition, -_border, _border);
 
-                _moveRotationY = Mathf.Clamp(_mouseDiff / 2, -30, 30);
+                _moveRotationY = Mathf.Clamp(_mouseDiff / 4, -18, 18);
 
-                _moveRotationX = Mathf.Clamp(_mouseDiff / 2, -10, 10);
+                _moveRotationX = Mathf.Clamp(_mouseDiff / 4, -10, 10);
 
-                _cameraRotateZ = Mathf.Clamp(_mouseDiff / 40, -4, 4);
+                _cameraRotateZ = Mathf.Clamp(_mouseDiff / 40, -6, 6);
 
                 _mesh.localPosition = new Vector3(_actualPosition, _mesh.localPosition.y, _mesh.localPosition.z);
 
@@ -127,7 +127,7 @@ public class SlideMover : MonoBehaviour
         {
             _lerp += Time.deltaTime * 0.2f;
 
-            _cameraLerp += Time.deltaTime * 1;
+            _cameraLerp += Time.deltaTime * 0.4f;
 
             float x = Mathf.Lerp(_Xposition, 0, _lerp);
             

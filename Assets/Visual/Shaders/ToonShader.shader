@@ -86,8 +86,8 @@ Shader "Unlit/ToonShader"
                 
                 float4 light = lightIntensity * _LightColor0;
                 float3 viewDir = normalize(i.viewDir);
-              float3 halfVector = normalize(_WorldSpaceLightPos0 + viewDir);
-float NdotH = dot(normal, halfVector);
+                float3 halfVector = normalize(_WorldSpaceLightPos0 + viewDir);
+                float NdotH = dot(normal, halfVector);
                 float specularIntensity = pow(NdotH * lightIntensity, _Glossiness * _Glossiness);
                 return _Color * sample * (_AmbientColor + light + specularIntensity);
             }

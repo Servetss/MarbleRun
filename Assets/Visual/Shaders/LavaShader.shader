@@ -111,20 +111,12 @@
                 return OutMinMax.x + (In - InMinMax.x) * (OutMinMax.y - OutMinMax.x) / (InMinMax.y - InMinMax.x);
             }
 
-            inline fixed4 DiffuseColor(fixed4 col, fixed3 normal, fixed3 H, float range, float shadowStrenght)
-            {
-                fixed4 specular = pow(saturate(dot(H, normal)), range);
-
-                return step(shadowStrenght, specular + col);
-            }
             
             fixed4 frag (v2f i) : SV_Target
             {
                 i.normal = normalize(i.normal);
                 
                 fixed3 V = normalize(UnityWorldSpaceViewDir(i.ws_pos));
-
-                fixed3 H = normalize(_WorldSpaceLightPos0.xyz + V.xyz);
                 
                 float speed = _Time.x * _Speed;
                 float noiseSpeed = _Time.x * _Speed;
@@ -134,8 +126,6 @@
                 
                 fixed2 uvOffsetAnim = fixed2(i.uv.x, i.uv.y + noise);
                 
-                fixed4 diffuseColor = DiffuseColor(fixed4(1,1,1,1), i.normal, H, _Roughtness, _ShadowStrenght);
-
                 float NdotV = 1 - saturate(dot(i.normal, V.xyz));
                 
                 
@@ -158,10 +148,6 @@
                 col4 *= _Color;
                 col4.a = alpha;
 
-                float offset = 1 - (_Scale * pow((i.uv.y - 0.5), 2));
-                
-                //return col4;
-            
                 return max(NdotV * _GlassBlickColor, col4);
             }
             ENDCG

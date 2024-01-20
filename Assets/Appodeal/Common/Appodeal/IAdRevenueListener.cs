@@ -10,7 +10,7 @@ namespace AppodealAds.Unity.Common
         /// <para>
         /// Fires when Appodeal SDK tracks ad impression.
         /// </para>
-        /// See <see href=""/> for more details.
+        /// See <see href="https://docs.appodeal.com/unity/advanced/ad-revenue-callback?distribution=manual"/> for more details.
         /// </summary>
         /// <param name="ad">contains info about the tracked impression.</param>
         void onAdRevenueReceived(AppodealAdRevenue ad);

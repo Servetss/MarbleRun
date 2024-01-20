@@ -16,14 +16,20 @@ namespace AppodealAds.Unity.Api
         public const string A4G = "a4g";
         public const string ADCOLONY = "adcolony";
         public const string ADMOB = "admob";
+        public const string ADMOB_MEDIATION = "admob_mediation";
         public const string APPLOVIN = "applovin";
         public const string APPODEAL = "appodeal";
         public const string BIDMACHINE = "bidmachine";
-        public const string META = "facebook";
+        public const string BIDON = "bidon";
+        public const string BIGO_ADS = "bigo_ads";
+        public const string DT_EXCHANGE = "dt_exchange";
+        public const string GAM = "gam";
+        public const string INMOBI = "inmobi";
         public const string IRONSOURCE = "ironsource";
+        public const string META = "facebook";
+        public const string MINTEGRAL = "mintegral";
         public const string MRAID = "mraid";
         public const string MY_TARGET = "my_target";
-        public const string NAST = "nast";
         public const string NOTSY = "notsy";
         public const string UNITY_ADS = "unity_ads";
         public const string VAST = "vast";
@@ -60,7 +66,7 @@ namespace AppodealAds.Unity.Api
         /// <summary>
         /// The version for the Appodeal Unity SDK, which includes specific versions of the Appodeal Android and iOS SDKs.
         /// </summary>
-        public const string APPODEAL_PLUGIN_VERSION = "3.1.3";
+        public const string APPODEAL_PLUGIN_VERSION = "3.2.0";
 
         public enum LogLevel
         {
@@ -115,7 +121,7 @@ namespace AppodealAds.Unity.Api
         /// <example>To initialize only 300*250 banners use:<code>Appodeal.initialize(appKey, Appodeal.MREC, this);</code></example>
         /// <example>To initialize multiple ad types use the <see langword="|"/> operator:<code>Appodeal.Initialize(appKey, Appodeal.INTERSTITIAL | Appodeal.BANNER, this);</code></example>
         /// </summary>
-        /// <remarks>See <see href="https://wiki.appodeal.com/en/unity/get-started#UnitySDK.GetStarted-Step3Step3.InitializeSDK"/> for more details.</remarks>
+        /// <remarks>See <see href="https://docs.appodeal.com/unity/get-started?distribution=manual#step-3-initialize-sdk"/> for more details.</remarks>
         /// <param name="appKey">appodeal app key that was assigned to your app when it was created.</param>
         /// <param name="adTypes">type of advertisement you want to initialize.</param>
         /// <param name="listener">class which implements AppodealStack.Mediation.Common.IAppodealInitializeListener interface.</param>
@@ -146,7 +152,7 @@ namespace AppodealAds.Unity.Api
 
         /// <summary>
         /// <para>Updates consent value (GDPR regulation) used by ad networks and services of Appodeal SDK.</para>
-        /// See <see href="https://wiki.appodeal.com/en/unity/get-started/data-protection/gdpr-and-ccpa"/> for more details.
+        /// See <see href="https://docs.appodeal.com/unity/data-protection/gdpr-and-ccpa?distribution=manual"/> for more details.
         /// </summary>
         /// <remarks>Calling this method before SDK initialization will result in disabling Consent Manager window showing. However, Consent Manager still will be synchronized using the consent object passed in this method.</remarks>
         /// <param name="consent">user's consent on processing of their personal data. https://www.eugdpr.org</param>
@@ -157,7 +163,7 @@ namespace AppodealAds.Unity.Api
 
         /// <summary>
         /// <para>Updates consent value (CCPA regulation) used by ad networks and services of Appodeal SDK.</para>
-        /// See <see href="https://wiki.appodeal.com/en/unity/get-started/data-protection/gdpr-and-ccpa"/> for more details.
+        /// See <see href="https://docs.appodeal.com/unity/data-protection/gdpr-and-ccpa?distribution=manual"/> for more details.
         /// </summary>
         /// <remarks>Calling this method before SDK initialization will result in disabling Consent Manager window showing. However, Consent Manager still will be synchronized using the consent object passed in this method.</remarks>
         /// <param name="consent">user's consent on processing of their personal data. https://oag.ca.gov/privacy/ccpa</param>
@@ -175,7 +181,7 @@ namespace AppodealAds.Unity.Api
         {
             return getInstance().isAutoCacheEnabled(adType);
         }
-        
+
         /// <summary>
         /// Set Interstitial ads callbacks
         /// See <see cref="Appodeal.setInterstitialCallbacks"/> for resulting triggered event.
@@ -215,20 +221,20 @@ namespace AppodealAds.Unity.Api
         {
             getInstance().setMrecCallbacks(listener);
         }
-        
+
         /// <summary>
         /// <para>
         /// Sets Ad Revenue callback.
         /// </para>
-        /// Read <see href="https://wiki.appodeal.com/en/unity/get-started/advanced/run-callbacks-in-main-unity-thread"/> before implementing callbacks.
+        /// Read <see href="https://docs.appodeal.com/unity/advanced/main-thread-callbacks?distribution=manual"/> before implementing callbacks.
         /// </summary>
-        /// <remarks>See <see href=""/> for more details.</remarks>
+        /// <remarks>See <see href="https://docs.appodeal.com/unity/advanced/ad-revenue-callback?distribution=manual"/> for more details.</remarks>
         /// <param name="listener">class which implements AppodealAds.Unity.Common.IAdRevenueListener interface.</param>
         public static void setAdRevenueCallback(IAdRevenueListener listener)
         {
             getInstance().setAdRevenueCallback(listener);
         }
-        
+
         /// <summary>
         /// Start caching ads.
         /// See <see cref="Appodeal.cache"/> for resulting triggered event.
@@ -271,7 +277,7 @@ namespace AppodealAds.Unity.Api
         {
             return getInstance().showBannerView(YAxis, XGravity, placement);
         }
-        
+
         /// <summary>
         /// Show mrec view.
         /// See <see cref="Appodeal.showMrecView"/> for resulting triggered event.
@@ -283,7 +289,7 @@ namespace AppodealAds.Unity.Api
         {
             return getInstance().showMrecView(YAxis, XGravity, placement);
         }
-        
+
         /// <summary>
         /// Hide advertising.
         /// See <see cref="Appodeal.hide"/> for resulting triggered event.
@@ -311,7 +317,7 @@ namespace AppodealAds.Unity.Api
         {
             getInstance().hideMrecView();
         }
-        
+
         /// <summary>
         /// Start or stop auto caching new ads when current ads was shown..
         /// See <see cref="Appodeal.setAutoCache"/> for resulting triggered event.
@@ -322,7 +328,7 @@ namespace AppodealAds.Unity.Api
         {
             getInstance().setAutoCache(adTypes, autoCache);
         }
-        
+
         /// <summary>
         /// Triggering onLoaded callback when precache loaded.
         /// See <see cref="Appodeal.setTriggerOnLoadedOnPrecache"/> for resulting triggered event.
@@ -408,7 +414,7 @@ namespace AppodealAds.Unity.Api
         {
             getInstance().setBannerRotation(leftBannerRotation, rightBannerRotation);
         }
-        
+
         /// <summary>
         /// Tracks in-app purchase information and sends info to our servers for analytics.
         /// See <see cref="Appodeal.trackInAppPurchase"/> for resulting triggered event.
@@ -442,7 +448,7 @@ namespace AppodealAds.Unity.Api
         {
             getInstance().disableNetwork(network);
         }
-        
+
         /// <summary>
         /// Disabling specified network for specified ad types.
         /// See <see cref="Appodeal.disableNetwork"/> for resulting triggered event.
@@ -452,7 +458,7 @@ namespace AppodealAds.Unity.Api
         {
             getInstance().disableNetwork(network, adType);
         }
-        
+
         /// <summary>
         /// Disabling location tracking (for iOS platform only).
         /// See <see cref="Appodeal.disableLocationPermissionCheck"/> for resulting triggered event.
@@ -473,7 +479,7 @@ namespace AppodealAds.Unity.Api
         }
 
         /// <summary>Gets user id.</summary>
-        /// <remarks>See <see href="https://wiki.appodeal.com/en/unity/get-started/advanced/set-user-data"/> for more details.</remarks>
+        /// <remarks>See <see href="https://docs.appodeal.com/unity/advanced/user-data?distribution=manual"/> for more details.</remarks>
         /// <returns>User id as string.</returns>
         public static string getUserId()
         {
@@ -487,7 +493,7 @@ namespace AppodealAds.Unity.Api
         {
             return getInstance().getSegmentId();
         }
-        
+
         /// <summary>
         /// Set test mode.
         /// See <see cref="Appodeal.setTesting"/> for resulting triggered event.
@@ -506,7 +512,7 @@ namespace AppodealAds.Unity.Api
         {
             getInstance().setLogLevel(log);
         }
-        
+
         /// <summary>
         /// Set custom segment filter.
         /// See <see cref="Appodeal.setCustomFilter"/> for resulting triggered event.
@@ -517,7 +523,7 @@ namespace AppodealAds.Unity.Api
         {
             getInstance().setCustomFilter(name, value);
         }
-        
+
         /// <summary>
         /// Set custom segment filter.
         /// See <see cref="Appodeal.setCustomFilter"/> for resulting triggered event.
@@ -563,12 +569,12 @@ namespace AppodealAds.Unity.Api
         {
             getInstance().resetCustomFilter(name);
         }
-        
+
         /// <summary>
         /// Check if ad with specific ad type can be shown with placement.
         /// See <see cref="Appodeal.canShow"/> for resulting triggered event.
         /// <param name="adTypes">type of advertising.</param>
-        /// </summary> 
+        /// </summary>
         public static bool canShow(int adTypes)
         {
             return getInstance().canShow(adTypes);
@@ -579,16 +585,16 @@ namespace AppodealAds.Unity.Api
         /// See <see cref="Appodeal.canShow"/> for resulting triggered event.
         /// <param name="adTypes">type of advertising.</param>
         /// <param name="placement">placement name.</param>
-        /// </summary> 
+        /// </summary>
         public static bool canShow(int adTypes, string placement)
         {
             return getInstance().canShow(adTypes, placement);
         }
-        
+
         /// <summary>
         /// Get reward parameters.
         /// See <see cref="Appodeal.getRewardParameters"/> for resulting triggered event.
-        /// </summary> 
+        /// </summary>
         public static KeyValuePair<string, double> getRewardParameters()
         {
             return new KeyValuePair<string, double>(getInstance().getRewardCurrency(), getInstance().getRewardAmount());
@@ -598,58 +604,58 @@ namespace AppodealAds.Unity.Api
         /// Get reward parameters for placement.
         /// See <see cref="Appodeal.getRewardParameters"/> for resulting triggered event.
         /// <param name="placement">placement name.</param>
-        /// </summary> 
+        /// </summary>
         public static KeyValuePair<string, double> getRewardParameters(string placement)
         {
             return new KeyValuePair<string, double>(getInstance().getRewardCurrency(placement),
                 getInstance().getRewardAmount(placement));
         }
-        
+
         /// <summary>
         /// Mute video if calls muted on device (supports only for Android platform).
         /// See <see cref="Appodeal.muteVideosIfCallsMuted"/> for resulting triggered event.
         /// <param name="value">true - mute videos if call volume is 0.</param>
-        /// </summary> 
+        /// </summary>
         public static void muteVideosIfCallsMuted(bool value)
         {
             getInstance().muteVideosIfCallsMuted(value);
         }
-        
+
         /// <summary>
         /// Start test screen to test integration.
         /// See <see cref="Appodeal.showTestScreen"/> for resulting triggered event.
-        /// </summary> 
+        /// </summary>
         public static void showTestScreen()
         {
             getInstance().showTestScreen();
         }
-        
+
         /// <summary>
         /// Disables data collection for kids apps.
         /// See <see cref="Appodeal.setChildDirectedTreatment"/> for resulting triggered event.
         /// <param name="value">value true to disable data collection for kids apps.</param>
-        /// </summary> 
+        /// </summary>
         public static void setChildDirectedTreatment(bool value)
         {
             getInstance().setChildDirectedTreatment(value);
         }
-        
+
         /// <summary>
         /// Destroy cached ad.
         /// See <see cref="Appodeal.destroy"/> for resulting triggered event.
         /// <param name="adTypes">adTypes ad types you want to destroy.</param>
-        /// </summary> 
+        /// </summary>
         public static void destroy(int adTypes)
         {
             getInstance().destroy(adTypes);
         }
-        
+
         /// <summary>
         /// Add extra data to Appodeal.
         /// See <see cref="Appodeal.setExtraData"/> for resulting triggered event.
         /// <param name="key">associated with value.</param>
         /// <param name="value">value which will be saved in extra data by key.</param>
-        /// </summary> 
+        /// </summary>
         public static void setExtraData(string key, bool value)
         {
             getInstance().setExtraData(key, value);
@@ -660,7 +666,7 @@ namespace AppodealAds.Unity.Api
         /// See <see cref="Appodeal.setExtraData"/> for resulting triggered event.
         /// <param name="key">associated with value.</param>
         /// <param name="value">value which will be saved in extra data by key.</param>
-        /// </summary> 
+        /// </summary>
         public static void setExtraData(string key, int value)
         {
             getInstance().setExtraData(key, value);
@@ -671,7 +677,7 @@ namespace AppodealAds.Unity.Api
         /// See <see cref="Appodeal.setExtraData"/> for resulting triggered event.
         /// <param name="key">associated with value.</param>
         /// <param name="value">value which will be saved in extra data by key.</param>
-        /// </summary> 
+        /// </summary>
         public static void setExtraData(string key, double value)
         {
             getInstance().setExtraData(key, value);
@@ -682,7 +688,7 @@ namespace AppodealAds.Unity.Api
         /// See <see cref="Appodeal.setExtraData"/> for resulting triggered event.
         /// <param name="key">associated with value.</param>
         /// <param name="value">value which will be saved in extra data by key.</param>
-        /// </summary> 
+        /// </summary>
         public static void setExtraData(string key, string value)
         {
             getInstance().setExtraData(key, value);
@@ -692,7 +698,7 @@ namespace AppodealAds.Unity.Api
         /// <para>
         /// Resets extra data value by the provided key.
         /// </para>
-        /// See <see href="https://wiki.appodeal.com/en/unity/get-started/advanced/set-user-data#id-[Development]UnitySDK.SetUsersData-Sendextradata"/> for more details.
+        /// See <see href="https://docs.appodeal.com/unity/advanced/user-data?distribution=manual#send-extra-data"/> for more details.
         /// </summary>
         /// <remarks>Use it to remove an extra data, that was previously set via one of the <see langword="SetExtraData()"/> methods.</remarks>
         /// <param name="key">unique identifier.</param>
@@ -700,30 +706,30 @@ namespace AppodealAds.Unity.Api
         {
             getInstance().resetExtraData(key);
         }
-        
+
         /// <summary>
         /// Get native SDK version
         /// See <see cref="Appodeal.getNativeSDKVersion"/> for resulting triggered event.
-        /// </summary> 
+        /// </summary>
         public static string getNativeSDKVersion()
         {
             return getInstance().getVersion();
         }
-        
+
         /// <summary>
         /// Get Unity plugin version
         /// See <see cref="Appodeal.getPluginVersion"/> for resulting triggered event.
-        /// </summary> 
+        /// </summary>
         public static string getPluginVersion()
         {
             return APPODEAL_PLUGIN_VERSION;
         }
-        
+
         /// <summary>
         /// Get predicted ecpm for certain ad type.
         /// See <see cref="Appodeal.getPredictedEcpm"/> for resulting triggered event.
         /// <param name="adType">adType type of advertising.</param>
-        /// </summary> 
+        /// </summary>
         public static double getPredictedEcpm(int adType)
         {
             return getInstance().getPredictedEcpm(adType);
@@ -742,7 +748,7 @@ namespace AppodealAds.Unity.Api
         /// <summary>
         /// Get Unity version
         /// See <see cref="Appodeal.getUnityVersion"/> for resulting triggered event.
-        /// </summary> 
+        /// </summary>
         public static string getUnityVersion()
         {
             var unityVersion = Application.unityVersion;
@@ -753,11 +759,11 @@ namespace AppodealAds.Unity.Api
 
             return unityVersion;
         }
-        
+
         /// <summary>
         /// Set use safe area.
         /// See <see cref="Appodeal.setUseSafeArea"/> for resulting triggered event.
-        /// </summary> 
+        /// </summary>
         public static void setUseSafeArea(bool value)
         {
             getInstance().setUseSafeArea(value);
@@ -765,7 +771,7 @@ namespace AppodealAds.Unity.Api
 
         /// <summary>
         /// <para>Sends event data to all connected analytic services such as Firebase, Adjust, AppsFlyer and Facebook.</para>
-        /// See <see href=""/> for more details.
+        /// See <see href="https://docs.appodeal.com/unity/advanced/event-tracking?distribution=manual#step-1-how-to-track-in-app-events"/> for more details.
         /// </summary>
         /// <remarks>
         /// <para>Event parameter values must be one of the following types:  <see langword="string"/>, <see langword="double"/>, or <see langword="int"/></para>
@@ -782,8 +788,8 @@ namespace AppodealAds.Unity.Api
         /// <para>
         /// Validates In-App purchase. (Supported only for <see langword="Android"/> platform)
         /// </para>
-        /// See <see href=""/> for more details.
-        /// </summary> 
+        /// See <see href="https://docs.appodeal.com/unity/advanced/in-app-purchases?distribution=manual"/> for more details.
+        /// </summary>
         /// <remarks>If the purchase is valid, this method will also call <see cref="trackInAppPurchase"/> method under the hood.</remarks>
         /// <param name="purchase">object of type PlayStoreInAppPurchase, containing all data about the purchase.</param>
         /// <param name="listener">class which implements AppodealAds.Unity.Common.IInAppPurchaseValidationListener interface.</param>
@@ -796,8 +802,8 @@ namespace AppodealAds.Unity.Api
         /// <para>
         /// Validates In-App purchase. (Supported only for <see langword="iOS"/> platform)
         /// </para>
-        /// See <see href=""/> for more details.
-        /// </summary> 
+        /// See <see href="https://docs.appodeal.com/unity/advanced/in-app-purchases?distribution=manual"/> for more details.
+        /// </summary>
         /// <remarks>If the purchase is valid, this method will also call <see cref="trackInAppPurchase"/> method under the hood.</remarks>
         /// <param name="purchase">object of type AppStoreInAppPurchase, containing all data about the purchase.</param>
         /// <param name="listener">class which implements AppodealAds.Unity.Common.IInAppPurchaseValidationListener interface.</param>
@@ -841,7 +847,7 @@ namespace AppodealAds.Unity.Api
 
     /// <summary>
     /// <para>AppStoreInAppPurchase Unity API for developers, including documentation.</para>
-    /// See <see href=""/> for more details.
+    /// See <see href="https://docs.appodeal.com/unity/advanced/in-app-purchases?distribution=manual"/> for more details.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedType.Global")]
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
@@ -863,7 +869,7 @@ namespace AppodealAds.Unity.Api
 
         /// <summary>
         /// <para>Gets the purchase type.</para>
-        /// See <see href=""/> for more details.
+        /// See <see href="https://docs.appodeal.com/unity/advanced/in-app-purchases?distribution=manual"/> for more details.
         /// </summary>
         /// <returns>Type of the purchase as AppStorePurchaseType object.</returns>
         public Appodeal.AppStorePurchaseType getPurchaseType()
@@ -873,7 +879,7 @@ namespace AppodealAds.Unity.Api
 
         /// <summary>
         /// <para>Gets an id of the purchased product.</para>
-        /// See <see href=""/> for more details.
+        /// See <see href="https://docs.appodeal.com/unity/advanced/in-app-purchases?distribution=manual"/> for more details.
         /// </summary>
         /// <returns>Product Id as string.</returns>
         public string getProductId()
@@ -883,7 +889,7 @@ namespace AppodealAds.Unity.Api
 
         /// <summary>
         /// <para>Gets the transaction id of the purchase.</para>
-        /// See <see href=""/> for more details.
+        /// See <see href="https://docs.appodeal.com/unity/advanced/in-app-purchases?distribution=manual"/> for more details.
         /// </summary>
         /// <returns>Id of the transaction as string.</returns>
         public string getTransactionId()
@@ -893,7 +899,7 @@ namespace AppodealAds.Unity.Api
 
         /// <summary>
         /// <para>Gets the price of the purchase.</para>
-        /// See <see href=""/> for more details.
+        /// See <see href="https://docs.appodeal.com/unity/advanced/in-app-purchases?distribution=manual"/> for more details.
         /// </summary>
         /// <returns>Price as string.</returns>
         public string getPrice()
@@ -903,7 +909,7 @@ namespace AppodealAds.Unity.Api
 
         /// <summary>
         /// <para>Gets the currency of the purchase.</para>
-        /// See <see href=""/> for more details.
+        /// See <see href="https://docs.appodeal.com/unity/advanced/in-app-purchases?distribution=manual"/> for more details.
         /// </summary>
         /// <returns>Currency as string.</returns>
         public string getCurrency()
@@ -913,7 +919,7 @@ namespace AppodealAds.Unity.Api
 
         /// <summary>
         /// <para>Gets the additional parameters of the purchase.</para>
-        /// See <see href=""/> for more details.
+        /// See <see href="https://docs.appodeal.com/unity/advanced/in-app-purchases?distribution=manual"/> for more details.
         /// </summary>
         /// <returns>Additional parameters as string.</returns>
         public string getAdditionalParameters()
@@ -1010,7 +1016,7 @@ namespace AppodealAds.Unity.Api
 
     /// <summary>
     /// <para>PlayStoreInAppPurchase Unity API for developers, including documentation.</para>
-    /// See <see href=""/> for more details.
+    /// See <see href="https://docs.appodeal.com/unity/advanced/in-app-purchases?distribution=manual"/> for more details.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedType.Global")]
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
@@ -1032,7 +1038,7 @@ namespace AppodealAds.Unity.Api
 
         /// <summary>
         /// <para>Gets the purchase type.</para>
-        /// See <see href=""/> for more details.
+        /// See <see href="https://docs.appodeal.com/unity/advanced/in-app-purchases?distribution=manual"/> for more details.
         /// </summary>
         /// <returns>Type of the purchase as PlayStorePurchaseType object.</returns>
         public Appodeal.PlayStorePurchaseType getPurchaseType()
@@ -1042,7 +1048,7 @@ namespace AppodealAds.Unity.Api
 
         /// <summary>
         /// <para>Gets the public key of the purchase.</para>
-        /// See <see href=""/> for more details.
+        /// See <see href="https://docs.appodeal.com/unity/advanced/in-app-purchases?distribution=manual"/> for more details.
         /// </summary>
         /// <returns>Public key as string.</returns>
         public string getPublicKey()
@@ -1052,7 +1058,7 @@ namespace AppodealAds.Unity.Api
 
         /// <summary>
         /// <para>Gets the signature of the purchase.</para>
-        /// See <see href=""/> for more details.
+        /// See <see href="https://docs.appodeal.com/unity/advanced/in-app-purchases?distribution=manual"/> for more details.
         /// </summary>
         /// <returns>Signature as string.</returns>
         public string getSignature()
@@ -1062,7 +1068,7 @@ namespace AppodealAds.Unity.Api
 
         /// <summary>
         /// <para>Gets the purchase data of the purchase.</para>
-        /// See <see href=""/> for more details.
+        /// See <see href="https://docs.appodeal.com/unity/advanced/in-app-purchases?distribution=manual"/> for more details.
         /// </summary>
         /// <returns>Purchase data as string.</returns>
         public string getPurchaseData()
@@ -1072,7 +1078,7 @@ namespace AppodealAds.Unity.Api
 
         /// <summary>
         /// <para>Gets the price of the purchase.</para>
-        /// See <see href=""/> for more details.
+        /// See <see href="https://docs.appodeal.com/unity/advanced/in-app-purchases?distribution=manual"/> for more details.
         /// </summary>
         /// <returns>Price as string.</returns>
         public string getPrice()
@@ -1082,7 +1088,7 @@ namespace AppodealAds.Unity.Api
 
         /// <summary>
         /// <para>Gets the currency of the purchase.</para>
-        /// See <see href=""/> for more details.
+        /// See <see href="https://docs.appodeal.com/unity/advanced/in-app-purchases?distribution=manual"/> for more details.
         /// </summary>
         /// <returns>Currency as string.</returns>
         public string getCurrency()
@@ -1092,7 +1098,7 @@ namespace AppodealAds.Unity.Api
 
         /// <summary>
         /// <para>Gets the additional parameters of the purchase.</para>
-        /// See <see href=""/> for more details.
+        /// See <see href="https://docs.appodeal.com/unity/advanced/in-app-purchases?distribution=manual"/> for more details.
         /// </summary>
         /// <returns>Additional parameters as string.</returns>
         public string getAdditionalParameters()
@@ -1102,7 +1108,7 @@ namespace AppodealAds.Unity.Api
 
         /// <summary>
         /// <para>Gets the SKU of the purchase.</para>
-        /// See <see href=""/> for more details.
+        /// See <see href="https://docs.appodeal.com/unity/advanced/in-app-purchases?distribution=manual"/> for more details.
         /// </summary>
         /// <returns>SKU as string.</returns>
         public string getSku()
@@ -1112,7 +1118,7 @@ namespace AppodealAds.Unity.Api
 
         /// <summary>
         /// <para>Gets the order id of the purchase.</para>
-        /// See <see href=""/> for more details.
+        /// See <see href="https://docs.appodeal.com/unity/advanced/in-app-purchases?distribution=manual"/> for more details.
         /// </summary>
         /// <returns>Order id as string.</returns>
         public string getOrderId()
@@ -1122,7 +1128,7 @@ namespace AppodealAds.Unity.Api
 
         /// <summary>
         /// <para>Gets the token of the purchase.</para>
-        /// See <see href=""/> for more details.
+        /// See <see href="https://docs.appodeal.com/unity/advanced/in-app-purchases?distribution=manual"/> for more details.
         /// </summary>
         /// <returns>Purchase token as string.</returns>
         public string getPurchaseToken()
@@ -1132,7 +1138,7 @@ namespace AppodealAds.Unity.Api
 
         /// <summary>
         /// <para>Gets the timestamp of the purchase.</para>
-        /// See <see href=""/> for more details.
+        /// See <see href="https://docs.appodeal.com/unity/advanced/in-app-purchases?distribution=manual"/> for more details.
         /// </summary>
         /// <returns>Purchase timestamp as string.</returns>
         public long getPurchaseTimestamp()
@@ -1142,7 +1148,7 @@ namespace AppodealAds.Unity.Api
 
         /// <summary>
         /// <para>Gets the developer payload of the purchase.</para>
-        /// See <see href=""/> for more details.
+        /// See <see href="https://docs.appodeal.com/unity/advanced/in-app-purchases?distribution=manual"/> for more details.
         /// </summary>
         /// <returns>Developer payload as string.</returns>
         public string getDeveloperPayload()

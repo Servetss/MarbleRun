@@ -570,7 +570,7 @@ namespace Appodeal.Unity.Editor.Utils
 
         public override void fixProblem()
         {
-            //EditorApplication.applicationContentsPath is different for macos and win. need to fix to reach manifest and gradle templates 
+            // EditorApplication.applicationContentsPath is different for macos and win. need to fix to reach manifest and gradle templates
             var defaultGradleTemplateFullName = MultidexActivator.getDefaultGradleTemplate();
 
             var destGradleScriptFullName = AppodealUnityUtils.combinePaths(Application.dataPath,

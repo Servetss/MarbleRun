@@ -13,6 +13,11 @@ public class GameOverCalculationUI : MonoBehaviour, IGameOverPanels
 
     [SerializeField] private PositionOnTheTrackView _playerPositionOnTheTrack;
 
+    [Header("Level Completed")]
+    [SerializeField] private GameObject _completeLevel;
+
+    [SerializeField] private GameObject _failedLevel;
+
     private GameOverPanel _gameOverPanel;
 
     public void Init(GameOverPanel gameOverPanel)
@@ -22,13 +27,24 @@ public class GameOverCalculationUI : MonoBehaviour, IGameOverPanels
 
     public void OpenPanel(LevelInfo levelInfo)
     {
-        _levelText.text = "Level: " + levelInfo.PlayerLevel.ToString();
+        _levelText.text = "LEVEL " + levelInfo.PlayerLevel.ToString();
 
-        _playerPlace.text = NumberParser.NumberToPositionText(_playerPositionOnTheTrack.PositionNum) + " place";
+        _playerPlace.text = NumberParser.NumberToPositionText(_playerPositionOnTheTrack.PositionNum) + " PLACE";
 
         int coinsGet = levelInfo.CoinsGetOnTheLevel * levelInfo.Boost;
 
         _coinReceive.text = (coinsGet * _moneyBoostAbility.Boost) + "$";
+
+        if (_playerPositionOnTheTrack.PositionNum == 1)
+        {
+            _completeLevel.SetActive(true);
+            _failedLevel.SetActive(false);
+        }
+        else
+        {
+            _completeLevel.SetActive(false);
+            _failedLevel.SetActive(true);
+        }
     }
 
     public void ClosePanel()

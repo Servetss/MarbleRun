@@ -144,7 +144,6 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -321,7 +320,7 @@ TextureImporter:
         height: 235
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 24, y: 28, z: 25, w: 31}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -1098,47 +1097,6 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Back2: 6097283716305643911
-      Marbles_B: -7903599098912180323
-      ADSOff: 7461316730073414097
-      Marble_Run_AtlasUI_34: -2972065408856958367
-      BOOST: 7680610676698225925
-      FillGreen: -2203460951751400356
-      Ok_B: 1219455257333496608
-      Coin2: 8343270686822502620
-      TapYellow: 7678891788009688142
-      Setting_B: -8182067879307782923
-      CoinButton_B: -5584608226211502981
-      Worlds_B: -3969420288954055311
-      SlideArrow: 1769500572731373839
-      FillOrange: 4292379175901863002
-      MusicOff: 549884743735748269
-      Hand1: 6256489933758795825
-      VibrationOff: -2035089162130574006
-      Select_B: 2436359988529530470
-      Back1: 6948447494356591897
-      Unlock_B: -1750744293364011339
-      RightArrow_B: -1537423440200799324
-      Circle: -6045890742737011306
-      Hand2: -6796893814205598184
-      Check: 899118106492755406
-      LeftArrow_B: -8203585357161812559
-      Panel: -4032294858092336774
-      TrafficLights: -8471362501508547685
-      ZONE: 2385965750829833871
-      Coin1: 3039025849718817390
-      TapRed: 8176087887925877837
-      Back_B: 1178309416684231624
-      Star: -4630273462901446863
-      VibrationOn: 4657680507991435571
-      OpenGift_B: -7825493846442115692
-      Done_B: -1706835492695802498
-      TapGreen: 7846359910646394299
-      MusicOn: 9131198272679372524
-      Claim_B: 8800153045431735735
-      Finish: -1214711893165853961
-      AbilityBorder: -6371420497968310403
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

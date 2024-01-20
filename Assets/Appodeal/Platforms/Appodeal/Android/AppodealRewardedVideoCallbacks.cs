@@ -36,11 +36,6 @@ namespace AppodealAds.Unity.Android
             listener?.onRewardedVideoShown();
         }
 
-        private void onRewardedVideoFinished(double amount, UnityEngine.AndroidJavaObject name)
-        {
-            listener?.onRewardedVideoFinished(amount, null);
-        }
-
         private void onRewardedVideoFinished(double amount, string name)
         {
             listener?.onRewardedVideoFinished(amount, name);

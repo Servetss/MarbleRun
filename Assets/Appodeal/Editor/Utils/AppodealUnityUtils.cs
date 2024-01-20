@@ -24,7 +24,7 @@ namespace AppodealAds.Unity.Editor.Utils
         public const string GADApplicationIdentifier = "GADApplicationIdentifier";
         public const string NSUserTrackingUsageDescriptionKey = "NSUserTrackingUsageDescription";
         public const string NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you";
-        
+
         public const string GADApplicationIdentifierDefaultKey = "ca-app-pub-3940256099942544~1458002511";
 
         #region Optional Android Permissions
@@ -34,7 +34,7 @@ namespace AppodealAds.Unity.Editor.Utils
         public const string ExternalStorageWrite = "android.permission.WRITE_EXTERNAL_STORAGE";
         public const string AccessWifiState = "android.permission.ACCESS_WIFI_STATE";
         public const string Vibrate = "android.permission.VIBRATE";
-        
+
         #endregion
 
         [Flags]

@@ -62,7 +62,7 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
             var info = new DirectoryInfo(Network_configs_path);
             var fileInfo = info.GetFiles();
 
-            return fileInfo.Length <= 0 ? null : fileInfo.Where(val => !val.Name.Contains("meta")).ToArray();
+            return fileInfo.Length <= 0 ? null : fileInfo.Where(val => val.Name.EndsWith("Dependencies.xml")).ToArray();
         }
 
         public static void ShowInternalErrorDialog(EditorWindow editorWindow, string message, string debugLog)
@@ -302,7 +302,7 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
 
         public static AppodealDependency GetAppodealDependency(SortedDictionary<string, AppodealDependency> dependencies)
         {
-            return dependencies.First(dep => dep.Key.Contains(Appodeal) && dep.Value != null).Value;
+            return dependencies.FirstOrDefault(dep => dep.Key.Contains(Appodeal) && dep.Value != null).Value;
         }
     }
 

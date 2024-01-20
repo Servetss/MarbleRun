@@ -53,7 +53,7 @@ namespace AppodealAds.Unity.Android
             {
                 nativeAdTypes |= Appodeal.BANNER_TOP;
             }
-            
+
             if ((adTypes & Appodeal.BANNER_LEFT) > 0)
             {
                 nativeAdTypes |= Appodeal.BANNER_LEFT;
@@ -182,7 +182,7 @@ namespace AppodealAds.Unity.Android
         {
             getAppodealClass().CallStatic("set728x90Banners", value);
         }
-        
+
         public void setBannerRotation(int leftBannerRotation, int rightBannerRotation)
         {
             getAppodealClass().CallStatic("setBannerRotation", leftBannerRotation, rightBannerRotation);
@@ -329,7 +329,7 @@ namespace AppodealAds.Unity.Android
         {
             return getAppodealClass().CallStatic<bool>("canShow", nativeAdTypesForType(adTypes), placement);
         }
-        
+
         public void setCustomFilter(string name, bool value)
         {
             getAppodealClass().CallStatic("setCustomFilter", name, value);
@@ -502,7 +502,7 @@ namespace AppodealAds.Unity.Android
                     .ToList().ForEach(key => paramsFiltered.Add(key, eventParams[key]));
 
                 var map = new AndroidJavaObject("java.util.HashMap");
-                
+
                 foreach (var entry in paramsFiltered)
                 {
                     map.Call<AndroidJavaObject>("put", entry.Key, Helper.getJavaObject(entry.Value));
@@ -561,8 +561,10 @@ namespace AppodealAds.Unity.Android
 
             if (value is double)
             {
-                return new AndroidJavaObject("java.lang.Float", value);
+                return new AndroidJavaObject("java.lang.Double", value);
             }
+
+            Debug.LogError($"[Appodeal Unity Plugin] Conversion of {value.GetType()} type to java is not implemented");
 
             return null;
         }

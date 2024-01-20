@@ -257,7 +257,7 @@ namespace AppodealAds.Unity.Dummy
             Debug.Log("Call to Appodeal.getPredictedEcpm on not supported platform. To test advertising, install your application on the Android/iOS device.");
             return 0;
         }
-        
+
         public double getPredictedEcpmForPlacement(int adType, string placement)
         {
             Debug.Log("Call to Appodeal.getPredictedEcpmForPlacement on not supported platform. To test advertising, install your application on the Android/iOS device.");
@@ -308,12 +308,12 @@ namespace AppodealAds.Unity.Dummy
         {
             Debug.Log("Call to Appodeal.setMrecCallbacks on not supported platform. To test advertising, install your application on the Android/iOS device.");
         }
-        
+
         public void setAdRevenueCallback(IAdRevenueListener listener)
         {
             Debug.Log("Call to Appodeal.setAdRevenueCallback on not supported platform. To test advertising, install your application on the Android/iOS device.");
         }
-        
+
         public void destroy(int adTypes)
         {
             Debug.Log("Call to Appodeal.destroy on not supported platform. To test advertising, install your application on the Android/iOS device.");

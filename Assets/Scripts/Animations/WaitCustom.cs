@@ -43,6 +43,8 @@ public class WaitCustom : MonoBehaviour
     
     public WaitCustom Play(AnimatedData animData, float speed)
     {
+        if (animData == null) return this;
+
         int itemIndex = IsAnimationPlayed(animData);
 
         if (itemIndex == -1)

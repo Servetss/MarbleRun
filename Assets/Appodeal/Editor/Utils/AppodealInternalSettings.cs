@@ -86,7 +86,7 @@ public class AppodealInternalSettings : EditorWindow
             }, GUILayout.Width(200)))
             {
                 Application.OpenURL(
-                    "https://wiki.appodeal.com/en/unity/get-started#UnitySDK.GetStarted-2.3Admobconfiguration");
+                    "https://docs.appodeal.com/unity/get-started?distribution=manual#admob-configuration");
             }
 
             GUILayout.Space(2);
@@ -112,7 +112,7 @@ public class AppodealInternalSettings : EditorWindow
         {
             LabelField("Android Settings");
             HeaderField("Add optional permissions",
-                "https://wiki.appodeal.com/en/unity/get-started#UnitySDK.GetStarted-Configure-AndroidManifest.xml");
+                "https://docs.appodeal.com/unity/get-started?distribution=manual#configure-androidmanifestxml");
 
             AppodealSettings.Instance.AccessCoarseLocationPermission = KeyRow("ACCESS_COARSE_LOCATION",
                 AppodealSettings.Instance.AccessCoarseLocationPermission);
@@ -149,7 +149,7 @@ public class AppodealInternalSettings : EditorWindow
         {
             LabelField("iOS Settings");
             HeaderField("Add keys to info.plist",
-                "https://wiki.appodeal.com/en/unity/get-started#UnitySDK.GetStarted-2.2iOSconfiguration");
+                "https://docs.appodeal.com/unity/get-started?distribution=manual#ios-configuration");
             GUILayout.Space(10);
 
             AppodealSettings.Instance.NSUserTrackingUsageDescription = KeyRow("NSUserTrackingUsageDescription",
