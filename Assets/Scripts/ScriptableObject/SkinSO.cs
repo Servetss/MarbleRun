@@ -34,6 +34,11 @@ public class SkinSO : ScriptableObject
         Save();
     }
 
+    public void SetPrice(float price)
+    {
+        _skinCost = (int)Mathf.Ceil(price);
+    }
+
     #region Save\Load
     public void Save()
     {

@@ -145,8 +145,8 @@
                 half specular = dot(R, L);
                 
                 float2 reflectUV = saturate(float2(ROp.b * 0.5 + 0.5, -ROp.y));
-                
-                float reflectRenderOffset = (-i.texcoord.y + 0.2);
+
+                float reflectRenderOffset = (-i.texcoord.y + 0.1);
 
                 half3 skydata = texCUBE(_CubeMapTex, R).rgb;
                 half4 reflectRoad = saturate(tex2D(_ReflectTex, reflectUV) * reflectRenderOffset * _ReflectIntensity);// + _ReflectColor; // 
@@ -159,7 +159,7 @@
                 //col.rgb += smoothstep(0,1, specular * _Roughness - (_Roughness - 1)) * 0.1;
 
                 col.rgb = col.rgb + reflectRoad + skydata * _CubemapColor * pow(NdotV, _Metalic);
-                return reflectRoad;
+                return col;
                 
             }
             ENDCG

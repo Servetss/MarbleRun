@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 550f6f19c4dac7f4786668d080fda133
 ModelImporter:
-  serializedVersion: 21100
+  serializedVersion: 20300
   internalIDToNameTable: []
   externalObjects: {}
   materials:
@@ -35,7 +35,7 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 3
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
@@ -96,6 +96,7 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

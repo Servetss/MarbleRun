@@ -1,25 +1,35 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class xZone : MonoBehaviour
 {
-    [SerializeField] private int _xBoost;
+    [SerializeField] private float _xBoost;
 
-    [SerializeField] private Text _boostText;
+    [SerializeField] private TextMeshProUGUI _boostText;
+
+    [SerializeField] private MeshRenderer _meshRenderer;
     
     private XZoneAnimate xZoneTriggerAnimation;
 
-    public int Boost => _xBoost;
+    public float Boost => _xBoost;
 
     private void Awake()
     {
         xZoneTriggerAnimation = new XZoneAnimate(transform, 1.5f);
     }
 
-    private void Start()
+    public void SetBoost(float boost)
     {
+        _xBoost = boost;
+
         _boostText.text = "X" + _xBoost.ToString();
     }
+
+    public void SetMaterial(Material material)
+    {
+        _meshRenderer.material = material;
+    }
+
 
     public void OnCustomTrigger(float impulse)
     {

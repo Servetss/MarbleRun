@@ -826,7 +826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelPreparer: {fileID: 0}
-  _speed: 33
+  _speed: 35
   _isPlayer: 0
   _distance: 0
   _lerp: 0
@@ -858,12 +858,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerRoadMover: {fileID: 0}
-  _lerpSpeed: 2
-  _delayForChangeAcceleration: 2
-  _defaultMinimumSpeed: 0
-  _defaultMaximumSpeed: 0
-  _minimumSpeed: 0
-  _maximumSpeed: 0
+  _lerpSpeed: 1
+  _delayForChangeAcceleration: 50
+  _fromSpeed: 0
+  _toSpeed: 0
 --- !u!114 &8846236167219210566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -890,6 +888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelPreparer: {fileID: 0}
+  _playerState: 0
 --- !u!114 &5760813787759087282
 MonoBehaviour:
   m_ObjectHideFlags: 0

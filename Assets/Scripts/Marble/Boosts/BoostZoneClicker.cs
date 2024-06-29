@@ -16,9 +16,9 @@ public class BoostZoneClicker : IBoost
         return _isTriggerStay && Input.GetMouseButtonDown(0);
     }
 
-    public void Impulse(Rigidbody rigidbody, int velocity)
+    public void Impulse(Rigidbody rigidbody, float velocity)
     {
-        rigidbody.AddForce(rigidbody.velocity.normalized * velocity, ForceMode.Impulse);
+        //rigidbody.AddForce(rigidbody.velocity.normalized * velocity, ForceMode.Impulse);
 
         _boostIncrease = rigidbody.velocity.magnitude;
 

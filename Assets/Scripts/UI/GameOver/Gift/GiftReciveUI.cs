@@ -15,6 +15,19 @@ public class GiftReciveUI : MonoBehaviour
     [Range(0, 100)]
     [SerializeField] private int _posibilityToSkinDrop;
 
+    private int[] _coinRecieves = new int[] { 150, 200, 250, 300 };
+
+    public void FillGiftAndUnlockSkin(SkinSO skin)
+    {
+        _skinImage.sprite = skin.SkinOnUI;
+
+        skin.UnlockTheSkin();
+
+        gameObject.SetActive(true);
+
+        _acceptButton.SetActive(true);
+    }
+    
     public void FillGift(SkinSO skin)
     {
         int random = Random.Range(0, 100);
@@ -25,9 +38,13 @@ public class GiftReciveUI : MonoBehaviour
         {
             _skinImage.sprite = _coinSprite;
 
-            _coinRecieveText.text = NumberParser.FromNumberToShortText(2000) + "$";
 
-            Wallet.instance.AddMoney(2000);
+            int randomCoin = Random.Range(0, _coinRecieves.Length);
+            int coinRecieve = _coinRecieves[randomCoin];
+
+            _coinRecieveText.text = NumberParser.FromNumberToShortText(coinRecieve) + "$";
+
+            Wallet.instance.AddMoney(coinRecieve);
         }
         else
         {

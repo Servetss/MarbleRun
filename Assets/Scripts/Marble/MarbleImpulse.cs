@@ -6,6 +6,8 @@ public class MarbleImpulse : MonoBehaviour
 {
     private IBoost _boost;
 
+    [SerializeField] private Ability _accelerateAbility;
+
     [SerializeField] private GameObject _boostTextOnUI;
 
     [SerializeField] private BoostСharacteristic _boostСharacteristic;
@@ -38,7 +40,7 @@ public class MarbleImpulse : MonoBehaviour
     {
         if (_boost.BoostCondition())
         {
-            _boost.Impulse(Rigidbody, _boostСharacteristic.Impulse);
+            _boost.Impulse(Rigidbody, _boostСharacteristic.Impulse + _accelerateAbility.Boost);
         }
     }
 

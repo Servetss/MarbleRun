@@ -2,14 +2,15 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Mat7
   m_Shader: {fileID: 4800000, guid: 850724e8c137aae45ac77da9ca8fde43, type: 3}
-  m_ShaderKeywords: 
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -48,7 +49,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 27072f12c45dda34d801ac1b563b309e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 98217531ea7a49448a374e48080117ae, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -67,24 +68,25 @@ Material:
         m_Texture: {fileID: 2800000, guid: 865b31279d78c9149a657391fb0c1888, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _Exposure: 1
-    - _Fresnel: 0.392
+    - _Fresnel: 0.35
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _LightRange: 1.52
+    - _LightRange: 1.69
     - _Metalic: 0.66
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ReflectIntensity: 1.78
-    - _Roughness: 18.9
+    - _ReflectIntensity: 2
+    - _Roughness: 18.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -95,6 +97,6 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _CubemapColor: {r: 0.20633675, g: 0.33962262, b: 0.33962262, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FresnelColor: {r: 0.336917, g: 0.85504586, b: 0.9811321, a: 1}
+    - _FresnelColor: {r: 0.5325739, g: 0.74933785, b: 0.8018868, a: 1}
     - _ReflectColor: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 1}
   m_BuildTextureStacks: []

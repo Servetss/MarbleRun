@@ -2,14 +2,18 @@ using UnityEngine;
 
 public class Enemys : MonoBehaviour
 {
-    [SerializeField] private AI[] _enemys;
+    [SerializeField] private LevelPreparer _levelPreparer;
 
+    [SerializeField] private AI[] _enemys;
+    
     public void StartRoad()
     {
         for (int i = 0; i < _enemys.Length; i++)
         {
             _enemys[i].StartRoad();
         }
+
+        SetNextMaxSpeedForEnemies(_levelPreparer.LevelCount);
     }
 
     public void NextLevel()
@@ -44,11 +48,13 @@ public class Enemys : MonoBehaviour
         return transforms;
     }
 
-    public void SetNextMaxSpeedForEnemies(int level)
+    private void SetNextMaxSpeedForEnemies(int level)
     {
+        float calculatedSpeed = SpeedBalance.CalculateEnemySpeedByLevel(level);
+
         for (int i = 0; i < _enemys.Length; i++)
         {
-            _enemys[i].SetNewMaxSpeed(level);
+            _enemys[i].SetBoost(level, calculatedSpeed);
         }
     }
 }

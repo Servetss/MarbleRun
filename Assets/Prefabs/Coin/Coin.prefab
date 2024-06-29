@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mesh: {fileID: 2066810531274377283}
+  _shadow: {fileID: 3772280945252102174}
   _particle: {fileID: 9083837316045343754}
 --- !u!1 &3772280945252102174
 GameObject:

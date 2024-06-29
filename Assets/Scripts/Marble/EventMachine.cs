@@ -2,9 +2,12 @@ using Firebase.Analytics;
 using System;
 using UnityEngine;
 
+public enum PlayerState { Idle, RoadRide, BoostZone, Jump}
 public class EventMachine : MonoBehaviour
 {
     [SerializeField] private LevelPreparer _levelPreparer;
+
+    [SerializeField] private PlayerState _playerState;
 
     private Action RoadStart;
 
@@ -17,6 +20,8 @@ public class EventMachine : MonoBehaviour
     private Action Finish;
 
     private Action MoveToNextLevel;
+
+    public PlayerState PlayerState { get => _playerState; }
 
     #region Normal level
     public void SubscribeOnRoadStartStart(Action method)
@@ -56,6 +61,7 @@ public class EventMachine : MonoBehaviour
 
     public void RoadStartMethod()
     {
+        _playerState = PlayerState.RoadRide;
 
         RoadStart?.Invoke();
     }
@@ -67,16 +73,22 @@ public class EventMachine : MonoBehaviour
 
     public void BoostZoneStartMethod()
     {
+        _playerState = PlayerState.BoostZone;
+
         BoostZoneStart?.Invoke();
     }
 
     public void BoostZoneFinishMethod()
     {
+        _playerState = PlayerState.Jump;
+
         BoostZoneFinish?.Invoke();
     }
 
     public void FinishMethod()
     {
+        _playerState = PlayerState.Idle;
+
         Finish?.Invoke();
     }
 

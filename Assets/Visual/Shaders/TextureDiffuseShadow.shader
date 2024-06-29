@@ -99,6 +99,8 @@ Shader "Unlit/TextureDiffuseShadow"
                 
                 float cut = (dot(NcrossL.x * _TextureXOffset + _TextureXWidth, step(NcrossL.b,0)));
                 
+                //return float4(cut,  NdotL.y * _TextureYScale + _TextureYOffset,0,1);
+
                 // sample the texture
                 fixed4 mainTexture = tex2D(_MainTex, fixed2(cut, NdotL.y * _TextureYScale + _TextureYOffset));
                 

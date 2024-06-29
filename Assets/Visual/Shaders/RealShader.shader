@@ -95,13 +95,13 @@ Shader "Unlit/RealShader"
                 
                 fixed4 NdotL = dot(L, i.normal) * 0.3 + 0.6;
 
-                fixed NdotV = 1- saturate(dot(i.normal, V.xyz));
+                fixed NdotV = 1 - saturate(dot(i.normal, V.xyz));
 
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv) * max(NdotL,_LightRange) * _MainColor;
 
 
-                fixed3 R = reflect(-V , i.normal);
+                fixed3 R = reflect(-V, i.normal);
                 fixed specular = dot(R, L);
                 
                 fixed3 skydata = texCUBE(_CubeMapTex, R).rgb;
@@ -110,7 +110,7 @@ Shader "Unlit/RealShader"
                 
                 col.rgb += smoothstep(0,1, specular * _Roughness - (_Roughness - 1)) * 0.1;
 
-                col.rgb = col.rgb + skydata * _CubemapColor * pow(NdotV, _Metalic);
+                col.rgb += skydata * _CubemapColor * pow(NdotV, _Metalic);
                 return col;
                 
             }

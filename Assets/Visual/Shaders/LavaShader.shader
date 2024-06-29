@@ -148,6 +148,10 @@
                 col4 *= _Color;
                 col4.a = alpha;
 
+                float offset = abs(1 - saturate(1 - (_Scale * pow((i.uv.y - 0.5), 2)))* _Extrude);
+
+                 
+
                 return max(NdotV * _GlassBlickColor, col4);
             }
             ENDCG

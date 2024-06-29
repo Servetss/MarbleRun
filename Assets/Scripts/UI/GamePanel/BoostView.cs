@@ -11,10 +11,14 @@ public class BoostView : MonoBehaviour
 
     [SerializeField] private Image _boostFill;
 
+    private Accelerator _accelerator;
+
     private bool _isBoostZone;
 
     public float To => (_playerRoadMover.Speed - 60) / 40;
 
+    private float _speedView;
+    
     private void Start()
     {
         _playerEventMachine.SubscribeOnBoostZoneStart(StartBoostZone);
@@ -22,18 +26,23 @@ public class BoostView : MonoBehaviour
         _playerEventMachine.SubscribeOnBoostZoneFinish(EndBoostZone);
 
         _playerEventMachine.SubscribeOnRoadEnd(RoadEnd);
+
+        _accelerator = _playerRoadMover.GetComponent<Accelerator>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (_isBoostZone)
         {
-            if (_boostFill.fillAmount < To)
-                _boostFill.fillAmount += Time.fixedDeltaTime * 0.05f;
-            else if (_boostFill.fillAmount > To)
-            {
-                _boostFill.fillAmount -= Time.fixedDeltaTime * 0.05f;
-            }
+            float maxSpeed = _accelerator.BoostMaximalSpeed - _accelerator.MaximalSpeed;
+
+            float speed = Mathf.Abs(_playerRoadMover.Speed - _accelerator.MaximalSpeed);
+
+            float fillAmount = speed / maxSpeed;
+
+            _speedView = Mathf.Lerp(_boostFill.fillAmount, fillAmount, 0.1f);
+
+            _boostFill.fillAmount = _speedView;
         }
     }
 

@@ -37,7 +37,7 @@ public class Finish : MonoBehaviour
 
     private void LevelFinish(LevelInfo levelInfo)
     {
-        Wallet.instance.AddMoney((levelInfo.CoinsGetOnTheLevel * levelInfo.Boost) * (int)_moneyBoostAbility.Boost);
+        Wallet.instance.AddMoney((int)(levelInfo.CoinsGetOnTheLevel * levelInfo.Boost * _moneyBoostAbility.Boost));
 
         _gameOverPanel.GameOverUI(levelInfo);
     }

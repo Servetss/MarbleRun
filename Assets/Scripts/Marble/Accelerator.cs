@@ -1,11 +1,8 @@
-using UnityEngine;
+﻿using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class Accelerator : MonoBehaviour
 {
-    [SerializeField] private float _speedBoost;
-
-    [SerializeField] private float _acceleration = 8;
-
     [SerializeField] private float _speed;
 
     [SerializeField] private ParticleSystem _speedParticle;
@@ -14,13 +11,18 @@ public class Accelerator : MonoBehaviour
 
     private RoadMover _roadMover;
 
+    [Header("Debug")]
+    [SerializeField] private float _speedBoost;
+
     private bool _isRelised;
 
     private bool _isPlayeMode;
 
-    public float MinimalSpeed {get => _speedBoost + 30;}
+    public float MinimalSpeed { get => MaximalSpeed - (MaximalSpeed * 0.2f); }
 
-    public float MaximalSpeed { get => _speedBoost + 60; }
+    public float MaximalSpeed { get => SpeedBalance.StartSpeed + (SpeedBalance.SpeedIncrease * _speedBoost); } // NORMAL SPEED
+
+    public float BoostMaximalSpeed { get => MaximalSpeed + (MaximalSpeed * 1f); }
 
     private void Awake()
     {
@@ -42,10 +44,11 @@ public class Accelerator : MonoBehaviour
 
     private void Update()
     {
-        if (_isPlayeMode)
+        if (_isPlayeMode) // Мод звичайної їзди по треку
         {
             _isRelised = true;
 
+            // VERIOSN 0.92 //
             //if (Input.GetMouseButtonDown(0))
             //{
             //    _isRelised = true;
@@ -58,11 +61,26 @@ public class Accelerator : MonoBehaviour
 
             if ((_isRelised == false && _speed == MinimalSpeed) == false && (_isRelised && _speed == MaximalSpeed) == false)
             {
-                _speed = _isRelised ? _speed + (Time.deltaTime * _acceleration) : _speed - (Time.deltaTime * _acceleration);
+                //_speed = _isRelised ? _speed + (Time.deltaTime * _acceleration) : _speed - (Time.deltaTime * _acceleration);
 
-                _speed = Mathf.Clamp(_speed, MinimalSpeed, MaximalSpeed);
+                _speed = Mathf.Clamp(_speed, 0, MaximalSpeed);
 
                 _roadMover.SetSpeed(_speed);
+            }
+
+            ChangeSpeed(Time.deltaTime * 1);
+        }
+        else if (_playerEventMachine.PlayerState == PlayerState.BoostZone)
+        {
+            if (_roadMover.Speed > MaximalSpeed)
+            {
+                // Поки швидкість більше мінімальної, то поступово зменшуй швидкість
+                // Швидкість буде набиратись на клік
+                ChangeSpeed(Time.deltaTime * -0.15f);
+                
+                float newSpeed = _roadMover.Speed + (Time.deltaTime * -0.15f);
+
+                _roadMover.SetSpeed(newSpeed);
             }
         }
     }
@@ -77,9 +95,16 @@ public class Accelerator : MonoBehaviour
         _speed += value;
     }
 
+    public void SubtractSpeed(float percentValue)
+    {
+        percentValue = Mathf.Clamp01(percentValue);
+
+        _speed = _speed - (_speed * percentValue);
+    }
+
     public void SetAcceleration(float acceleration)
     {
-        _acceleration = acceleration;
+        // OLD //
     }
 
     public void SetSpeedBoost(float boost)

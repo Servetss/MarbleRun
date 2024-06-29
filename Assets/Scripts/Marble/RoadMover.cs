@@ -101,11 +101,13 @@ public class RoadMover : MonoBehaviour
 
         if (IsMove)
         {
-            if (SplineIndex == 2 && _speed > 60)
-            {
-                _speed -= Time.fixedDeltaTime * 0.5f;// * 5;
-            }
+            //if (SplineIndex == 2 && _speed > 60)
+            //{
+            //    Debug.Log("Update: " + gameObject.name + "  " + _speed);
 
+            //    _speed -= Time.fixedDeltaTime * 0.5f;// * 5;
+            //}
+            
             _lerp += Time.fixedDeltaTime * (_speed * 0.1f);
 
             Vector3 position = Vector3.Lerp(_startPosition, _directiobPosition, _lerp) + _roadOrientedPoint[_pointIndex].normal / 2;
@@ -134,12 +136,23 @@ public class RoadMover : MonoBehaviour
 
     public void Accelerate(float value)
     {
+        //Debug.Log("Accelerate: " + gameObject.name + "  " + value);
+
         _speed += value;
     }
 
     public void SetSpeed(float value)
     {
+        //Debug.Log("SetSpeed: " + gameObject.name + "  " + value);
+
         _speed = value;
+    }
+
+    public void SubstractSpeed(float percentSub)
+    {
+        percentSub = Mathf.Clamp01(percentSub);
+
+        _speed = _speed - (_speed * percentSub);
     }
 
     private void StartPosition()

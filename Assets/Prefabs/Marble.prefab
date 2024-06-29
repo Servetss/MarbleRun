@@ -596,8 +596,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelPreparer: {fileID: 0}
-  _speed: 2
-  _isPlayer: 0
+  _speed: 35
+  _isPlayer: 1
   _distance: 0
   _lerp: 0
   _speedText: {fileID: 0}
@@ -703,8 +703,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bba4ceca3176714fa97cfe01dce6395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upgrade: {fileID: 0}
-  _ability: []
+  _waitCustom: {fileID: 0}
+  _particleForAbilities: []
 --- !u!95 &1724946569707989369
 Animator:
   serializedVersion: 5

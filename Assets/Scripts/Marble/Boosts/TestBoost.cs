@@ -12,7 +12,7 @@ public class TestBoost : IBoost
         return Input.GetMouseButton(0);
     }
 
-    public void Impulse(Rigidbody rigidbody, int velocity)
+    public void Impulse(Rigidbody rigidbody, float velocity)
     {
         rigidbody.AddForce(rigidbody.velocity.normalized * velocity);
     }

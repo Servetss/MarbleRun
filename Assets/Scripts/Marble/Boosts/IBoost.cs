@@ -6,7 +6,7 @@ public interface IBoost
 
     bool BoostCondition();
 
-    void Impulse(Rigidbody rigidbody, int velocity);
+    void Impulse(Rigidbody rigidbody, float velocity);
 
     void EnterTrigger();
 

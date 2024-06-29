@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using AppodealAds.Unity.Android;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,7 +28,7 @@ public class WaitCustom : MonoBehaviour
 
             _animationStructList[i].AnimatedData.Evaluate(_actualStructInLoop.Time);
 
-            if (_actualStructInLoop.Time >= 1)
+            if (_actualStructInLoop.Time >= 1 && _actualStructInLoop.IsLoop == false)
             {
                 OnFinish(i);
                 
@@ -36,12 +37,12 @@ public class WaitCustom : MonoBehaviour
         }
     }
 
-    private void OnFinish(int animationDataIndex)
+    public void OnFinish(int animationDataIndex)
     {
         _animationStructList.RemoveAt(animationDataIndex);
     }
     
-    public WaitCustom Play(AnimatedData animData, float speed)
+    public WaitCustom Play(AnimatedData animData, float speed, bool isLoop = false)
     {
         if (animData == null) return this;
 
@@ -49,7 +50,7 @@ public class WaitCustom : MonoBehaviour
 
         if (itemIndex == -1)
         {
-            AnimationStruct animationStruct = new AnimationStruct(animData, speed);
+            AnimationStruct animationStruct = new AnimationStruct(animData, speed, isLoop);
 
             _animationStructList.Add(animationStruct);
         }
@@ -65,7 +66,7 @@ public class WaitCustom : MonoBehaviour
         return this;
     }
 
-    private int IsAnimationPlayed(AnimatedData animatedData)
+    public int IsAnimationPlayed(AnimatedData animatedData)
     {
         for (int i = 0; i < _animationStructList.Count; i++)
         {
@@ -88,11 +89,15 @@ public class AnimationStruct
 
     public float Speed;
 
-    public AnimationStruct(AnimatedData animatedData, float speed)
+    public bool IsLoop;
+
+    public AnimationStruct(AnimatedData animatedData, float speed, bool isLoop)
     {
         AnimatedData = animatedData;
 
         Speed = speed;
+
+        IsLoop = isLoop;
     }
 }
 
@@ -323,6 +328,25 @@ public class CameraShake : AnimatedData
         _mainCamera.fieldOfView = _defaultFieldOfView + bouncing * 1f;
         
         _mainCamera.transform.localPosition = _defaultLocalPosition + (_directionMove * bouncing * 0.12f);
+    }
+}
+
+public class SineAnimate : AnimatedData
+{
+    private RectTransform _rectTransform;
+
+    private float _amplitude = 0.1f;
+    
+    public SineAnimate(RectTransform rectTransform)
+    {
+        _rectTransform = rectTransform;
+    }
+
+    public override void Evaluate(float time)
+    {
+        float scale = Mathf.Sin(time * Mathf.PI) * _amplitude;
+
+        _rectTransform.localScale = Vector3.one + (Vector3.one * scale);
     }
 }
 

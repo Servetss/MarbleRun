@@ -36,13 +36,11 @@ public class SplineBoostZoneClicker : IBoost
         return _isTriggerStay && Input.GetMouseButtonDown(0);
     }
 
-    public void Impulse(Rigidbody rigidbody, int velocity)
+    public void Impulse(Rigidbody rigidbody, float velocity)
     {
         _clickCount++;
-
-        float boostAdd = _roadMover.Speed + velocity <= (_accelerator.MaximalSpeed + 50) ? velocity : (_accelerator.MaximalSpeed + 50) - _roadMover.Speed;
-
-        _roadMover.Accelerate(boostAdd);
+        
+        _roadMover.Accelerate(velocity * Time.deltaTime);
 
         _boostView.SetFillAmount((int)_accelerator.MinimalSpeed, (int)_accelerator.MaximalSpeed, _roadMover.Speed);
     }

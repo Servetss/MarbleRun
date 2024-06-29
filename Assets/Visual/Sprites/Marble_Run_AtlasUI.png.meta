@@ -144,6 +144,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -186,7 +187,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -198,7 +199,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -210,7 +211,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -234,7 +235,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: iPhone
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -1097,6 +1098,47 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      ADSOff: 7461316730073414097
+      AbilityBorder: -6371420497968310403
+      BOOST: 7680610676698225925
+      Back1: 6948447494356591897
+      Back2: 6097283716305643911
+      Back_B: 1178309416684231624
+      Check: 899118106492755406
+      Circle: -6045890742737011306
+      Claim_B: 8800153045431735735
+      Coin1: 3039025849718817390
+      Coin2: 8343270686822502620
+      CoinButton_B: -5584608226211502981
+      Done_B: -1706835492695802498
+      FillGreen: -2203460951751400356
+      FillOrange: 4292379175901863002
+      Finish: -1214711893165853961
+      Hand1: 6256489933758795825
+      Hand2: -6796893814205598184
+      LeftArrow_B: -8203585357161812559
+      Marble_Run_AtlasUI_34: -2972065408856958367
+      Marbles_B: -7903599098912180323
+      MusicOff: 549884743735748269
+      MusicOn: 9131198272679372524
+      Ok_B: 1219455257333496608
+      OpenGift_B: -7825493846442115692
+      Panel: -4032294858092336774
+      RightArrow_B: -1537423440200799324
+      Select_B: 2436359988529530470
+      Setting_B: -8182067879307782923
+      SlideArrow: 1769500572731373839
+      Star: -4630273462901446863
+      TapGreen: 7846359910646394299
+      TapRed: 8176087887925877837
+      TapYellow: 7678891788009688142
+      TrafficLights: -8471362501508547685
+      Unlock_B: -1750744293364011339
+      VibrationOff: -2035089162130574006
+      VibrationOn: 4657680507991435571
+      Worlds_B: -3969420288954055311
+      ZONE: 2385965750829833871
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

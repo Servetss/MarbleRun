@@ -7,17 +7,17 @@ public class Ability : MonoBehaviour
 
     [SerializeField] private Player _player;
 
-    [SerializeField] private int _level;
+    [SerializeField] protected int _level;
 
     [Header("Boost")]
-    [SerializeField] private float _startBoost;
+    [SerializeField] protected float _startBoost;
 
-    [SerializeField] private float _increaseBoost;
+    [SerializeField] protected float _increaseBoost;
 
     [Header("Cost")]
-    [SerializeField] private int _startCost;
+    [SerializeField] protected int _startPrice;
 
-    [SerializeField] private int _increaseCost;
+    [SerializeField] protected int _increaseCost;
 
     public Action BoostBuy;
 
@@ -26,12 +26,12 @@ public class Ability : MonoBehaviour
     private void Awake()
     {
         Load();
-
-        BoostBuy += SetBoost;
     }
 
     private void Start()
     {
+        BoostBuy += SetBoost;
+        
         SetBoost();
     }
 
@@ -40,9 +40,9 @@ public class Ability : MonoBehaviour
         
     }
 
-    public int Cost => _startCost + (_level * _increaseCost);
+    public int Cost => (int)Mathf.Ceil(_startPrice * Mathf.Pow(1.07f, _level));
 
-    public float Boost => _startBoost + (_level * _increaseBoost);
+    public virtual float Boost => _startBoost + (_level * _increaseBoost);
 
     public int Level { get => _level; }
 
@@ -52,7 +52,7 @@ public class Ability : MonoBehaviour
 
     protected virtual void SetBoost()
     {
-
+        
     }
 
     public void OnClick()
@@ -60,7 +60,7 @@ public class Ability : MonoBehaviour
         if (Wallet.instance.Value >= Cost)
         {
             Buy();
-
+            
             BoostBuy?.Invoke();
         }
         else
@@ -72,7 +72,7 @@ public class Ability : MonoBehaviour
     protected void Buy()
     {
         Wallet.instance.SpendMoney(Cost);
-
+        
         _level++;
 
         Save();

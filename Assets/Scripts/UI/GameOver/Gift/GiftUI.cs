@@ -20,6 +20,8 @@ public class GiftUI : MonoBehaviour, IGameOverPanels
     [Range(0, 1)]
     [SerializeField] private float _fillLevel;
 
+    public LevelInfo LevelInfo { get; private set; }
+    
     private ImageFiller _imageFiller;
 
     private ButtonActivness _buttonActivness;
@@ -30,6 +32,8 @@ public class GiftUI : MonoBehaviour, IGameOverPanels
 
     public void Awake()
     {
+        //PlayerPrefs.DeleteAll();
+
         _imageFiller = GetComponent<ImageFiller>();
 
         _animator = GetComponent<Animator>();
@@ -63,8 +67,12 @@ public class GiftUI : MonoBehaviour, IGameOverPanels
         _giftFilling.SetActive(true);
 
         _giftReady.SetActive(false);
+        
+        LevelInfo = levelInfo;
 
-        StartFillGiftImage(0.2f); //0.35f
+        float fillLevel = levelInfo.PlayerLevel <= 2 ? 0.5f : 0.2f;
+
+        StartFillGiftImage(fillLevel); //0.2f
     }
 
     public void ClosePanel()
@@ -111,6 +119,20 @@ public class GiftUI : MonoBehaviour, IGameOverPanels
     #endregion
 
     #region Gift Unlocked
+    public void UnlockAFirstSkin()
+    {
+        CancelInvoke("ShowAcceptButton");
+
+        _animator.SetTrigger("Open");
+
+        _giftButton.SetActive(false);
+
+        _acceptButton.SetActive(false);
+
+        _giftReciveUI.FillGiftAndUnlockSkin(_skinContainer.GetFirstLockedSkinOrNull());
+    }
+
+    
     public void UlockASkin()
     {
         CancelInvoke("ShowAcceptButton");
@@ -123,6 +145,5 @@ public class GiftUI : MonoBehaviour, IGameOverPanels
 
         _giftReciveUI.FillGift(_skinContainer.GetFirstLockedSkinOrNull());
     }
-
     #endregion
 }

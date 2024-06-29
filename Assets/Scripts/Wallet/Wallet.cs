@@ -21,6 +21,18 @@ public class Wallet : MonoBehaviour
         SubscribeOnMoneyChange(Save);
 
         Invoke("Load", Time.deltaTime);
+        
+        OnFirstStart();
+    }
+
+    private void OnFirstStart()
+    {
+        if (PlayerPrefs.GetInt("IsFirstStart") == 0)
+        {
+            PlayerPrefs.SetInt("IsFirstStart", 1);
+
+            AddMoney(90);
+        }
     }
 
     [ContextMenu("Add some money")]

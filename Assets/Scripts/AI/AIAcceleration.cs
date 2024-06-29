@@ -4,22 +4,16 @@ public class AIAcceleration : MonoBehaviour
 {
     [SerializeField] private RoadMover _playerRoadMover;
 
-    [Range(0.5f, 5)]
-    [SerializeField] private float _lerpSpeed = 2;
+    [Range(1f, 5)]    
+    [SerializeField] private float _lerpSpeed = 2f;
 
     [SerializeField] private float _delayForChangeAcceleration;
-
-    [SerializeField] private float _defaultMinimumSpeed;
-
-    [SerializeField] private float _defaultMaximumSpeed;
-
-    [SerializeField] private float _minimumSpeed;
-
-    [SerializeField] private float _maximumSpeed;
 
     private EventMachine _playerEventMachine;
 
     private RoadMover _roadMover;
+
+    private float _speedBoost;
 
     private bool _isBoostZoneAndPlayerAboutToLose;
 
@@ -27,29 +21,34 @@ public class AIAcceleration : MonoBehaviour
 
     private float _lerp;
 
-    private float _speed = 30;
+    private float _speed = 36;
 
-    private float _fromSpeed;
+    [Space]
+    [SerializeField] private float _fromSpeed;
 
-    private float _toSpeed;
+    [SerializeField] private float _toSpeed;
+
+    public float MinimalSpeed { get => NormalSpeed - (NormalSpeed * 0.2f); }
+
+    public float MaximalSpeed { get => NormalSpeed + (SpeedBalance.SpeedIncrease * 0.1f); }
+
+    private float NormalSpeed { get => SpeedBalance.StartSpeed + (SpeedBalance.SpeedIncrease * _speedBoost); }
 
     private void Awake()
     {
         _roadMover = GetComponent<RoadMover>();
 
         _playerEventMachine = GetComponent<EventMachine>();
-
-        _minimumSpeed = _defaultMinimumSpeed;
-
-        _maximumSpeed = _defaultMaximumSpeed;
     }
     private void Start()
     {
-        _fromSpeed = _speed;
-
         _playerEventMachine?.SubscribeOnRoadStartStart(ChangeSpeed);
 
         _playerEventMachine?.SubscribeOnBoostZoneStart(SlowDown);
+
+        //_speed = NormalSpeed;
+
+        //_fromSpeed = _speed;
     }
 
     private void Update()
@@ -59,7 +58,7 @@ public class AIAcceleration : MonoBehaviour
             if (_roadMover.SplineIndex != 2)
             {
                 _lerp += Time.deltaTime * _lerpSpeed;
-
+                
                 _speed = Mathf.Lerp(_fromSpeed, _toSpeed, _lerp);
 
                 _roadMover.SetSpeed(_speed);
@@ -75,17 +74,17 @@ public class AIAcceleration : MonoBehaviour
                     DelaySpeedChange();
                 }
             }
-            else
+            else // WHEN BOOST ZONE //
             {
-                if (_speed < 90)
-                {
+                if (_speed < MaximalSpeed + (MaximalSpeed * 0.3f))
+                {   
                     if (_isBoostZoneAndPlayerAboutToLose)
                     {
-                        _roadMover.SetSpeed(_speed - 15);
+                        _roadMover.SubstractSpeed(0.01f);
                     }
                     else
                     {
-                        _speed += Time.deltaTime;
+                        _speed += Time.deltaTime * (Time.deltaTime * 0.5f);
 
                         _roadMover.SetSpeed(_speed);
                     }
@@ -94,11 +93,15 @@ public class AIAcceleration : MonoBehaviour
         }
     }
 
-    public void IncreaseSpeed(float value)
+    public void SetBoost(float boost)
     {
-        _minimumSpeed = _defaultMinimumSpeed + value;
+        _speedBoost = boost;
 
-        _maximumSpeed = _defaultMaximumSpeed + value;
+        _speed = NormalSpeed;
+
+        _fromSpeed = _speed;
+
+        _toSpeed = _speed;
     }
 
     public void ChangeFromSpeedToSpeed(int value)
@@ -119,7 +122,9 @@ public class AIAcceleration : MonoBehaviour
 
     private void ChangeSpeed()
     {
-        _toSpeed = Random.Range(_minimumSpeed, _maximumSpeed);
+        _fromSpeed = _speed;
+
+        _toSpeed = Random.Range(MinimalSpeed, MaximalSpeed);
 
         _isSpeedChanging = true;
     }

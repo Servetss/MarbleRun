@@ -9,7 +9,7 @@ public class LevelInfo
 
     public int BoostClickCount { get; private set; }
 
-    public int Boost { get; private set; }
+    public float Boost { get; private set; }
 
     public int Speed { get; private set; }
 
@@ -38,7 +38,7 @@ public class LevelInfo
         Speed = speed;
     }
 
-    public void SetBoost(int boost)
+    public void SetBoost(float boost)
     {
         Boost = boost;
     }

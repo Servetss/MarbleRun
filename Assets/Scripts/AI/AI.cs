@@ -1,9 +1,10 @@
-using Firebase.RemoteConfig;
 using UnityEngine;
 
 public class AI : MonoBehaviour
 {
     public const string AccelerationAI = "ai_acceleration";
+
+    public const float StartSpeed = 3.2f;
 
     [SerializeField] private AIAcceleration _aiAcceleration;
 
@@ -12,7 +13,9 @@ public class AI : MonoBehaviour
     private EventMachine _eventMachine;
 
     private int _saveLevel;
-    
+
+    private float _saveSpeed;
+
     private void Awake()
     {
         _eventMachine = GetComponent<EventMachine>();
@@ -22,7 +25,7 @@ public class AI : MonoBehaviour
 
     public void StartRoad()
     {
-        SetNewMaxSpeed(_saveLevel);
+        SetBoost(_saveLevel, _saveSpeed);
 
         _eventMachine?.RoadStartMethod();
     }
@@ -32,21 +35,13 @@ public class AI : MonoBehaviour
         _eventMachine?.NextLevelMethod();
     }
 
-    public void SetNewMaxSpeed(int levelBoost)
+    public void SetBoost(int levelBoost, float speed)
     {
-        // default balance 3.2
-
         _saveLevel = levelBoost;
 
-        var remoteConfig = FirebaseRemoteConfig.DefaultInstance;
-        float Acceleration = 3.2f;
-
-        if (remoteConfig != null && RemoteConfig.Instance.IsLoaded)
-            Acceleration = (float)remoteConfig.GetValue(AccelerationAI).DoubleValue;
+        _saveSpeed = speed;
         
-        float speedValue = Acceleration;
-
-        _aiAcceleration.IncreaseSpeed(levelBoost * speedValue);
+        _aiAcceleration.SetBoost(speed);
     }
 
     public void OnMarbleSphereTriggerEnter(Collider other)

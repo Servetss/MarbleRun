@@ -29,7 +29,14 @@ public class ButtonActivness
         {
             _isPriseClicked = true;
 
-            _giftUI.UlockASkin();
+            if (_giftUI.LevelInfo.PlayerLevel <= 2) // Two first level for fast skin
+            {
+                _giftUI.UnlockAFirstSkin();
+            }
+            else
+            {
+                _giftUI.UlockASkin();
+            }
         }
         else
         {

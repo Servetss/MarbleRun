@@ -130,7 +130,7 @@ public class Player : MonoBehaviour
 
             SoundManager.Instance.OnObstacleCrash(transform.position);
 
-            _accelerator.ChangeSpeed(-30);
+            _accelerator.SubtractSpeed(0.5f);
         }
         else if (other.GetComponent<Coin>())
         {

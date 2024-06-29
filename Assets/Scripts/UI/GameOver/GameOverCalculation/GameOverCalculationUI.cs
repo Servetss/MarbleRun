@@ -9,7 +9,7 @@ public class GameOverCalculationUI : MonoBehaviour, IGameOverPanels
 
     [SerializeField] private TextMeshProUGUI _playerPlace;
 
-    [SerializeField] private Ability _moneyBoostAbility;
+    [SerializeField] private MoneyBonus _moneyBoostAbility;
 
     [SerializeField] private PositionOnTheTrackView _playerPositionOnTheTrack;
 
@@ -30,10 +30,10 @@ public class GameOverCalculationUI : MonoBehaviour, IGameOverPanels
         _levelText.text = "LEVEL " + levelInfo.PlayerLevel.ToString();
 
         _playerPlace.text = NumberParser.NumberToPositionText(_playerPositionOnTheTrack.PositionNum) + " PLACE";
+        
+        int coinsGet = (int)((levelInfo.CoinsGetOnTheLevel * levelInfo.Boost) * _moneyBoostAbility.Boost);
 
-        int coinsGet = levelInfo.CoinsGetOnTheLevel * levelInfo.Boost;
-
-        _coinReceive.text = (coinsGet * _moneyBoostAbility.Boost) + "$";
+        _coinReceive.text = coinsGet + "$";
 
         if (_playerPositionOnTheTrack.PositionNum == 1)
         {
